@@ -699,7 +699,7 @@ async def handle_guidance_request(ctx: Context, sender: str, msg: DocumentGuidan
         step_by_step_process=rule.get("steps", [])
     ))
 
-agent.include(auditor_proto)
+agent.include(auditor_proto, publish_manifest=True)
 
 # Alias for compatibility
 hosted_agent = agent

@@ -723,7 +723,7 @@ async def handle_match_request(ctx: Context, sender: str, msg: SchemeMatchReques
     )
     await ctx.send(sender, response)
 
-agent.include(matcher_proto)
+agent.include(matcher_proto, publish_manifest=True)
 
 # Alias for compatibility
 hosted_agent = agent

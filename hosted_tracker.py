@@ -396,7 +396,7 @@ async def proactive_deadline_scan(ctx: Context):
     if closing_soon:
         ctx.logger.warning(f"[ALERT] {len(closing_soon)} schemes closing within 7 days: {closing_soon}")
 
-agent.include(tracker_proto)
+agent.include(tracker_proto, publish_manifest=True)
 
 # Alias for compatibility
 hosted_agent = agent

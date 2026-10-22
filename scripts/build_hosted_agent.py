@@ -467,7 +467,7 @@ async def handle_match_request(ctx: Context, sender: str, msg: SchemeMatchReques
     )
     await ctx.send(sender, response)
 
-agent.include(matcher_proto)
+agent.include(matcher_proto, publish_manifest=True)
 
 # Alias for compatibility
 hosted_agent = agent
@@ -530,7 +530,7 @@ async def handle_guidance_request(ctx: Context, sender: str, msg: DocumentGuidan
         step_by_step_process=rule.get("steps", [])
     ))
 
-agent.include(auditor_proto)
+agent.include(auditor_proto, publish_manifest=True)
 
 # Alias for compatibility
 hosted_agent = agent
@@ -618,7 +618,7 @@ async def proactive_deadline_scan(ctx: Context):
     if closing_soon:
         ctx.logger.warning(f"[ALERT] {{len(closing_soon)}} schemes closing within 7 days: {{closing_soon}}")
 
-agent.include(tracker_proto)
+agent.include(tracker_proto, publish_manifest=True)
 
 # Alias for compatibility
 hosted_agent = agent
