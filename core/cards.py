@@ -168,7 +168,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "state",
                 "kind": "select",
-                "label": "1. Home State / Domicile (All 28 States & 8 UTs)",
+                "label": "1. Home State / Domicile",
                 "required": True,
                 "options": [
                     {"value": "Andaman and Nicobar Islands", "label": "Andaman & Nicobar Islands (UT)"},
@@ -213,7 +213,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "course",
                 "kind": "select",
-                "label": "2. Current Education Level & Program",
+                "label": "2. Education Level & Course",
                 "required": True,
                 "options": [
                     {"value": "B.Tech / B.E.", "label": "College: Engineering (B.Tech / B.E.)"},
@@ -244,7 +244,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "family_income",
                 "kind": "select",
-                "label": "4. Annual Family Income (INR)",
+                "label": "4. Annual Family Income",
                 "required": True,
                 "options": [
                     {"value": "90000", "label": "Below ₹1.0 Lakh / year (BPL / Highest Need Priority)"},
@@ -258,7 +258,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "marks",
                 "kind": "select",
-                "label": "5. Last Qualifying Exam Score (Marks % or CGPA equivalent)",
+                "label": "5. Last Exam Score (% or CGPA)",
                 "required": True,
                 "options": [
                     {"value": "85", "label": "85% and Above / 8.5+ CGPA (Top Percentile / Distinction)"},
@@ -283,7 +283,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "disability",
                 "kind": "select",
-                "label": "7. Specially Abled / PwD Status",
+                "label": "7. Specially Abled (PwD)",
                 "required": True,
                 "options": [
                     {"value": "no", "label": "No (Not Specially Abled)"},
@@ -292,7 +292,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             }
         ],
         "submit_cta": {
-            "label": "Review & Match Scholarships",
+            "label": "🔍 Find Matching Scholarships",
             "selection": {"action": "submit_intake", "fallback": "back_to_hub"}
         }
     }
@@ -510,9 +510,15 @@ def get_deadlines_card(items: List[DeadlineItem]) -> dict:
     """Renders deadline urgency list card."""
     summary_rows = []
     for d in items[:6]:
+        if d.days_remaining and d.days_remaining < 9000:
+            val = f"⏳ {d.days_remaining} days left · Cutoff: {d.deadline_date}"
+        elif d.deadline_date and str(d.deadline_date).lower() not in ("check official portal", "null", "unknown", ""):
+            val = f"📅 Cutoff: {d.deadline_date}"
+        else:
+            val = "🟢 Open for 2026-27 · Verify on portal"
         summary_rows.append({
             "label": d.scheme_name[:35] + ("..." if len(d.scheme_name) > 35 else ""),
-            "value": f"{d.badge_label} | Deadline: {d.deadline_date}"
+            "value": val
         })
 
     return {

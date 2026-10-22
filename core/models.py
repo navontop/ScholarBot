@@ -7,8 +7,10 @@ class StudentProfile(Model):
     state: str = "All"
     category: str = "General"  # General, EWS, OBC, SC, ST, Minority
     family_income: float = 250000.0  # Annual income in INR
+    income_label: Optional[str] = ""
     course: str = "Engineering"
     marks_percentage: float = 75.0
+    marks_label: Optional[str] = ""
     gender: str = "All"  # All, Male, Female
     disability: bool = False
     minority: bool = False

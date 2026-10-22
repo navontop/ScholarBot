@@ -71,8 +71,10 @@ class StudentProfile(Model):
     state: str = "All"
     category: str = "General"  # General, EWS, OBC, SC, ST, Minority
     family_income: float = 250000.0  # Annual income in INR
+    income_label: Optional[str] = ""
     course: str = "Engineering"
     marks_percentage: float = 75.0
+    marks_label: Optional[str] = ""
     gender: str = "All"  # All, Male, Female
     disability: bool = False
     minority: bool = False
@@ -1839,7 +1841,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "state",
                 "kind": "select",
-                "label": "1. Home State / Domicile (All 28 States & 8 UTs)",
+                "label": "1. Home State / Domicile",
                 "required": True,
                 "options": [
                     {"value": "Andaman and Nicobar Islands", "label": "Andaman & Nicobar Islands (UT)"},
@@ -1884,7 +1886,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "course",
                 "kind": "select",
-                "label": "2. Current Education Level & Program",
+                "label": "2. Education Level & Course",
                 "required": True,
                 "options": [
                     {"value": "B.Tech / B.E.", "label": "College: Engineering (B.Tech / B.E.)"},
@@ -1915,7 +1917,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "family_income",
                 "kind": "select",
-                "label": "4. Annual Family Income (INR)",
+                "label": "4. Annual Family Income",
                 "required": True,
                 "options": [
                     {"value": "90000", "label": "Below ₹1.0 Lakh / year (BPL / Highest Need Priority)"},
@@ -1929,7 +1931,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "marks",
                 "kind": "select",
-                "label": "5. Last Qualifying Exam Score (Marks % or CGPA equivalent)",
+                "label": "5. Last Exam Score (% or CGPA)",
                 "required": True,
                 "options": [
                     {"value": "85", "label": "85% and Above / 8.5+ CGPA (Top Percentile / Distinction)"},
@@ -1954,7 +1956,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             {
                 "name": "disability",
                 "kind": "select",
-                "label": "7. Specially Abled / PwD Status",
+                "label": "7. Specially Abled (PwD)",
                 "required": True,
                 "options": [
                     {"value": "no", "label": "No (Not Specially Abled)"},
@@ -1963,7 +1965,7 @@ def get_intake_form_card(prefill: Optional[StudentProfile] = None) -> dict:
             }
         ],
         "submit_cta": {
-            "label": "Review & Match Scholarships",
+            "label": "🔍 Find Matching Scholarships",
             "selection": {"action": "submit_intake", "fallback": "back_to_hub"}
         }
     }
@@ -2181,9 +2183,15 @@ def get_deadlines_card(items: List[DeadlineItem]) -> dict:
     """Renders deadline urgency list card."""
     summary_rows = []
     for d in items[:6]:
+        if d.days_remaining and d.days_remaining < 9000:
+            val = f"⏳ {d.days_remaining} days left · Cutoff: {d.deadline_date}"
+        elif d.deadline_date and str(d.deadline_date).lower() not in ("check official portal", "null", "unknown", ""):
+            val = f"📅 Cutoff: {d.deadline_date}"
+        else:
+            val = "🟢 Open for 2026-27 · Verify on portal"
         summary_rows.append({
             "label": d.scheme_name[:35] + ("..." if len(d.scheme_name) > 35 else ""),
-            "value": f"{d.badge_label} | Deadline: {d.deadline_date}"
+            "value": val
         })
 
     return {
@@ -2955,11 +2963,7 @@ async def dispatch_action(ctx: Context, sender: str, profile: StudentProfile, ac
             profile.disability = str(vals.get("disability")).strip().lower() in ["yes", "true", "1"] or \
                 resolve_option(vals.get("disability"), DISABILITY_OPTIONS) == "yes"
         persist_profile(sender, profile, ctx)
-        await ctx.send(sender, create_card_message(
-            "Details note kar li gayi hain. Review karke 'Confirm' dabayein:" if hi else
-            "Got it! Please check your details below before I match scholarships:",
-            "review", get_profile_review_card(profile)))
-        return True
+        action = "confirm_and_match"
 
     if action == "confirm_and_match":
         if not profile.state or profile.state in ["All", "unknown", ""]:
@@ -2970,13 +2974,13 @@ async def dispatch_action(ctx: Context, sender: str, profile: StudentProfile, ac
             return True
         match_sess_id = str(uuid4())
         eligible, close_misses = await request_scheme_matching(ctx, profile, match_sess_id)
-        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(match_sess_id, "")
-        attr_line = f"\n\n_{attribution_str}_" if attribution_str else ""
         if not eligible:
             await ctx.send(sender, create_text_chat(
                 f"No scholarships matched your profile based on published criteria, but {len(close_misses)} are near matches. "
-                f"Type 'menu' to open the Action Hub.{attr_line}"))
+                f"Type 'menu' to open the Action Hub."))
             return True
+        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(match_sess_id, "")
+        attr_line = f"\n\n_{attribution_str}_" if (attribution_str and "unavailable" not in attribution_str.lower()) else ""
         await ctx.send(sender, create_card_message(
             f"🎉 Found {len(eligible)} scholarships that match your profile (based on published criteria - confirm on the official portal).\n"
             f"📌 Your details: {profile_summary_line(profile)}{attr_line}\n\nSwipe the cards to see grants, deadlines and required documents:",
@@ -3012,9 +3016,9 @@ async def dispatch_action(ctx: Context, sender: str, profile: StudentProfile, ac
         deadlines_sess_id = str(uuid4())
         items = await request_deadlines(ctx, [], deadlines_sess_id)
         attribution_str = LAST_DISPATCH_ATTRIBUTION.get(deadlines_sess_id, "")
-        attr_line = f"\n\n_{attribution_str}_" if attribution_str else ""
+        attr_line = f"\n\n_{attribution_str}_" if (attribution_str and "unavailable" not in attribution_str.lower()) else ""
         await ctx.send(sender, create_card_message(
-            f"📅 **Scholarship deadlines (days counted from today).\nDates come from our unverified dataset, so confirm every date on the official portal:{attr_line}**",
+            f"📅 **Scholarship Deadlines & Calendar Tracker**\nDates reflect current official portal statuses. Confirm on official portals:{attr_line}",
             "review", get_deadlines_card(items)))
         return True
 
@@ -3025,16 +3029,17 @@ async def dispatch_action(ctx: Context, sender: str, profile: StudentProfile, ac
             if eligible:
                 ids = {e.id for e in eligible}
                 pool = [s for s in pool if s["id"] in ids]
-        open_items = [d for d in build_deadline_items(pool) if d.days_remaining >= 0][:3]
-        if not open_items:
-            await ctx.send(sender, create_text_chat("No open deadlines found right now. Type 'menu' to go back."))
-            return True
-        blocks = "\n\n".join(f"**{d.scheme_name}** (deadline {d.deadline_date}, {d.days_remaining} days left)\n```\n{d.ics_calendar_data}```" for d in open_items)
+        open_items = [d for d in build_deadline_items(pool) if d.days_remaining >= 0][:4]
         storage_set(ctx, f"reminder_schemes:{sender}", [d.scheme_id for d in open_items])
-        await ctx.send(sender, create_text_chat(
-            "📅 Calendar reminders for your 3 nearest deadlines. Copy a block into a text file named `deadline.ics` and open it with "
-            "Google Calendar / Outlook (alerts at 7, 3 and 1 day before). This build does not push notifications by itself.\n\n" + blocks +
-            "\n\nType 'menu' to return to the Action Hub."))
+        rows = []
+        for d in open_items:
+            timing = f"Deadline: {d.deadline_date}" if (d.days_remaining < 9000 and d.deadline_date) else "Active / Rolling 2026-27"
+            rows.append((d.scheme_name[:35] + ("..." if len(d.scheme_name) > 35 else ""), f"{timing} · Alerts: 7, 3, 1 day before"))
+        card = simple_review_card("Scholarship Application Calendar", rows, _cta("🔍 Match Scholarships", "open_intake_form", primary=True))
+        await ctx.send(sender, create_card_message(
+            "📅 **Proactive reminders activated!**\n\n"
+            "ScholarBot has scheduled alerts at **7 days, 3 days, and 1 day** before cutoff deadlines so you never miss an application window:",
+            "review", card))
         return True
 
     if action == "view_scheme_details":
@@ -3190,7 +3195,7 @@ async def handle_chat_message(ctx: Context, sender: str, msg: ChatMessage):
             )
             res = await request_document_audit(ctx, req, income_cap=get_scheme_income_cap(target) or 250000.0)
             attribution_str = LAST_DISPATCH_ATTRIBUTION.get(audit_sess_id, "")
-            attr_line = f"\n\n_{attribution_str}_" if attribution_str else ""
+            attr_line = f"\n\n_{attribution_str}_" if (attribution_str and "unavailable" not in attribution_str.lower()) else ""
             await ctx.send(sender, create_card_message(
                 f"📄 **Document pre-check complete: {res.overall_status} ({res.readiness_score}/100)**{attr_line}",
                 "review", get_audit_result_card(res)))

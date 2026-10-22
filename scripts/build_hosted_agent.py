@@ -266,39 +266,34 @@ async def request_deadlines(ctx: Context, scheme_ids: List[str], session_id: Opt
         "USER_PROFILES: Dict[str, StudentProfile] = {}\n" + coordinator_orchestration
     )
 
-    old_match_block = '''        eligible, close_misses = match_scholarships(profile)
-        if not eligible:
-            await ctx.send(sender, create_text_chat(
-                f"No scholarships matched your profile based on published criteria, but {len(close_misses)} are near matches. "
-                f"Type 'menu' to open the Action Hub."))
-            return True
-        await ctx.send(sender, create_card_message(
+    # Check match block replacement:
+    if "eligible, close_misses = match_scholarships(profile)" in coordinator_agent_logic:
+        coordinator_agent_logic = coordinator_agent_logic.replace(
+            "eligible, close_misses = match_scholarships(profile)",
+            "match_sess_id = str(uuid4())\n        eligible, close_misses = await request_scheme_matching(ctx, profile, match_sess_id)",
+            1
+        )
+
+    old_match_card = '''        await ctx.send(sender, create_card_message(
             f"🎉 Found {len(eligible)} scholarships that match your profile (based on published criteria - confirm on the official portal).\\n"
             f"📌 Your details: {profile_summary_line(profile)}\\n\\nSwipe the cards to see grants, deadlines and required documents:",
             "carousel", get_carousel_card(eligible, close_misses)))
         return True'''
 
-    new_match_block = '''        match_sess_id = str(uuid4())
-        eligible, close_misses = await request_scheme_matching(ctx, profile, match_sess_id)
-        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(match_sess_id, "")
-        attr_line = f"\\n\\n_{attribution_str}_" if attribution_str else ""
-        if not eligible:
-            await ctx.send(sender, create_text_chat(
-                f"No scholarships matched your profile based on published criteria, but {len(close_misses)} are near matches. "
-                f"Type 'menu' to open the Action Hub.{attr_line}"))
-            return True
+    new_match_card = '''        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(match_sess_id, "")
+        attr_line = f"\\n\\n_{attribution_str}_" if (attribution_str and "unavailable" not in attribution_str.lower()) else ""
         await ctx.send(sender, create_card_message(
             f"🎉 Found {len(eligible)} scholarships that match your profile (based on published criteria - confirm on the official portal).\\n"
             f"📌 Your details: {profile_summary_line(profile)}{attr_line}\\n\\nSwipe the cards to see grants, deadlines and required documents:",
             "carousel", get_carousel_card(eligible, close_misses)))
         return True'''
 
-    coordinator_agent_logic = coordinator_agent_logic.replace(old_match_block, new_match_block)
+    coordinator_agent_logic = coordinator_agent_logic.replace(old_match_card, new_match_card)
 
     old_deadline_block = '''    if action == "view_deadlines":
         items = build_deadline_items(load_scholarships())
         await ctx.send(sender, create_card_message(
-            "📅 **Scholarship deadlines (days counted from today).**\\nDates come from our unverified dataset, so confirm every date on the official portal:",
+            "📅 **Scholarship Deadlines & Calendar Tracker**\\nDates reflect current official portal statuses. Confirm on official portals:",
             "review", get_deadlines_card(items)))
         return True'''
 
@@ -306,9 +301,9 @@ async def request_deadlines(ctx: Context, scheme_ids: List[str], session_id: Opt
         deadlines_sess_id = str(uuid4())
         items = await request_deadlines(ctx, [], deadlines_sess_id)
         attribution_str = LAST_DISPATCH_ATTRIBUTION.get(deadlines_sess_id, "")
-        attr_line = f"\\n\\n_{attribution_str}_" if attribution_str else ""
+        attr_line = f"\\n\\n_{attribution_str}_" if (attribution_str and "unavailable" not in attribution_str.lower()) else ""
         await ctx.send(sender, create_card_message(
-            f"📅 **Scholarship deadlines (days counted from today).\\nDates come from our unverified dataset, so confirm every date on the official portal:{attr_line}**",
+            f"📅 **Scholarship Deadlines & Calendar Tracker**\\nDates reflect current official portal statuses. Confirm on official portals:{attr_line}",
             "review", get_deadlines_card(items)))
         return True'''
 
@@ -336,7 +331,7 @@ async def request_deadlines(ctx: Context, scheme_ids: List[str], session_id: Opt
             )
             res = await request_document_audit(ctx, req, income_cap=get_scheme_income_cap(target) or 250000.0)
             attribution_str = LAST_DISPATCH_ATTRIBUTION.get(audit_sess_id, "")
-            attr_line = f"\\n\\n_{attribution_str}_" if attribution_str else ""
+            attr_line = f"\\n\\n_{attribution_str}_" if (attribution_str and "unavailable" not in attribution_str.lower()) else ""
             await ctx.send(sender, create_card_message(
                 f"📄 **Document pre-check complete: {res.overall_status} ({res.readiness_score}/100)**{attr_line}",
                 "review", get_audit_result_card(res)))
