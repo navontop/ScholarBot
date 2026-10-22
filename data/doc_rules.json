@@ -1,0 +1,476 @@
+{
+  "nsp_central_sector": {
+    "mandatory": [
+      "Aadhaar Card with Biometric Authentication at Institute",
+      "Current Financial Year Income Certificate (Tehsildar signed, <= 4.5 Lakhs)",
+      "NSP Bonafide Student Certificate (Generated from NSP portal & signed by Principal)",
+      "Class 12th Board Marksheet (Top 20th percentile)",
+      "Single Savings Bank Account Passbook (NPCI DBT-seeded with Aadhaar)"
+    ],
+    "warning": "CRITICAL REJECTION ALERT: NSP requires biometric authentication at your college institute nodal officer (CNO). If your college has not completed biometric onboarding, the application is automatically frozen.",
+    "tips": [
+      "Verify Aadhaar-NPCI active mapping on UIDAI portal (myaadhaar.uidai.gov.in) before applying.",
+      "Do NOT use minor, Jan Dhan zero-balance, or joint bank accounts because scholarship credits exceed limit.",
+      "Student name, father's name, and DOB must match letter-for-letter between Class 10th and Aadhaar."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Register on NSP One-Time Registration (OTR) via Face-Auth mobile app.",
+      "2. Fill scholarship application using generated OTR ID.",
+      "3. Download auto-generated Bonafide form and get Principal's seal & signature.",
+      "4. Upload fee receipt, income certificate and marksheet.",
+      "5. Visit college Nodal Officer for biometric verification before deadline."
+    ],
+    "validity_months": 12
+  },
+  "aicte_pragati_girls": {
+    "mandatory": [
+      "Aadhaar Card of the girl candidate",
+      "Centralized Admission Process (CAP / JoSAA / State Counselling) Allotment Letter",
+      "Current Financial Year Income Certificate (Family income <= 8 Lakhs)",
+      "Bonafide Certificate from AICTE-approved Degree / Polytechnic Institute",
+      "Class 10th & 12th Marksheets",
+      "Active Single Bank Account seeded with Aadhaar DBT"
+    ],
+    "warning": "CRITICAL: Valid only for female students admitted to the 1st year of an AICTE-approved institution through centralized admission (or lateral entry to 2nd year). Management quota admissions are disqualified.",
+    "tips": [
+      "Ensure maximum 2 girl children per family limit is observed (affidavit required).",
+      "Tuition fee receipt must be clear and stamped by college accounts department."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Log in to National Scholarship Portal (NSP).",
+      "2. Select AICTE Schemes -> Pragati Scholarship Scheme for Girls.",
+      "3. Upload CAP allotment letter, income certificate and bonafide.",
+      "4. Submit and hand over physical copy to college AICTE coordinator."
+    ],
+    "validity_months": 12
+  },
+  "aicte_saksham": {
+    "mandatory": [
+      "UDID Card or Government Disability Certificate issued by CMO (>= 40% disability)",
+      "CAP / State Counselling Admission Allotment Letter",
+      "Family Income Certificate (<= 8 Lakhs/year)",
+      "AICTE Institute Bonafide Certificate",
+      "Class 10th and 12th Marksheets",
+      "Aadhaar-seeded Bank Account Passbook"
+    ],
+    "warning": "CRITICAL: The disability certificate must show minimum 40% benchmark disability and UDID number. Provisional medical slips without permanent registration are rejected.",
+    "tips": [
+      "Upload UDID card scan alongside Chief Medical Officer certificate.",
+      "Keep digital copy of counselling allotment letter handy."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Register on NSP and select AICTE Saksham Scheme.",
+      "2. Fill disability percentage and UDID registration number.",
+      "3. Upload CMO disability certificate, fee receipts and income certificate.",
+      "4. Coordinate with institute verification officer for timely online approval."
+    ],
+    "validity_months": 12
+  },
+  "post_matric_sc_central": {
+    "mandatory": [
+      "Digital SC Caste Certificate (Verifiable online via state revenue portal)",
+      "Income Certificate (Current year, <= 2.5 Lakhs)",
+      "Aadhaar Card (Active mobile linked for OTP verification)",
+      "Fee Breakdown Receipt (Compulsory Non-Refundable fees signed by Registrar)",
+      "Active Single Savings Bank Passbook linked with NPCI"
+    ],
+    "warning": "CRITICAL: The Centrally Sponsored SC scheme disburses the central share (60%) directly via DBT after the state government verifies and releases its 40% share. Bank DBT seeding is non-negotiable.",
+    "tips": [
+      "Old offline non-digitized caste certificates without barcode/number are rejected.",
+      "Check with your branch manager that Aadhaar mapper is set to active (not just linked)."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Apply via your state's scholarship portal or NSP depending on state guidelines.",
+      "2. Authenticate through DigiLocker to auto-verify SC certificate.",
+      "3. Enter non-refundable course fees breakdown.",
+      "4. Submit to institute and retain acknowledgement copy."
+    ],
+    "validity_months": 12
+  },
+  "post_matric_st_central": {
+    "mandatory": [
+      "Scheduled Tribe (ST) Certificate issued by competent revenue authority",
+      "Income Certificate (Family income <= 6.0 Lakhs)",
+      "Admission letter for Top-Class Education / National Fellowship",
+      "Hostel fee / tuition fee receipt signed by Warden & Registrar",
+      "Aadhaar Card and Bank Account with active DBT"
+    ],
+    "warning": "CRITICAL: For National Fellowship/Top Class ST scholarship, the institute must be on the Ministry of Tribal Affairs notified list of top institutions (IITs, NITs, AIIMS, IIMs, Central Universities).",
+    "tips": [
+      "Ensure tribe name spelling matches Central ST schedule exactly.",
+      "Submit before November 25 to avoid ministry portal verification freeze."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Log in to NSP and navigate to Ministry of Tribal Affairs.",
+      "2. Select Top Class Education for ST Students.",
+      "3. Upload institute bonafide, fee estimate and ST certificate.",
+      "4. Forward file to institute nodal officer."
+    ],
+    "validity_months": 12
+  },
+  "minority_post_matric": {
+    "mandatory": [
+      "Minority Community Self-Declaration or Certificate (Muslim, Christian, Sikh, Buddhist, Jain, Parsi)",
+      "Previous Class Marksheet with minimum 50% marks",
+      "Income Certificate issued by designated State Authority (<= 2.0 Lakhs)",
+      "Institute Bonafide Certificate",
+      "Aadhaar-seeded Bank Account Passbook"
+    ],
+    "warning": "CRITICAL: For minority scholarships, renewal candidates have 1st priority over fresh applications. Fresh applicants must apply early before quota exhaustion.",
+    "tips": [
+      "Self-declaration format for minority community must be dated and signed by student/parent.",
+      "Marks in qualifying exam must strictly be >= 50.0%."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Complete NSP OTR verification.",
+      "2. Choose Ministry of Minority Affairs -> Post-Matric Scholarship Scheme.",
+      "3. Upload marksheet and self-declaration affidavit.",
+      "4. Complete institute-level scrutiny."
+    ],
+    "validity_months": 12
+  },
+  "raj_postmatric_sje": {
+    "mandatory": [
+      "Jan Aadhaar Card (Primary family ID with student member KYC updated)",
+      "Tehsildar signed Income Certificate (Form I/K/M, issued within last 6 months)",
+      "Digital Caste Certificate with QR Code (Verified on Rajasthan SSO)",
+      "College Original Fee Receipt with official Institute Seal & serial number",
+      "Aadhaar-seeded Single Savings Bank Account in Rajasthan"
+    ],
+    "warning": "CRITICAL REJECTION ALERT: In Rajasthan SJMS, your family annual income registered in Jan Aadhaar portal MUST match your Tehsildar Income Certificate exactly. A 1 Rupee discrepancy triggers instant automatic rejection!",
+    "tips": [
+      "Update Jan Aadhaar e-KYC and family income at least 3 days before submitting on SJMS.",
+      "Ensure fee receipt shows fee breakdown with official college seal.",
+      "Submit hard copy of application with original receipts to College Nodal Officer within 7 days."
+    ],
+    "portal": "https://sjmsnew.rajasthan.gov.in/scholarship/",
+    "steps": [
+      "1. Log in to Rajasthan SSO Portal (sso.rajasthan.gov.in) with your SSOID.",
+      "2. Open the 'SJMS Scholarship' application drawer.",
+      "3. Select student profile from Jan Aadhaar and verify bank DBT account.",
+      "4. Upload scanned fee receipt and Form I/K/M income certificate.",
+      "5. Final submit and submit printed dossier to College Nodal Officer."
+    ],
+    "validity_months": 6
+  },
+  "up_postmatric_dashmottar": {
+    "mandatory": [
+      "Aadhaar Card with Mobile OTP Authentication",
+      "UP Domicile Certificate (Niwas Praman Patra verifiable on edistrict.up.gov.in)",
+      "Income Certificate by Tehsildar (Within valid 3-year cycle, <= 2.5 Lakhs)",
+      "Caste Certificate (Jati Praman Patra online verified)",
+      "College Fee Receipt & Non-Refundable Fee breakdown",
+      "Bank Account mapped with NPCI DBT in a UP bank branch"
+    ],
+    "warning": "CRITICAL: Verify with your college that its master data is updated and affiliated on the UP Scholarship portal for the current academic session, otherwise your application cannot be forwarded by the college.",
+    "tips": [
+      "Lock your application online only after getting the preliminary draft checked by college.",
+      "Keep registration printout and deliver to college within 7 calendar days."
+    ],
+    "portal": "https://scholarship.up.gov.in",
+    "steps": [
+      "1. Register on scholarship.up.gov.in under Postmatric Other Than Inter.",
+      "2. Fill academic credentials and institute code.",
+      "3. Complete Aadhaar e-KYC authentication via OTP.",
+      "4. Take draft print, verify with college, then lock application."
+    ],
+    "validity_months": 36
+  },
+  "maha_ebc_rajarshi_shahu": {
+    "mandatory": [
+      "MahaDBT User Profile & Aadhaar Authentication",
+      "Income Certificate issued by Tahsildar (<= 8 Lakhs)",
+      "CAP Allotment Letter for Engineering / Medical / Professional course",
+      "Maharashtra State Domicile Certificate",
+      "Declaration of 2 children in the family",
+      "Bank Passbook linked to NPCI"
+    ],
+    "warning": "CRITICAL: Beneficiary must have taken admission through CAP (Centralized Admission Process). Admissions under management or institute level quota are ineligible for fee concession.",
+    "tips": [
+      "Upload Tahsildar barcode income certificate; private self-declarations are not accepted.",
+      "Attendance must be above 75% in college to qualify for reimbursement."
+    ],
+    "portal": "https://mahadbt.maharashtra.gov.in",
+    "steps": [
+      "1. Register on MahaDBT portal and complete Aadhaar biometric/OTP e-KYC.",
+      "2. Select Directorate of Higher Education -> Rajarshi Chhatrapati Shahu Maharaj Scheme.",
+      "3. Enter CAP application ID and upload fee receipt.",
+      "4. Submit and track scrutiny status on dashboard."
+    ],
+    "validity_months": 12
+  },
+  "bihar_post_matric": {
+    "mandatory": [
+      "Aadhaar Card with mobile linkage",
+      "Residential / Domicile Certificate of Bihar",
+      "OBC / SC / ST Caste Certificate issued by SDO / CO",
+      "Income Certificate (Current financial year, <= 3.0 Lakhs)",
+      "Bonafide Certificate from College with authorized signature & seal",
+      "Fee Structure Receipt from College"
+    ],
+    "warning": "CRITICAL: The college where you study must be verified on PMS Bihar portal. If your institution is outside Bihar, ensure it has completed physical verification with Bihar welfare department.",
+    "tips": [
+      "Download standard Bonafide and Fee Structure formats directly from PMS Bihar portal.",
+      "Ensure all uploaded documents are in clear PDF format under 400KB."
+    ],
+    "portal": "https://pmsonline.bih.nic.in",
+    "steps": [
+      "1. Open pmsonline.bih.nic.in and register under Student Registration.",
+      "2. Fill personal and bank details and wait for account verification SMS.",
+      "3. Log in with user ID and upload bonafide and fee structure.",
+      "4. Submit and hand over physical copy to institute coordinator."
+    ],
+    "validity_months": 12
+  },
+  "mp_postmatric_scholarship": {
+    "mandatory": [
+      "MP Samagra ID (9-digit Member ID & 8-digit Family ID)",
+      "Digital Caste Certificate (SC/ST/OBC) verified on MP e-District",
+      "Current Year Income Certificate (<= 3.0 Lakhs)",
+      "College Admission & Fee Receipt with enrollment number",
+      "Aadhaar Card seeded with MP bank account"
+    ],
+    "warning": "CRITICAL: Samagra ID eKYC and Aadhaar must be linked on Samagra portal before applying. Unlinked Samagra records result in portal submission errors.",
+    "tips": [
+      "Check Samagra e-KYC status at samagra.gov.in prior to filling scholarship form.",
+      "Keep digital copy of 12th marksheet ready for percentage verification."
+    ],
+    "portal": "http://scholarshipportal.mp.nic.in",
+    "steps": [
+      "1. Log in to MP Scholarship Portal 2.0 with Samagra ID.",
+      "2. Verify institutional course registration code.",
+      "3. Upload current year fee receipt and caste certificate.",
+      "4. Submit application for college level scrutiny."
+    ],
+    "validity_months": 12
+  },
+  "delhi_merit_scholarship": {
+    "mandatory": [
+      "Delhi e-District Registration & Citizen ID",
+      "Proof of continuous residence in Delhi for last 3 years (Voter ID, Electricity bill, Domicile)",
+      "Income Certificate issued by SDM Delhi (<= 3.0 Lakhs/year)",
+      "SC/ST/OBC Certificate issued by Revenue Dept Delhi",
+      "Previous Exam Marksheet with minimum 60% marks",
+      "College Fee Receipt & Verification Letter"
+    ],
+    "warning": "CRITICAL: Income certificate must be issued specifically by the SDM of the concerned Delhi subdivision. Certificates issued outside NCT Delhi are not accepted for Delhi state schemes.",
+    "tips": [
+      "Apply for SDM income certificate on edistrict.delhigovt.nic.in well before scholarship deadline.",
+      "Bank account IFSC must match active Delhi branch or home branch."
+    ],
+    "portal": "https://edistrict.delhigovt.nic.in",
+    "steps": [
+      "1. Register on Delhi e-District portal.",
+      "2. Select Department for Welfare of SC/ST/OBC -> Merit Scholarship in Colleges.",
+      "3. Attach e-District verified income certificate number.",
+      "4. Submit form and print acknowledgment slip for college submission."
+    ],
+    "validity_months": 12
+  },
+  "wb_oasis_scholarship": {
+    "mandatory": [
+      "OASIS Online Application Acknowledgement Form",
+      "West Bengal Digital Caste Certificate (SC/ST/OBC)",
+      "Income Certificate issued by BDO / SDO / Municipality Executive Officer",
+      "College Admission Receipt & Bonafide Certificate",
+      "Aadhaar Card and Bank Account with active DBT"
+    ],
+    "warning": "CRITICAL: The income certificate must be from an authorized Gazetted Officer (BDO/SDO/Executive Officer). Pradhan / Councillor certificates alone are rejected without official endorsement.",
+    "tips": [
+      "Ensure caste certificate number is successfully validated on castcertificatewb.gov.in.",
+      "Submit physical hardcopy with documents to Block Development Office or Municipality."
+    ],
+    "portal": "https://oasis.gov.in",
+    "steps": [
+      "1. Open oasis.gov.in and select Student Registration.",
+      "2. Select primary district of college and input caste certificate details.",
+      "3. Fill bank details and upload income certificate.",
+      "4. Download completed form and submit to respective BDO/Municipality."
+    ],
+    "validity_months": 12
+  },
+  "karnataka_ssp_postmatric": {
+    "mandatory": [
+      "Karnataka SSP Student Account (Aadhaar authentication)",
+      "RD Number (Revenue Department Number) for Caste and Income Certificate",
+      "College Registration Number and Kutumba ID",
+      "Hostel registration details (if claiming Vidyasiri hostel fee)",
+      "NPCI Aadhaar-seeded Bank Account"
+    ],
+    "warning": "CRITICAL: You must provide a valid RD Number for your Caste and Income certificate issued by Nadakacheri. If the RD number does not match your Aadhaar name, the system halts verification.",
+    "tips": [
+      "Verify that your college has pushed your admission data to the State Scholarship Portal.",
+      "Ensure Kutumba ID profile is updated with family members."
+    ],
+    "portal": "https://ssp.postmatric.karnataka.gov.in",
+    "steps": [
+      "1. Create account on Karnataka SSP portal with Aadhaar.",
+      "2. Enter Nadakacheri RD numbers for caste and income.",
+      "3. Select college and course from validated dropdown.",
+      "4. Submit and inform college e-attestation officer for approval."
+    ],
+    "validity_months": 12
+  },
+  "reliance_ug_scholarship": {
+    "mandatory": [
+      "Class 12th Marksheet (Minimum 60% aggregate)",
+      "Bonafide Student Certificate of current full-time 1st year UG degree program",
+      "Household Income Certificate or ITR Form 16 (Family income <= 15 Lakhs)",
+      "Aadhaar Card or Valid Government Photo ID",
+      "Mandatory Online Aptitude Test (60 mins, camera-proctored MCQ)"
+    ],
+    "warning": "CRITICAL: Reliance requires taking a 60-minute proctored online aptitude test within 2 weeks of application. Missing your assigned test slot leads to immediate and permanent disqualification.",
+    "tips": [
+      "Ensure working webcam, quiet room, and high-speed internet during the aptitude test.",
+      "Practice basic numerical ability, verbal comprehension and logical reasoning mock tests.",
+      "Students with family income < 2.5 Lakhs receive priority ranking."
+    ],
+    "portal": "https://www.scholarships.reliancefoundation.org",
+    "steps": [
+      "1. Register on Reliance Foundation Scholarships portal.",
+      "2. Fill academic records, college details and upload income documents.",
+      "3. Schedule and complete 60-minute online proctored aptitude test.",
+      "4. Shortlisted candidates are announced for grant disbursement."
+    ],
+    "validity_months": 12
+  },
+  "hdfc_parivartan_ecss": {
+    "mandatory": [
+      "Previous Academic Year Marksheet (Minimum 55% marks)",
+      "Proof of Family Financial Crisis or Hardship (e.g. loss of earning parent, medical crisis, income decline)",
+      "Income Proof (Income Certificate / Salary Slip / Affidavit, <= 2.5 Lakhs)",
+      "Current Academic Year Admission Proof (Bonafide / ID card / Fee receipt)",
+      "Bank Account details with passbook copy"
+    ],
+    "warning": "CRITICAL: ECSS specifically prioritizes students facing unforeseen financial crises. Clearly uploading genuine crisis proof (medical discharge summary, death certificate of earning member, or distress certificate) dramatically increases selection probability.",
+    "tips": [
+      "Write a sincere, well-articulated statement explaining your family's financial situation.",
+      "Upload clear color scans of fee receipts with clear breakdown."
+    ],
+    "portal": "https://www.buddy4study.com/page/hdfc-bank-parivartans-ecss-programme",
+    "steps": [
+      "1. Open HDFC Parivartan ECSS application on Buddy4Study.",
+      "2. Complete student profile and financial crisis assessment questionnaire.",
+      "3. Upload marksheets, crisis proof, and college fee receipts.",
+      "4. Submit before November 20 deadline."
+    ],
+    "validity_months": 12
+  },
+  "tata_trusts_merit": {
+    "mandatory": [
+      "All Academic Marksheets from 10th to present semester (Minimum 60% marks)",
+      "Detailed Fee Breakdown statement on official College Letterhead",
+      "Family Income Proof (ITR V / Income Certificate by Tehsildar, <= 4.0 Lakhs)",
+      "Valid Student ID Card & Bonafide Certificate",
+      "Cancelled Cheque / Bank Passbook of student's account"
+    ],
+    "warning": "CRITICAL: Tata Trusts requires the fee structure breakdown explicitly signed by the College Registrar/Principal on college letterhead. Generic student portal screenshots are rejected.",
+    "tips": [
+      "Keep all semester marksheets in single chronological PDF file.",
+      "Submit early as applications are processed on first-come-first-evaluated basis."
+    ],
+    "portal": "https://www.tatatrusts.org/our-work/individual-grants-programme/education-grants",
+    "steps": [
+      "1. Navigate to Tata Trusts Individual Grants education portal.",
+      "2. Fill online grant application form with exact fee breakdown.",
+      "3. Upload consolidated marksheet PDF and registrar-signed fee estimate.",
+      "4. Track application reference ID via email updates."
+    ],
+    "validity_months": 12
+  },
+  "ongc_scholarship": {
+    "mandatory": [
+      "Class 12th Marksheet for UG / Graduation Marksheet for PG (Minimum 60% marks)",
+      "Income Certificate issued by competent revenue authority (<= 2.0 Lakhs)",
+      "Caste / Category Certificate (General/EWS/OBC/SC/ST)",
+      "College Admission Proof & Fee Receipt for Engineering/MBBS/MBA",
+      "PAN Card copy and Aadhaar-seeded Bank Passbook"
+    ],
+    "warning": "CRITICAL: Income limit is strict at ₹2,00,000 per annum. Applications with income certificates showing even ₹2,01,000 are disqualified during initial screening.",
+    "tips": [
+      "PAN card is mandatory for ONGC scholarship disbursement.",
+      "Ensure applicant age is between 18 and 30 years as on date of application."
+    ],
+    "portal": "https://ongcscholar.org",
+    "steps": [
+      "1. Register on ongcscholar.org portal.",
+      "2. Choose course stream (Engineering, MBBS, MBA, Geophysics).",
+      "3. Upload caste, income, 12th marksheet and PAN card.",
+      "4. Submit online and download final PDF dossier."
+    ],
+    "validity_months": 12
+  },
+  "sitaram_jindal_scholarship": {
+    "mandatory": [
+      "Sitaram Jindal Foundation Application Form (Filled and signed)",
+      "Previous Examination Marksheet (Minimum 60% marks)",
+      "Income Certificate issued by Patwari / BDO / Tehsildar (<= 4.0 Lakhs)",
+      "Fee Receipt and College Principal Recommendation Certificate",
+      "Hostel Warden Certificate (if claiming hostel allowance)",
+      "Bank Account details copy"
+    ],
+    "warning": "CRITICAL: Sitaram Jindal Foundation requires physical postal submission of the application form signed by the College Principal along with attested photocopies. Online-only submissions without postal dispatch are not processed.",
+    "tips": [
+      "Get application form stamped and signed by the Head of Institution with college seal.",
+      "Send speed post with tracking to Jindal Foundation Bangalore office."
+    ],
+    "portal": "https://www.sitaramjindalfoundation.org",
+    "steps": [
+      "1. Download official application form from sitaramjindalfoundation.org.",
+      "2. Fill all details and get verification signature and seal from College Principal.",
+      "3. Attach attested copies of marksheets, income certificate and fee receipts.",
+      "4. Dispatch via Speed Post to Sitaram Jindal Foundation, Bangalore."
+    ],
+    "validity_months": 12
+  },
+  "kotak_kanya_scholarship": {
+    "mandatory": [
+      "Class 12th Marksheet with minimum 85% aggregate",
+      "Proof of admission into 1st year of professional degree (B.Tech, MBBS, Law, Design)",
+      "Family Income Certificate / ITR / Form 16 (<= 6.0 Lakhs)",
+      "Aadhaar Card of the student",
+      "College Fee Receipt & Bank Passbook"
+    ],
+    "warning": "CRITICAL: Exclusively for meritorious girl students who have secured >= 85% marks in Class 12 board examinations and gained admission to accredited professional graduation courses.",
+    "tips": [
+      "Highlight academic achievements and extracurriculars in the personal statement section.",
+      "Prepare for short telephonic/video interaction if selected for final round."
+    ],
+    "portal": "https://www.buddy4study.com/page/kotak-kanya-scholarship",
+    "steps": [
+      "1. Apply via Buddy4Study Kotak Kanya Scholarship page.",
+      "2. Upload 12th marksheet, admission letter and income proof.",
+      "3. Write personal statement on career aspirations.",
+      "4. Shortlisted candidates attend virtual interview before final grant award."
+    ],
+    "validity_months": 12
+  },
+  "default": {
+    "mandatory": [
+      "Aadhaar Card (Active Mobile Linked for OTP verification)",
+      "Current Financial Year Income Certificate (Tehsildar / Revenue Officer signed)",
+      "Category Certificate (General / EWS / OBC / SC / ST / Minority)",
+      "Current Academic Year College Bonafide Certificate & Fee Receipt",
+      "Active Single Savings Bank Passbook seeded with NPCI Aadhaar DBT"
+    ],
+    "warning": "IMPORTANT: Over 40% of scholarship grants fail due to unlinked NPCI bank mapping. Visit your home bank branch to confirm DBT activation before deadline!",
+    "tips": [
+      "Always submit applications at least 7 days before deadline to avoid portal crashes.",
+      "Double check bank IFSC and ensure name matches exactly across marksheets and Aadhaar."
+    ],
+    "portal": "https://scholarships.gov.in",
+    "steps": [
+      "1. Open the official scholarship portal.",
+      "2. Complete initial registration and Aadhaar e-KYC.",
+      "3. Fill academic and family background details.",
+      "4. Upload verified documents and submit for college level verification."
+    ],
+    "validity_months": 12
+  }
+}

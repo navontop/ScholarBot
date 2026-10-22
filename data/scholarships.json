@@ -1,0 +1,821 @@
+[
+  {
+    "id": "nsp_central_sector",
+    "name": "Central Sector Scheme of Scholarships for College & University Students",
+    "provider": "Department of Higher Education, Govt of India",
+    "portal": "National Scholarship Portal (NSP)",
+    "portal_url": "https://scholarships.gov.in",
+    "source_url": "https://www.education.gov.in/scholarships-education-loan-0",
+    "amount": "₹12,000 to ₹20,000 per year directly in bank",
+    "amount_value": 20000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 75.0,
+      "max_family_income": 450000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Law (LLB / LLM)",
+        "Degree"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-30",
+    "last_verified": null,
+    "verified": false,
+    "description": "Financial assistance by Ministry of Education for meritorious low-income students in top 20th percentile of their 12th board."
+  },
+  {
+    "id": "aicte_pragati_girls",
+    "name": "AICTE Pragati Scholarship Scheme for Girl Students",
+    "provider": "AICTE / Ministry of Education, Govt of India",
+    "portal": "National Scholarship Portal (NSP)",
+    "portal_url": "https://scholarships.gov.in",
+    "source_url": "https://www.aicte-india.org/schemes/students-development-schemes/Pragati",
+    "amount": "₹50,000 per year towards tuition & technical tools support",
+    "amount_value": 50000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 800000,
+      "courses": [
+        "B.Tech / B.E.",
+        "Diploma / Polytechnic",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "Female",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-31",
+    "last_verified": null,
+    "verified": false,
+    "description": "Empowers female students admitted to 1st year AICTE-approved degree/diploma technical programs with ₹50,000 annual aid."
+  },
+  {
+    "id": "aicte_saksham",
+    "name": "AICTE Saksham Scholarship Scheme for Specially Abled Students",
+    "provider": "AICTE / Govt of India",
+    "portal": "National Scholarship Portal (NSP)",
+    "portal_url": "https://scholarships.gov.in",
+    "source_url": "https://www.aicte-india.org/schemes/students-development-schemes/Saksham",
+    "amount": "₹50,000 per year assistance for technical degree/diploma",
+    "amount_value": 50000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 800000,
+      "courses": [
+        "B.Tech / B.E.",
+        "Diploma / Polytechnic",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": true,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-31",
+    "last_verified": null,
+    "verified": false,
+    "description": "Financial aid for students with >= 40% benchmark disability enrolled in technical courses at AICTE-approved institutes."
+  },
+  {
+    "id": "post_matric_sc_central",
+    "name": "Centrally Sponsored Post-Matric Scholarship for SC Students",
+    "provider": "Ministry of Social Justice & Empowerment, GoI",
+    "portal": "National Scholarship Portal (NSP)",
+    "portal_url": "https://scholarships.gov.in",
+    "source_url": "https://socialjustice.gov.in",
+    "amount": "100% Compulsory Non-Refundable Fee + Monthly Maintenance Allowance",
+    "amount_value": 45000,
+    "eligibility": {
+      "categories": [
+        "SC"
+      ],
+      "min_marks": 45.0,
+      "max_family_income": 250000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Class 11th - 12th",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-15",
+    "last_verified": null,
+    "verified": false,
+    "description": "Full fee reimbursement and monthly allowance for Scheduled Caste students pursuing post-matric and higher studies."
+  },
+  {
+    "id": "post_matric_st_central",
+    "name": "National Fellowship and Scholarship for Higher Education of ST Students",
+    "provider": "Ministry of Tribal Affairs, Govt of India",
+    "portal": "National Scholarship Portal (NSP)",
+    "portal_url": "https://scholarships.gov.in",
+    "source_url": "https://tribal.nic.in",
+    "amount": "Full Tuition Fees + Books & Computer Allowance (Up to ₹45,000)",
+    "amount_value": 45000,
+    "eligibility": {
+      "categories": [
+        "ST"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 600000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "MBA / M.Tech / M.Sc",
+        "PhD / Doctorate",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-25",
+    "last_verified": null,
+    "verified": false,
+    "description": "Covers actual tuition fees and academic expenses for Scheduled Tribe students in top institutes like IITs, NITs, and central universities."
+  },
+  {
+    "id": "minority_post_matric",
+    "name": "Post-Matric Scholarship Scheme for Minorities",
+    "provider": "Ministry of Minority Affairs, Govt of India",
+    "portal": "National Scholarship Portal (NSP)",
+    "portal_url": "https://scholarships.gov.in",
+    "source_url": "https://minorityaffairs.gov.in",
+    "amount": "Admission & Tuition Fee Reimbursement + Monthly Maintenance",
+    "amount_value": 25000,
+    "eligibility": {
+      "categories": [
+        "Minority",
+        "Muslim",
+        "Christian",
+        "Sikh",
+        "Buddhist",
+        "Jain",
+        "Parsi"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 200000,
+      "courses": [
+        "Class 11th - 12th",
+        "B.Tech / B.E.",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": true,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-20",
+    "last_verified": null,
+    "verified": false,
+    "description": "Financial assistance for meritorious students from notified minority communities to pursue higher education."
+  },
+  {
+    "id": "raj_postmatric_sje",
+    "name": "Rajasthan Post-Matric Scholarship (Uttarmatric Scheme)",
+    "provider": "Social Justice & Empowerment Dept (SJMS Rajasthan)",
+    "portal": "SJMS Portal Rajasthan",
+    "portal_url": "https://sjmsnew.rajasthan.gov.in/scholarship/",
+    "source_url": "https://sje.rajasthan.gov.in",
+    "amount": "100% Tuition Fee Reimbursement + Monthly Maintenance Allowance",
+    "amount_value": 60000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority",
+        "SBC",
+        "EBC"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 250000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Class 11th - 12th",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Rajasthan"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-15",
+    "last_verified": null,
+    "verified": false,
+    "description": "Flagship Rajasthan state scholarship granting 100% course fee waiver for domicile students via Jan Aadhaar DBT."
+  },
+  {
+    "id": "up_postmatric_dashmottar",
+    "name": "UP Dashmottar Post-Matric Scholarship Scheme",
+    "provider": "Social Welfare Dept, Govt of Uttar Pradesh",
+    "portal": "UP Scholarship Portal",
+    "portal_url": "https://scholarship.up.gov.in",
+    "source_url": "https://scholarship.up.gov.in/Rules.aspx",
+    "amount": "Full Tuition Fee Reimbursement + ₹10,000 Maintenance Allowance",
+    "amount_value": 55000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 250000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Class 11th - 12th",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Uttar Pradesh"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-15",
+    "last_verified": null,
+    "verified": false,
+    "description": "Comprehensive scholarship for UP domicile college students covering non-refundable fees and monthly stipend."
+  },
+  {
+    "id": "maha_ebc_rajarshi_shahu",
+    "name": "Maharashtra Rajarshi Chhatrapati Shahu Maharaj EBC Scheme",
+    "provider": "Directorate of Higher Education, Maharashtra",
+    "portal": "MahaDBT Portal",
+    "portal_url": "https://mahadbt.maharashtra.gov.in",
+    "source_url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=4950543063675038",
+    "amount": "50% to 100% Tuition & Exam Fee Concession",
+    "amount_value": 40000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 800000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Maharashtra"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-31",
+    "last_verified": null,
+    "verified": false,
+    "description": "Fee concession scheme for students from Economically Backward Classes enrolled in professional higher education in Maharashtra."
+  },
+  {
+    "id": "bihar_post_matric",
+    "name": "Bihar Post-Matric Scholarship Scheme (PMS Bihar)",
+    "provider": "Education Department, Govt of Bihar",
+    "portal": "PMS Bihar Online Portal",
+    "portal_url": "https://pmsonline.bih.nic.in",
+    "source_url": "https://pmsonline.bih.nic.in",
+    "amount": "Full Course Fee Reimbursement + Book Allowance",
+    "amount_value": 35000,
+    "eligibility": {
+      "categories": [
+        "OBC",
+        "SC",
+        "ST",
+        "EWS",
+        "BC",
+        "EBC"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 300000,
+      "courses": [
+        "B.Tech / B.E.",
+        "Diploma / Polytechnic",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Bihar"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-10",
+    "last_verified": null,
+    "verified": false,
+    "description": "Financial support for post-matric studies for domicile students of Bihar belonging to BC, EBC, SC, ST communities."
+  },
+  {
+    "id": "mp_postmatric_scholarship",
+    "name": "Madhya Pradesh Post-Matric Scholarship (SC/ST/OBC)",
+    "provider": "Tribal Welfare Dept, Govt of Madhya Pradesh",
+    "portal": "MP Scholarship Portal 2.0",
+    "portal_url": "http://scholarshipportal.mp.nic.in",
+    "source_url": "http://scholarshipportal.mp.nic.in",
+    "amount": "100% Govt College Fee + Hostel / Boarding Grant",
+    "amount_value": 32000,
+    "eligibility": {
+      "categories": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 300000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "Diploma / Polytechnic",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Madhya Pradesh"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-20",
+    "last_verified": null,
+    "verified": false,
+    "description": "Fee and hostel allowance for reserved category students in higher education institutes across Madhya Pradesh."
+  },
+  {
+    "id": "delhi_merit_scholarship",
+    "name": "Delhi Merit Scholarship for SC/ST/OBC/Minority in Colleges",
+    "provider": "Dept for the Welfare of SC/ST/OBC, Govt of NCT Delhi",
+    "portal": "Delhi e-District Portal",
+    "portal_url": "https://edistrict.delhigovt.nic.in",
+    "source_url": "https://edistrict.delhigovt.nic.in",
+    "amount": "₹21,600 to ₹35,000 per year cash assistance",
+    "amount_value": 35000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 60.0,
+      "max_family_income": 300000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Delhi"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-15",
+    "last_verified": null,
+    "verified": false,
+    "description": "Merit scholarship by Delhi Govt for students securing >= 60% marks enrolled in recognized colleges/universities in NCT of Delhi."
+  },
+  {
+    "id": "wb_oasis_scholarship",
+    "name": "West Bengal OASIS Post-Matric Scholarship",
+    "provider": "Backward Classes Welfare Dept, Govt of West Bengal",
+    "portal": "OASIS Portal West Bengal",
+    "portal_url": "https://oasis.gov.in",
+    "source_url": "https://oasis.gov.in",
+    "amount": "Tuition Fee Waiver + ₹1,200/month Hosteller Allowance",
+    "amount_value": 30000,
+    "eligibility": {
+      "categories": [
+        "SC",
+        "ST",
+        "OBC"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 250000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "Diploma / Polytechnic",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "West Bengal"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-10",
+    "last_verified": null,
+    "verified": false,
+    "description": "Online application scholarship system for Scheduled Castes, Scheduled Tribes and OBC students of West Bengal."
+  },
+  {
+    "id": "karnataka_ssp_postmatric",
+    "name": "Karnataka State Scholarship Portal (SSP Post-Matric)",
+    "provider": "Social Welfare & Backward Classes Welfare Dept, Karnataka",
+    "portal": "SSP Karnataka Portal",
+    "portal_url": "https://ssp.postmatric.karnataka.gov.in",
+    "source_url": "https://ssp.postmatric.karnataka.gov.in",
+    "amount": "100% Tuition Fee Exemption + Vidyasiri Food & Accommodation",
+    "amount_value": 45000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 50.0,
+      "max_family_income": 250000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "Diploma / Polytechnic",
+        "MBA / M.Tech / M.Sc",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "Karnataka"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-30",
+    "last_verified": null,
+    "verified": false,
+    "description": "Unified single-window scholarship platform in Karnataka providing tuition reimbursement and Vidyasiri hostel support."
+  },
+  {
+    "id": "reliance_ug_scholarship",
+    "name": "Reliance Foundation Undergraduate Scholarship",
+    "provider": "Reliance Foundation CSR",
+    "portal": "Reliance Foundation Scholarships Portal",
+    "portal_url": "https://www.scholarships.reliancefoundation.org",
+    "source_url": "https://www.scholarships.reliancefoundation.org/Undergraduate_Scholarship.aspx",
+    "amount": "Up to ₹2,00,000 over course duration + Mentorship & Leadership",
+    "amount_value": 200000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 60.0,
+      "max_family_income": 1500000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-10-31",
+    "last_verified": null,
+    "verified": false,
+    "description": "Merit-cum-means scholarship supporting 5,000 top first-year undergraduate students with grants and alumni network."
+  },
+  {
+    "id": "hdfc_parivartan_ecss",
+    "name": "HDFC Bank Parivartan's Educational Crisis Support (ECSS)",
+    "provider": "HDFC Bank CSR",
+    "portal": "Buddy4Study / HDFC CSR",
+    "portal_url": "https://www.buddy4study.com/page/hdfc-bank-parivartans-ecss-programme",
+    "source_url": "https://www.hdfcbank.com/personal/about-us/corporate-social-responsibility",
+    "amount": "Up to ₹75,000 per year direct grant",
+    "amount_value": 75000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 55.0,
+      "max_family_income": 250000,
+      "courses": [
+        "Class 10th",
+        "Class 11th - 12th",
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Diploma / Polytechnic",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-20",
+    "last_verified": null,
+    "verified": false,
+    "description": "Supports students facing severe financial hardship or family crisis to prevent school and college dropouts."
+  },
+  {
+    "id": "tata_trusts_merit",
+    "name": "Tata Trusts Means and Merit Higher Education Grant",
+    "provider": "Tata Trusts Individual Grants Programme",
+    "portal": "Tata Trusts Grants Portal",
+    "portal_url": "https://www.tatatrusts.org/our-work/individual-grants-programme/education-grants",
+    "source_url": "https://www.tatatrusts.org",
+    "amount": "Up to 80% College Tuition Fee Support",
+    "amount_value": 70000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 60.0,
+      "max_family_income": 400000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "B.Sc / BCA / B.Com / BA",
+        "MBA / M.Tech / M.Sc",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-25",
+    "last_verified": null,
+    "verified": false,
+    "description": "Direct financial aid from Tata Trusts covering significant portion of tuition fees for hardworking college students."
+  },
+  {
+    "id": "ongc_scholarship",
+    "name": "ONGC Foundation Merit Scholarship for Low Income Students",
+    "provider": "ONGC Foundation CSR",
+    "portal": "ONGC Foundation Portal",
+    "portal_url": "https://ongcscholar.org",
+    "source_url": "https://ongcscholar.org",
+    "amount": "₹48,000 per year annual financial assistance",
+    "amount_value": 48000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST"
+      ],
+      "min_marks": 60.0,
+      "max_family_income": 200000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "MBA / M.Tech / M.Sc",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-10",
+    "last_verified": null,
+    "verified": false,
+    "description": "ONGC flagship CSR scholarship disbursed annually to students enrolled in regular engineering, MBBS and MBA courses."
+  },
+  {
+    "id": "sitaram_jindal_scholarship",
+    "name": "Sitaram Jindal Foundation Scholarship",
+    "provider": "Sitaram Jindal Foundation Trust",
+    "portal": "Sitaram Jindal Trust Portal",
+    "portal_url": "https://www.sitaramjindalfoundation.org",
+    "source_url": "https://www.sitaramjindalfoundation.org/scholarships-information.php",
+    "amount": "₹3,200/month for professional degree courses",
+    "amount_value": 38400,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 60.0,
+      "max_family_income": 400000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "Diploma / Polytechnic",
+        "B.Sc / BCA / B.Com / BA",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "All",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-12-31",
+    "last_verified": null,
+    "verified": false,
+    "description": "Monthly stipend support from Sitaram Jindal Foundation for underprivileged youth pursuing graduation and polytechnic diplomas."
+  },
+  {
+    "id": "kotak_kanya_scholarship",
+    "name": "Kotak Kanya Scholarship for Meritorious Girls",
+    "provider": "Kotak Education Foundation CSR",
+    "portal": "Buddy4Study / Kotak CSR",
+    "portal_url": "https://www.buddy4study.com/page/kotak-kanya-scholarship",
+    "source_url": "https://kotakeducation.org/scholarships/",
+    "amount": "₹1,50,000 per year until professional graduation",
+    "amount_value": 150000,
+    "eligibility": {
+      "categories": [
+        "General",
+        "EWS",
+        "OBC",
+        "SC",
+        "ST",
+        "Minority"
+      ],
+      "min_marks": 85.0,
+      "max_family_income": 600000,
+      "courses": [
+        "B.Tech / B.E.",
+        "MBBS / BDS / Medical",
+        "Law (LLB / LLM)",
+        "Degree",
+        "Engineering"
+      ],
+      "states": [
+        "All",
+        "Pan-India"
+      ],
+      "gender": "Female",
+      "disability_required": false,
+      "minority_required": false,
+      "min_year_of_study": 1
+    },
+    "deadline": "2026-11-15",
+    "last_verified": null,
+    "verified": false,
+    "description": "Substantial financial grant to support meritorious girl students from low-income families pursuing professional 4-5 year degrees."
+  }
+]

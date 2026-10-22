@@ -1,0 +1,24 @@
+# Environment & Secrets
+.env
+*.env
+!.env.example
+private_keys.json
+.agent_seeds.json
+*.db
+*_data.json
+agent1q*_data.json
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs & Scratch
+*.log
+scratch/
+.system_generated/
