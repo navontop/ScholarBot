@@ -126,13 +126,17 @@ EMBEDDED_DOC_RULES = json.loads({repr(json.dumps(doc_rules_raw))})
     with open(os.path.join(root_dir, "scholarship_agentverse_hosted.py"), "r", encoding="utf-8") as f:
         hosted_content = f.read()
 
-    marker = "hosted_agent = Agent("
+    marker = "agent = Agent("
     idx = hosted_content.find(marker)
+    if idx == -1:
+        marker = "hosted_agent = Agent("
+        idx = hosted_content.find(marker)
     agent_logic = hosted_content[idx:] if idx != -1 else ""
     end_main = agent_logic.find('if __name__ == "__main__":')
     if end_main != -1:
         agent_logic = agent_logic[:end_main]
     agent_logic_clean = re.sub(r'# Export agent reference for Agentverse[\s\S]*', '', agent_logic)
+    agent_logic_clean = re.sub(r'# Alias for compatibility[\s\S]*', '', agent_logic_clean)
     agent_logic_clean = re.sub(r'agent\s*=\s*hosted_agent[\s\S]*', '', agent_logic_clean).strip()
 
     agent_setup = """
@@ -373,7 +377,7 @@ Ready for direct paste into the Agentverse hosted web editor.
         + agent_setup
         + "\n"
         + agent_logic_clean
-        + "\n\n# Export agent reference for Agentverse\nagent = hosted_agent\n\nif __name__ == '__main__':\n    hosted_agent.run()\n"
+        + "\n\n# Alias for compatibility\nhosted_agent = agent\n\nif __name__ == '__main__':\n    agent.run()\n"
     )
 
     with open(os.path.join(root_dir, "scholarship_agentverse_hosted.py"), "w", encoding="utf-8") as f:
@@ -418,7 +422,7 @@ Ready for direct paste into Agentverse hosted editor.
         + agent_setup
         + "\n"
         + coordinator_agent_logic
-        + "\n\n# Export agent reference for Agentverse\nagent = hosted_agent\n\nif __name__ == '__main__':\n    hosted_agent.run()\n"
+        + "\n\n# Alias for compatibility\nhosted_agent = agent\n\nif __name__ == '__main__':\n    agent.run()\n"
     )
 
     with open(os.path.join(root_dir, "hosted_coordinator.py"), "w", encoding="utf-8") as f:

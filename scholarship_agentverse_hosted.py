@@ -2552,7 +2552,7 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
         apply_url=s.get("apply_url") or s.get("portal_url", "")
     )
 
-hosted_agent = Agent(
+agent = Agent(
     name="scholarbot_agentverse",
     loop=_loop,
     description="ScholarBot: India scholarship matching, anti-rejection document pre-checks and deadline tracking for students.",
@@ -2562,6 +2562,7 @@ hosted_agent = Agent(
         "author": "Fetch-A-Thon 3.0 ScholarBot Team",
     },
 )
+hosted_agent = agent
 chat_proto = Protocol(spec=chat_protocol_spec)
 payment_proto = Protocol(spec=payment_protocol_spec, role="seller")
 
@@ -2976,11 +2977,11 @@ async def handle_payment_reject(ctx: Context, sender: str, msg: RejectPayment):
     await ctx.send(sender, create_text_chat("Payment cancelled. Scholarship search, checklists and the free preview stay fully available!"))
 
 
-hosted_agent.include(chat_proto, publish_manifest=True)
-hosted_agent.include(payment_proto, publish_manifest=True)
+agent.include(chat_proto, publish_manifest=True)
+agent.include(payment_proto, publish_manifest=True)
 
-# Export agent reference for Agentverse
-agent = hosted_agent
+# Alias for compatibility
+hosted_agent = agent
 
 if __name__ == '__main__':
-    hosted_agent.run()
+    agent.run()
