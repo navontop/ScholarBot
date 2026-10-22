@@ -169,10 +169,10 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
 
     # Orchestration methods for hosted_coordinator.py
     coordinator_orchestration = '''
-# Specialist Agent Addresses (set in Agentverse Secrets/Environment)
-SCHEME_AGENT_ADDRESS = os.getenv("SCHEME_AGENT_ADDRESS", "")
-DOC_AGENT_ADDRESS = os.getenv("DOC_AGENT_ADDRESS", "")
-TRACKER_AGENT_ADDRESS = os.getenv("TRACKER_AGENT_ADDRESS", "")
+# Specialist Agent Addresses (set in Agentverse Secrets/Environment or use deployed defaults)
+SCHEME_AGENT_ADDRESS = os.getenv("SCHEME_AGENT_ADDRESS", "agent1qghlvvedpxpyw65zhf26549eana8w8rpgp9uhlj76uu3ravx9ty7777lks8")
+DOC_AGENT_ADDRESS = os.getenv("DOC_AGENT_ADDRESS", "agent1qfmcqqw0kv26y8evhd3cu5q7wlg64awqvnzwww3d0ygaxacsmaqvslfaqt3")
+TRACKER_AGENT_ADDRESS = os.getenv("TRACKER_AGENT_ADDRESS", "agent1q07ped0etgtlcty0ajjxngw7pztd5mgr6ef3fugqkd450nvv2haqurnmk0x")
 
 LAST_DISPATCH_ATTRIBUTION: Dict[str, str] = {}
 
@@ -392,10 +392,10 @@ Ready for direct paste into Agentverse hosted editor.
         coordinator_header
         + common_imports
         + embedded_datasets
-        + "\n# Specialist Agent Addresses (set in Agentverse Secrets/Environment)\n"
-        + 'SCHEME_AGENT_ADDRESS = os.getenv("SCHEME_AGENT_ADDRESS", "")\n'
-        + 'DOC_AGENT_ADDRESS = os.getenv("DOC_AGENT_ADDRESS", "")\n'
-        + 'TRACKER_AGENT_ADDRESS = os.getenv("TRACKER_AGENT_ADDRESS", "")\n'
+        + "\n# Specialist Agent Addresses (set in Agentverse Secrets/Environment or use deployed defaults)\n"
+        + 'SCHEME_AGENT_ADDRESS = os.getenv("SCHEME_AGENT_ADDRESS", "agent1qghlvvedpxpyw65zhf26549eana8w8rpgp9uhlj76uu3ravx9ty7777lks8")\n'
+        + 'DOC_AGENT_ADDRESS = os.getenv("DOC_AGENT_ADDRESS", "agent1qfmcqqw0kv26y8evhd3cu5q7wlg64awqvnzwww3d0ygaxacsmaqvslfaqt3")\n'
+        + 'TRACKER_AGENT_ADDRESS = os.getenv("TRACKER_AGENT_ADDRESS", "agent1q07ped0etgtlcty0ajjxngw7pztd5mgr6ef3fugqkd450nvv2haqurnmk0x")\n'
         + "\n# ==================== CORE MODELS ====================\n"
         + models_code
         + "\n# ==================== PRIVACY REDACTION ====================\n"
