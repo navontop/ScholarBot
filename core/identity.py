@@ -6,7 +6,7 @@ from typing import Optional
 
 logger = logging.getLogger("Identity")
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DEFAULT_SEEDS_PATH = os.path.join(PROJECT_ROOT, ".agent_seeds.json")
+DEFAULT_SEEDS_PATH = os.path.join(PROJECT_ROOT, "data", ".agent_seeds.json")
 
 def get_or_create_seed(env_var_name: str, agent_name: str, seeds_file: Optional[str] = None) -> str:
     """
