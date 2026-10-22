@@ -25,7 +25,7 @@
   },
   "nsp_central_sector": {
     "status": "Verified today",
-    "checked_at": 1792654226.5982208,
+    "checked_at": 1792696093.7486706,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -33,7 +33,7 @@
   },
   "aicte_pragati_girls": {
     "status": "Verified today",
-    "checked_at": 1792654260.7703333,
+    "checked_at": 1792696094.3587067,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -41,7 +41,7 @@
   },
   "aicte_saksham": {
     "status": "Verified today",
-    "checked_at": 1792654261.27672,
+    "checked_at": 1792696095.0120845,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -49,7 +49,7 @@
   },
   "post_matric_sc_central": {
     "status": "Verified today",
-    "checked_at": 1792654261.6130586,
+    "checked_at": 1792696095.6199691,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -57,7 +57,7 @@
   },
   "post_matric_st_central": {
     "status": "Verified today",
-    "checked_at": 1792654261.9083881,
+    "checked_at": 1792696096.1998162,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -65,7 +65,7 @@
   },
   "minority_post_matric": {
     "status": "Verified today",
-    "checked_at": 1792654262.2640467,
+    "checked_at": 1792696096.7390447,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -73,7 +73,7 @@
   },
   "raj_postmatric_sje": {
     "status": "Verified today",
-    "checked_at": 1792654262.5688934,
+    "checked_at": 1792696097.4494603,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -81,7 +81,7 @@
   },
   "up_postmatric_dashmottar": {
     "status": "Could not verify",
-    "checked_at": 1792654262.8406513,
+    "checked_at": 1792696097.640024,
     "checked_ago_str": "Checked just now",
     "http_code": null,
     "message": "Official portal gateway unreachable (<urlopen error [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1000)>). Falling back safely to static records.",
@@ -89,7 +89,7 @@
   },
   "maha_ebc_rajarshi_shahu": {
     "status": "Verified today",
-    "checked_at": 1792654263.366177,
+    "checked_at": 1792696098.1397436,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -97,7 +97,7 @@
   },
   "bihar_post_matric": {
     "status": "Could not verify",
-    "checked_at": 1792654266.988948,
+    "checked_at": 1792696098.9002688,
     "checked_ago_str": "Checked just now",
     "http_code": null,
     "message": "Official portal gateway unreachable (<urlopen error timed out>). Falling back safely to static records.",
@@ -105,7 +105,7 @@
   },
   "mp_postmatric_scholarship": {
     "status": "Could not verify",
-    "checked_at": 1792654273.2830079,
+    "checked_at": 1792696105.24938,
     "checked_ago_str": "Checked just now",
     "http_code": null,
     "message": "Official portal gateway unreachable (<urlopen error [Errno 11001] getaddrinfo failed>). Falling back safely to static records.",
@@ -113,7 +113,7 @@
   },
   "delhi_merit_scholarship": {
     "status": "Verified today",
-    "checked_at": 1792654273.550847,
+    "checked_at": 1792696105.7752726,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -121,7 +121,7 @@
   },
   "wb_oasis_scholarship": {
     "status": "Verified today",
-    "checked_at": 1792654273.7599597,
+    "checked_at": 1792696109.1495597,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -129,7 +129,7 @@
   },
   "karnataka_ssp_postmatric": {
     "status": "Verified today",
-    "checked_at": 1792654278.1488528,
+    "checked_at": 1792696110.3289618,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",
@@ -137,7 +137,7 @@
   },
   "reliance_ug_scholarship": {
     "status": "Could not verify",
-    "checked_at": 1792654278.4284883,
+    "checked_at": 1792696110.6658285,
     "checked_ago_str": "Checked just now",
     "http_code": 404,
     "message": "Official portal gateway unreachable (HTTP error 404). Falling back safely to static records.",

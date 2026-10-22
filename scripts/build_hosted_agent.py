@@ -146,7 +146,7 @@ except RuntimeError:
     _loop = asyncio.new_event_loop()
     asyncio.set_event_loop(_loop)
 
-def scheme_to_item(s: dict) -> ScholarshipItem:
+def scheme_to_item(s: dict, status: str = "eligible", score: int = 85, reason: str = "") -> ScholarshipItem:
     elig = s.get("eligibility", {})
     return ScholarshipItem(
         id=s.get("id", ""),
@@ -162,11 +162,11 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
         max_family_income=float(elig.get("max_family_income", 10000000.0)),
         applicable_states=elig.get("states", []),
         gender=elig.get("gender", "All"),
-        deadline=s.get("deadline"),
+        deadline=s.get("deadline", "2026-12-31"),
         description=s.get("description", ""),
-        match_score=85,
-        match_status="eligible",
-        match_reason="",
+        match_score=score,
+        match_status=status,
+        match_reason=reason,
         apply_url=s.get("apply_url") or s.get("portal_url", "")
     )
 """

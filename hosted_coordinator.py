@@ -2534,7 +2534,7 @@ except RuntimeError:
     _loop = asyncio.new_event_loop()
     asyncio.set_event_loop(_loop)
 
-def scheme_to_item(s: dict) -> ScholarshipItem:
+def scheme_to_item(s: dict, status: str = "eligible", score: int = 85, reason: str = "") -> ScholarshipItem:
     elig = s.get("eligibility", {})
     return ScholarshipItem(
         id=s.get("id", ""),
@@ -2550,11 +2550,11 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
         max_family_income=float(elig.get("max_family_income", 10000000.0)),
         applicable_states=elig.get("states", []),
         gender=elig.get("gender", "All"),
-        deadline=s.get("deadline"),
+        deadline=s.get("deadline", "2026-12-31"),
         description=s.get("description", ""),
-        match_score=85,
-        match_status="eligible",
-        match_reason="",
+        match_score=score,
+        match_status=status,
+        match_reason=reason,
         apply_url=s.get("apply_url") or s.get("portal_url", "")
     )
 
@@ -2571,6 +2571,198 @@ agent = Agent(
 hosted_agent = agent
 chat_proto = Protocol(spec=chat_protocol_spec)
 payment_proto = Protocol(spec=payment_protocol_spec, role="seller")
+
+# ==================== DISPLAY & CARD HELPERS ====================
+def format_inr(value: float) -> str:
+    """Indian digit grouping: 300000 -> ₹3,00,000."""
+    try:
+        s = str(int(round(float(value))))
+    except Exception:
+        return "₹0"
+    if len(s) <= 3:
+        return "₹" + s
+    head, tail = s[:-3], s[-3:]
+    parts = []
+    while len(head) > 2:
+        parts.insert(0, head[-2:])
+        head = head[:-2]
+    if head:
+        parts.insert(0, head)
+    return "₹" + ",".join(parts) + "," + tail
+
+INCOME_BANDS: Dict[str, Tuple[str, str]] = {
+    "90000": ("Below ₹1.0 Lakh / year", "below ₹1.0 lakh per year"),
+    "150000": ("₹1.0 - ₹1.5 Lakhs / year", "between ₹1.0 and ₹1.5 lakhs per year"),
+    "250000": ("₹1.5 - ₹2.5 Lakhs / year", "between ₹1.5 and ₹2.5 lakhs per year"),
+    "450000": ("₹2.5 - ₹4.5 Lakhs / year", "between ₹2.5 and ₹4.5 lakhs per year"),
+    "800000": ("₹4.5 - ₹8.0 Lakhs / year", "between ₹4.5 and ₹8.0 lakhs per year"),
+    "1500000": ("Above ₹8.0 Lakhs / year", "above ₹8.0 lakhs per year"),
+}
+
+MARKS_BANDS: Dict[str, Tuple[str, str]] = {
+    "85": ("85% and above (8.5+ CGPA)", "85% and above"),
+    "75": ("75% - 84% (7.5 - 8.4 CGPA)", "between 75% and 84%"),
+    "60": ("60% - 74% (6.0 - 7.4 CGPA)", "between 60% and 74%"),
+    "50": ("50% - 59% (5.0 - 5.9 CGPA)", "between 50% and 59%"),
+    "45": ("Below 50% (below 5.0 CGPA)", "below 50%"),
+}
+
+def income_text(p: StudentProfile) -> str:
+    if getattr(p, "income_label", None) in INCOME_BANDS:
+        return INCOME_BANDS[p.income_label][0]
+    return f"{format_inr(p.family_income)} / year"
+
+def income_phrase(p: StudentProfile) -> str:
+    if getattr(p, "income_label", None) in INCOME_BANDS:
+        return INCOME_BANDS[p.income_label][1]
+    return f"{format_inr(p.family_income)} per year"
+
+def marks_text(p: StudentProfile) -> str:
+    if getattr(p, "marks_label", None) in MARKS_BANDS:
+        return MARKS_BANDS[p.marks_label][0]
+    return f"{p.marks_percentage:g}%"
+
+def marks_phrase(p: StudentProfile) -> str:
+    if getattr(p, "marks_label", None) in MARKS_BANDS:
+        return MARKS_BANDS[p.marks_label][1]
+    return f"{p.marks_percentage:g}%"
+
+STATE_OPTIONS: List[Tuple[str, str]] = [
+    ("Andaman and Nicobar Islands", "Andaman & Nicobar Islands (UT)"), ("Andhra Pradesh", "Andhra Pradesh"),
+    ("Arunachal Pradesh", "Arunachal Pradesh"), ("Assam", "Assam"), ("Bihar", "Bihar"),
+    ("Chandigarh", "Chandigarh (UT)"), ("Chhattisgarh", "Chhattisgarh"),
+    ("Dadra and Nagar Haveli and Daman and Diu", "Dadra & Nagar Haveli and Daman & Diu (UT)"),
+    ("Delhi", "Delhi (NCT)"), ("Goa", "Goa"), ("Gujarat", "Gujarat"), ("Haryana", "Haryana"),
+    ("Himachal Pradesh", "Himachal Pradesh"), ("Jammu and Kashmir", "Jammu & Kashmir (UT)"),
+    ("Jharkhand", "Jharkhand"), ("Karnataka", "Karnataka"), ("Kerala", "Kerala"), ("Ladakh", "Ladakh (UT)"),
+    ("Lakshadweep", "Lakshadweep (UT)"), ("Madhya Pradesh", "Madhya Pradesh"), ("Maharashtra", "Maharashtra"),
+    ("Manipur", "Manipur"), ("Meghalaya", "Meghalaya"), ("Mizoram", "Mizoram"), ("Nagaland", "Nagaland"),
+    ("Odisha", "Odisha"), ("Puducherry", "Puducherry (UT)"), ("Punjab", "Punjab"), ("Rajasthan", "Rajasthan"),
+    ("Sikkim", "Sikkim"), ("Tamil Nadu", "Tamil Nadu"), ("Telangana", "Telangana"), ("Tripura", "Tripura"),
+    ("Uttar Pradesh", "Uttar Pradesh"), ("Uttarakhand", "Uttarakhand"), ("West Bengal", "West Bengal"),
+    ("All", "Other / not listed (Pan-India schemes only)"),
+]
+
+COURSE_OPTIONS: List[Tuple[str, str]] = [
+    ("B.Tech / B.E.", "College: Engineering (B.Tech / B.E.)"),
+    ("MBBS / BDS / Medical", "College: Medical / Healthcare (MBBS / BDS / Nursing / B.Pharm)"),
+    ("B.Sc / BCA / B.Com / BA", "College: General Undergrad (B.Sc / BCA / B.Com / BA / BBA)"),
+    ("MBA / M.Tech / M.Sc", "University: Postgraduate (MBA / M.Tech / M.Sc / MCA / MA)"),
+    ("Diploma / Polytechnic", "Diploma / Polytechnic / ITI"),
+    ("Class 11th - 12th", "School: Class 11th - 12th"),
+    ("Class 10th", "School: Class 9th - 10th"),
+    ("Law (LLB / LLM)", "Law (BA LLB / BBA LLB / LLB / LLM)"),
+    ("PhD / Doctorate", "Doctorate: PhD / Research Scholar"),
+]
+
+CATEGORY_OPTIONS: List[Tuple[str, str]] = [
+    ("General", "General / Open"), ("EWS", "EWS (Economically Weaker Section)"),
+    ("OBC", "OBC (Other Backward Class)"), ("SC", "SC (Scheduled Caste)"), ("ST", "ST (Scheduled Tribe)"),
+    ("Minority", "Minority (Muslim / Sikh / Christian / Jain / Buddhist / Parsi)"),
+]
+
+GENDER_OPTIONS: List[Tuple[str, str]] = [
+    ("Female", "Female (unlocks AICTE Pragati & Kotak Kanya)"), ("Male", "Male"),
+    ("Transgender", "Transgender / Third Gender"), ("All", "Prefer not to say"),
+]
+
+DISABILITY_OPTIONS: List[Tuple[str, str]] = [
+    ("no", "No"), ("yes", "Yes (40% or more benchmark disability - unlocks Saksham)"),
+]
+
+def resolve_option(raw: Any, options: List[Tuple[str, str]]) -> str:
+    """Accepts either option value or label (ASI:One may send either); returns value or ''."""
+    if raw is None:
+        return ""
+    r = str(raw).strip().lower()
+    for value, label in options:
+        if r == value.lower() or r == label.lower():
+            return value
+    return ""
+
+def resolve_band(raw: Any, bands: Dict[str, Tuple[str, str]]) -> str:
+    """Returns the band key for a form value / band label / exact number, or '' if it is not a band."""
+    if raw is None:
+        return ""
+    r = str(raw).strip()
+    if r in bands:
+        return r
+    for key, (label, _phrase) in bands.items():
+        if r.lower() == label.lower():
+            return key
+    return ""
+
+def to_number(raw: Any) -> Optional[float]:
+    try:
+        return float(str(raw).replace(",", "").replace("₹", "").replace("%", "").replace("Rs", "").strip())
+    except Exception:
+        return None
+
+def _dump(model: Any) -> dict:
+    return model.model_dump() if hasattr(model, "model_dump") else model.dict()
+
+def _cta(label: str, action: str, primary: bool = False, **extra: Any) -> dict:
+    sel = {"action": action}
+    sel.update(extra)
+    cta = {"label": label, "selection": sel}
+    if primary:
+        cta["primary"] = True
+    return cta
+
+def simple_review_card(title: str, rows: List[Tuple[str, str]], primary: dict) -> dict:
+    return {
+        "title": title,
+        "summary_rows": [{"label": l, "value": v} for l, v in rows],
+        "approve_cta": primary,
+        "reject_cta": {"label": "🏠 Back to Menu", "selection": {"action": "back_to_hub"}}
+    }
+
+def extract_action_payload(user_text: str) -> Tuple[Optional[str], Optional[dict]]:
+    """Reads a card tap from incoming text (plain JSON, fenced JSON, nested 'selection', form 'values')."""
+    if not user_text:
+        return None, None
+    clean = re.sub(r"^@\S+\s*", "", user_text.strip()).strip()
+    if clean.startswith("```json"):
+        clean = clean[7:].strip()
+    elif clean.startswith("```"):
+        clean = clean[3:].strip()
+    if clean.endswith("```"):
+        clean = clean[:-3].strip()
+
+    action_data: Optional[dict] = None
+    if "{" in clean and "}" in clean:
+        s_idx, e_idx = clean.find("{"), clean.rfind("}")
+        if e_idx > s_idx:
+            try:
+                action_data = json.loads(clean[s_idx:e_idx + 1])
+            except Exception:
+                pass
+
+    if isinstance(action_data, dict):
+        action_type: Optional[str] = None
+        if isinstance(action_data.get("action"), str):
+            action_type = action_data["action"]
+        elif isinstance(action_data.get("selection"), dict) and "action" in action_data["selection"]:
+            action_type = str(action_data["selection"]["action"])
+        elif isinstance(action_data.get("selection"), str):
+            action_type = str(action_data["selection"])
+        elif "values" in action_data or any(f in action_data for f in ["state", "marks", "course", "category", "family_income", "gender", "disability"]):
+            action_type = "submit_intake"
+        return action_type, action_data
+
+    # Check for plain string action keywords
+    known_actions = {
+        "open_hub", "open_intake_form", "submit_intake", "confirm_and_match",
+        "view_scheme_details", "open_doc_audit", "audit_for_scheme", "view_deadlines",
+        "save_reminders", "request_concierge_pack", "preview_concierge_pack",
+        "reject_payment", "simulate_what_if", "view_profile", "back_to_list",
+        "back_to_hub", "new_search", "done"
+    }
+    low = clean.lower()
+    if low in known_actions:
+        return low, {}
+
+    return None, None
 
 # Hosted agents may reset globals between calls, so everything that matters lives in ctx.storage.
 USER_PROFILES: Dict[str, StudentProfile] = {}
