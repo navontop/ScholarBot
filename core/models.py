@@ -39,6 +39,16 @@ class ScholarshipItem(Model):
     match_reason: str = ""
     last_verified: Optional[str] = None
     verified: bool = False
+    apply_url: str = ""
+    apply_steps_hint: str = ""
+    portal_name: str = ""
+    portal_home_url: str = ""
+    level: str = "UG"
+    scheme_type: str = "central"
+    renewable: bool = True
+    docs_required: List[str] = Field(default_factory=list)
+    notes: str = ""
+    application_window: Optional[Dict[str, Optional[str]]] = None
 
 class SchemeMatchRequest(Model):
     session_id: str

@@ -334,8 +334,18 @@ def match_scholarships(profile: StudentProfile) -> Tuple[List[ScholarshipItem], 
             match_score=score,
             match_status=status,
             match_reason=reason,
-            last_verified=item.get("last_verified", "2026-10-15"),
-            verified=item.get("verified", True)
+            last_verified=item.get("last_verified"),
+            verified=bool(item.get("verified", False)),
+            apply_url=item.get("apply_url") or item.get("portal_url", ""),
+            apply_steps_hint=item.get("apply_steps_hint", ""),
+            portal_name=item.get("portal_name") or item.get("portal", ""),
+            portal_home_url=item.get("portal_home_url") or item.get("portal_url", ""),
+            level=item.get("level", "UG"),
+            scheme_type=item.get("scheme_type", "central"),
+            renewable=bool(item.get("renewable", True)),
+            docs_required=item.get("docs_required", []),
+            notes=item.get("notes", ""),
+            application_window=item.get("application_window")
         )
 
         if status == "eligible":

@@ -61,7 +61,8 @@ async def handle_deadline_request(ctx: Context, sender: str, msg: DeadlineReques
                 description=s.get("description", ""),
                 match_score=85,
                 match_status="eligible",
-                match_reason=""
+                match_reason="",
+                apply_url=s.get("apply_url") or s.get("portal_url", "")
             ))
 
     deadline_items = build_deadline_items(selected_items)
