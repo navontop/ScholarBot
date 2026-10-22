@@ -86,3 +86,69 @@ def test_hosted_agent_matching_logic(standalone_hosted_module):
     top = eligible[0]
     assert hasattr(top, "id")
     assert hasattr(top, "portal")
+
+def test_all_hosted_bundles_have_zero_local_imports():
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    bundles = [
+        "scholarship_agentverse_hosted.py",
+        "hosted_coordinator.py",
+        "hosted_matcher.py",
+        "hosted_auditor.py",
+        "hosted_tracker.py",
+    ]
+    for b in bundles:
+        file_path = os.path.join(project_root, b)
+        assert os.path.exists(file_path), f"Bundle {b} must exist"
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        for forbidden in ["from core.", "import core.", "from agents.", "import agents."]:
+            assert forbidden not in content, f"Bundle {b} must have zero local imports but found: {forbidden}"
+
+@pytest.mark.asyncio
+async def test_hosted_agent_chat_and_payment_message_handling(standalone_hosted_module):
+    from unittest.mock import AsyncMock, MagicMock
+    import json
+    hosted = standalone_hosted_module
+
+    storage_dict = {}
+    ctx = MagicMock()
+    ctx.storage.get.side_effect = lambda k: storage_dict.get(k)
+    ctx.storage.set.side_effect = lambda k, v: storage_dict.update({k: v})
+    ctx.send = AsyncMock()
+
+    # 1. Free-text message
+    free_text_msg = hosted.ChatMessage(content=[hosted.TextContent(type="text", text="Hello, find scholarships for me")])
+    await hosted.handle_chat_message(ctx, "agent1tester_user", free_text_msg)
+    assert ctx.send.call_count >= 1
+
+    # 2. Form submission payload
+    form_payload = json.dumps({
+        "action": "submit_intake",
+        "name": "Arjun",
+        "state": "Rajasthan",
+        "category": "OBC",
+        "income": "250000",
+        "course": "B.Tech / B.E.",
+        "marks": "80",
+        "gender": "Male",
+        "disability": "no"
+    })
+    form_msg = hosted.ChatMessage(content=[hosted.TextContent(type="text", text=form_payload)])
+    await hosted.handle_chat_message(ctx, "agent1tester_user", form_msg)
+    assert ctx.send.call_count >= 2
+
+    # 3. Payment commit message
+    from uagents_core.contrib.protocols.payment import Funds
+    commit_msg = hosted.CommitPayment(
+        funds=Funds(currency="USDC", amount="0.01", payment_method="skyfire"),
+        recipient="agent1q_test",
+        transaction_id="0x" + "a" * 64,
+        reference="ref_test_hosted_123"
+    )
+    await hosted.handle_payment_commit_msg(ctx, "agent1tester_user", commit_msg)
+    assert ctx.send.call_count >= 3
+
+    # 4. Error path: malformed JSON or unparseable input must NOT raise
+    malformed_msg = hosted.ChatMessage(content=[hosted.TextContent(type="text", text="{bad_json_malformed::")])
+    await hosted.handle_chat_message(ctx, "agent1tester_user", malformed_msg)
+    # Executed without raising!
