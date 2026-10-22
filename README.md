@@ -130,8 +130,8 @@ ScholarBot eliminates walls of text by utilizing structured **ASI:One Interactiv
 
 ### 2. Installation
 ```bash
-git clone https://github.com/your-username/scholarship_finder_agent.git
-cd scholarship_finder_agent
+git clone https://github.com/navontop/ScholarBot.git
+cd ScholarBot
 pip install -r requirements.txt
 ```
 

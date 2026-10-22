@@ -1680,7 +1680,7 @@ from uagents_core.contrib.protocols.chat import (
 )
 
 
-ASSET_BASE_URL = os.getenv("ASSET_BASE_URL", "https://raw.githubusercontent.com/THE-NAVVV/<REPO>/main/assets").rstrip("/")
+ASSET_BASE_URL = os.getenv("ASSET_BASE_URL", "https://raw.githubusercontent.com/navontop/ScholarBot/main/assets").rstrip("/")
 
 def get_asset_url(icon_name: str) -> str:
     """Returns high-resolution (512x512) verified asset URL for cards."""
