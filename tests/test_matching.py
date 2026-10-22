@@ -85,3 +85,72 @@ def test_close_miss_detection():
     eligible, close_misses = match_scholarships(profile)
     cm_ids = [s.id for s in close_misses]
     assert "raj_postmatric_sje" in cm_ids
+
+def test_income_range_could_qualify():
+    # Student whose income range straddles cap (2.0L - 2.8L on a 2.5L cap)
+    profile = StudentProfile(
+        state="Rajasthan",
+        category="OBC",
+        family_income=260000.0,
+        family_income_min=200000.0,
+        family_income_max=280000.0,
+        course="B.Tech / B.E.",
+        marks_percentage=75.0,
+        gender="Male"
+    )
+    eligible, _ = match_scholarships(profile)
+    raj_s = next((s for s in eligible if s.id == "raj_postmatric_sje"), None)
+    assert raj_s is not None
+    assert "confirm your income certificate" in raj_s.match_reason
+
+def test_explainability_ineligible_and_close_miss():
+    # Check that reasons contain actionable guidance ("What would make you eligible")
+    from core.matching import evaluate_scheme, load_scholarships
+    data = load_scholarships()
+    sje = next(s for s in data if s["id"] == "raj_postmatric_sje")
+    
+    # Profile with high income
+    p_high = StudentProfile(
+        state="Rajasthan",
+        category="OBC",
+        family_income=600000.0,
+        course="B.Tech / B.E.",
+        marks_percentage=75.0,
+        gender="Male"
+    )
+    status, _, reason = evaluate_scheme(sje, p_high)
+    assert status == "ineligible"
+    assert "What would make you eligible" in reason
+
+def test_stacking_calculator():
+    from core.matching import calculate_stacking_benefit
+    profile = StudentProfile(
+        student_name="Pooja Rao",
+        state="Karnataka",
+        category="OBC",
+        family_income=200000.0,
+        course="B.Tech / B.E.",
+        marks_percentage=85.0,
+        gender="Female"
+    )
+    eligible, _ = match_scholarships(profile)
+    assert len(eligible) > 0
+    stack = calculate_stacking_benefit(eligible)
+    assert stack["total_potential_annual"] > 0
+    assert len(stack["recommended_stack"]) >= 1
+    assert "Smart Stacking Model" in stack["combination_notes"]
+    assert len(stack["stack_breakdown"]) >= 1
+
+def test_transgender_gender_handling():
+    profile = StudentProfile(
+        state="Rajasthan",
+        category="SC",
+        family_income=150000.0,
+        course="B.Tech / B.E.",
+        marks_percentage=75.0,
+        gender="Transgender"
+    )
+    eligible, _ = match_scholarships(profile)
+    # Transgender candidate should match central and state SC schemes
+    ids = [s.id for s in eligible]
+    assert "raj_postmatric_sje" in ids

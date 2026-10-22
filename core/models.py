@@ -15,6 +15,10 @@ class StudentProfile(Model):
     year_of_study: int = 1
     missing_fields: List[str] = Field(default_factory=list)
     raw_text: str = ""
+    family_income_min: Optional[float] = None
+    family_income_max: Optional[float] = None
+    marks_min: Optional[float] = None
+    marks_max: Optional[float] = None
 
 class ScholarshipItem(Model):
     id: str

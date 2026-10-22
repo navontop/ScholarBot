@@ -187,7 +187,8 @@ def get_scheme_income_cap(scheme_id: str) -> Optional[float]:
 
 def evaluate_scheme(item: dict, profile: StudentProfile) -> Tuple[str, int, str]:
     """
-    Evaluates a single scholarship against profile.
+    Evaluates a single scholarship against profile with range awareness, explainability,
+    and multi-factor top-picks scoring.
     Returns (status, score, reason) where status is 'eligible', 'close_miss', or 'ineligible'.
     """
     elig = item.get("eligibility", {})
@@ -197,35 +198,40 @@ def evaluate_scheme(item: dict, profile: StudentProfile) -> Tuple[str, int, str]
     # 1. State check: State-restricted scheme requires user_state to match
     is_pan_india = ("all" in item_states) or ("pan-india" in item_states)
     if not is_pan_india:
+        state_list_str = ", ".join(elig.get("states", []))
         if not user_state or user_state in ["all", "unknown", ""]:
-            return ("ineligible", 0, f"Restricted to {', '.join(elig.get('states', []))} residents (state not specified).")
+            return ("ineligible", 0, f"Restricted to {state_list_str} residents (state not specified). What would make you eligible: Valid domicile/residence in {state_list_str}.")
         if user_state not in item_states:
-            return ("ineligible", 0, f"Restricted to {', '.join(elig.get('states', []))} residents.")
+            return ("ineligible", 0, f"Restricted to {state_list_str} residents. What would make you eligible: Valid domicile/residence in {state_list_str}.")
 
-    # 2. Gender check
+    # 2. Gender check with sensible Transgender / All handling
     scheme_gender = elig.get("gender", "All").lower()
     user_gender = profile.gender.strip().lower()
+    gender_note = ""
     if scheme_gender == "female":
         if user_gender in ["female", "girl", "woman"]:
             pass
+        elif user_gender in ["transgender", "third gender", "trans"]:
+            gender_note = "Likely, confirm portal gender category (inclusive government scheme policies support transgender applicants)."
         elif user_gender in ["male", "boy", "man"]:
-            return ("ineligible", 0, "Exclusively reserved for female students.")
+            return ("ineligible", 0, "Exclusively reserved for female students. What would make you eligible: Open to female candidates.")
         else:
-            return ("close_miss", 75, "Maybe eligible (girls only, confirm gender).")
+            return ("close_miss", 75, "Maybe eligible (girls only, confirm gender). What would make you eligible: Open to female candidates.")
 
     # 3. Disability check
     if elig.get("disability_required", False) and not profile.disability:
-        return ("ineligible", 0, "Requires >= 40% benchmark disability (Saksham Scheme).")
+        return ("ineligible", 0, "Requires >= 40% benchmark disability (Saksham Scheme). What would make you eligible: Government UDID card or medical disability certificate indicating >= 40% disability.")
 
     # 4. Minority check
     if elig.get("minority_required", False) and not profile.minority and profile.category.lower() != "minority":
-        return ("ineligible", 0, "Reserved for students from notified minority communities.")
+        return ("ineligible", 0, "Reserved for students from notified minority communities. What would make you eligible: Belonging to a notified religious minority community (Muslim, Christian, Sikh, Buddhist, Jain, Parsi).")
 
-    # 5. Category check: No 'general in allowed' shortcut!
+    # 5. Category check
     allowed_cats = [c.lower() for c in elig.get("categories", [])]
     user_cat = profile.category.strip().lower()
     if allowed_cats and "all" not in allowed_cats and user_cat not in allowed_cats:
-        return ("ineligible", 0, f"Eligible categories: {', '.join(elig.get('categories', []))}.")
+        cats_str = ", ".join(elig.get("categories", []))
+        return ("ineligible", 0, f"Eligible categories: {cats_str}. What would make you eligible: Belonging to {cats_str} category with valid digital caste certificate.")
 
     # 6. Course check
     scheme_courses = [c.lower() for c in elig.get("courses", [])]
@@ -246,36 +252,51 @@ def evaluate_scheme(item: dict, profile: StudentProfile) -> Tuple[str, int, str]
                 course_matched = True
                 break
         if not course_matched:
-            return ("ineligible", 0, f"Course requirement: applicable for {', '.join(elig.get('courses', []))}.")
+            courses_str = ", ".join(elig.get("courses", []))
+            return ("ineligible", 0, f"Course requirement: applicable for {courses_str}. What would make you eligible: Enrolled in one of {courses_str}.")
 
     # 7. Min year of study check
     min_year = int(elig.get("min_year_of_study", 1))
     user_year = getattr(profile, "year_of_study", 1) or 1
     if user_year < min_year:
-        return ("ineligible", 0, f"Requires minimum Year {min_year} of study (currently Year {user_year}).")
+        return ("ineligible", 0, f"Requires minimum Year {min_year} of study (currently Year {user_year}). What would make you eligible: Currently enrolled in Year {min_year} or above.")
 
-    # 8. Income check
+    # 8. Income check with range ("could qualify" logic)
     max_income = float(elig.get("max_family_income", 10000000.0))
     user_income = float(profile.family_income)
-    if user_income > max_income:
-        diff = user_income - max_income
-        if diff <= 60000:
-            return ("close_miss", 60, f"Income ₹{user_income:,.0f} exceeds ₹{max_income:,.0f} cap by ₹{diff:,.0f}.")
-        return ("ineligible", 0, f"Annual family income exceeds maximum ceiling of ₹{max_income:,.0f}.")
+    user_income_min = float(profile.family_income_min) if profile.family_income_min is not None else user_income
+    user_income_max = float(profile.family_income_max) if profile.family_income_max is not None else user_income
 
-    # 9. Marks check
+    income_certainty = "Eligible"
+    if user_income_min > max_income:
+        diff = user_income_min - max_income
+        if diff <= 60000:
+            return ("close_miss", 60, f"Income ₹{user_income_min:,.0f} exceeds ₹{max_income:,.0f} cap by ₹{diff:,.0f}. What would make you eligible: Family income certificate below ₹{max_income:,.0f}.")
+        return ("ineligible", 0, f"Annual family income exceeds maximum ceiling of ₹{max_income:,.0f}. What would make you eligible: Family income certificate below ₹{max_income:,.0f}.")
+    elif user_income_max > max_income >= user_income_min:
+        income_certainty = "Likely, confirm your income certificate"
+
+    # 9. Marks check with range ("could qualify" logic)
     min_marks = float(elig.get("min_marks", 0.0))
     user_marks = float(profile.marks_percentage)
-    if user_marks < min_marks:
-        diff_marks = min_marks - user_marks
-        if diff_marks <= 5.0:
-            return ("close_miss", 65, f"Marks {user_marks:.1f}% are slightly below required {min_marks:.1f}% ({diff_marks:.1f}% short).")
-        return ("ineligible", 0, f"Academic marks {user_marks:.1f}% below minimum {min_marks:.1f}%.")
+    user_marks_min = float(profile.marks_min) if profile.marks_min is not None else user_marks
+    user_marks_max = float(profile.marks_max) if profile.marks_max is not None else user_marks
 
-    # 8. Score calculation (Explainable & Deterministic)
-    score = 75
+    marks_certainty = "Eligible"
+    if user_marks_max < min_marks:
+        diff_marks = min_marks - user_marks_max
+        if diff_marks <= 5.0:
+            return ("close_miss", 65, f"Marks {user_marks_max:.1f}% are slightly below required {min_marks:.1f}% ({diff_marks:.1f}% short). What would make you eligible: Academic score of {min_marks:.1f}% or higher.")
+        return ("ineligible", 0, f"Academic marks {user_marks_max:.1f}% below minimum {min_marks:.1f}%. What would make you eligible: Minimum {min_marks:.1f}% score in last qualifying exam.")
+    elif user_marks_min < min_marks <= user_marks_max:
+        marks_certainty = "Likely, confirm qualifying exam marksheet"
+
+    # 10. Multi-Factor "Top Picks" Scoring:
+    # Score = Eligibility fit (40) + Benefit amount (25) + Deadline urgency (15) + Renewable (10) + Ease (10)
+    score = 40
     reasons = []
 
+    # A. Eligibility Fit
     if user_state in item_states and not is_pan_india:
         score += 15
         reasons.append(f"Home-state priority for {profile.state}")
@@ -283,22 +304,60 @@ def evaluate_scheme(item: dict, profile: StudentProfile) -> Tuple[str, int, str]
         score += 5
         reasons.append("Pan-India open scheme")
 
-    if user_income <= (max_income * 0.5):
-        score += 10
-        reasons.append(f"High financial need (Income ₹{user_income:,.0f} <= 50% of ₹{max_income:,.0f} limit)")
-    elif user_income <= (max_income * 0.8):
-        score += 5
-        reasons.append("Within standard income limits")
+    if user_income_min <= (max_income * 0.5):
+        score += 12
+        reasons.append(f"High financial need priority (Income <= 50% of ₹{max_income:,.0f} limit)")
+    elif user_income_min <= (max_income * 0.8):
+        score += 6
+        reasons.append("Comfortably within income limit")
 
-    if user_marks >= (min_marks + 15.0):
-        score += 10
-        reasons.append(f"Merit distinction ({user_marks:.1f}% well above {min_marks:.1f}% cutoff)")
-    elif user_marks >= min_marks:
+    if user_marks_max >= (min_marks + 15.0):
+        score += 13
+        reasons.append(f"Merit distinction ({user_marks_max:.1f}% well above {min_marks:.1f}% cutoff)")
+    elif user_marks_max >= min_marks:
         score += 5
-        reasons.append(f"Meets minimum {min_marks:.1f}% academic criteria")
+        reasons.append(f"Meets academic criteria ({min_marks:.1f}%)")
+
+    # B. Benefit Amount Bonus
+    amount_val = float(item.get("amount_value", 0.0))
+    if amount_val >= 100000:
+        score += 15
+        reasons.append("High grant value (>= ₹1.0 Lakh)")
+    elif amount_val >= 50000:
+        score += 10
+        reasons.append(f"Substantial financial assistance ({item.get('amount', 'Grant')[:30]})")
+    elif amount_val >= 20000:
+        score += 5
+
+    # C. Renewable Bonus
+    if item.get("renewable", True):
+        score += 5
+        reasons.append("Renewable across all years of study")
+
+    # D. Deadline Urgency Factor
+    deadline_str = item.get("deadline", "2026-12-31")
+    try:
+        parts = [int(p) for p in deadline_str.split("-")]
+        from datetime import datetime, timezone
+        d_dt = datetime(parts[0], parts[1], parts[2], 23, 59, 59, tzinfo=timezone.utc)
+        diff_days = (d_dt - datetime.now(timezone.utc)).days
+        if 0 <= diff_days <= 45:
+            score += 5
+            reasons.append(f"Active application cycle ({diff_days} days remaining)")
+    except Exception:
+        pass
 
     score = min(score, 100)
-    reason_str = " • ".join(reasons) if reasons else "Meets all primary eligibility criteria."
+
+    # Prefix with Top Pick reason
+    if gender_note:
+        reasons.insert(0, gender_note)
+    elif income_certainty != "Eligible":
+        reasons.insert(0, income_certainty)
+    elif marks_certainty != "Eligible":
+        reasons.insert(0, marks_certainty)
+
+    reason_str = "Best for you because: " + (" • ".join(reasons[:3]) if reasons else "Meets all primary eligibility criteria.")
     return ("eligible", score, reason_str)
 
 def match_scholarships(profile: StudentProfile) -> Tuple[List[ScholarshipItem], List[ScholarshipItem]]:
@@ -358,3 +417,83 @@ def match_scholarships(profile: StudentProfile) -> Tuple[List[ScholarshipItem], 
     close_misses.sort(key=lambda x: x.match_score, reverse=True)
 
     return (eligible, close_misses)
+
+def calculate_stacking_benefit(matched_schemes: List[ScholarshipItem]) -> dict:
+    """
+    Calculates total potential yearly benefit across compatible schemes.
+    Official rule: Most government post-matric scholarships prohibit taking more than one government grant.
+    However, students can typically combine:
+      1. Primary Government Scholarship (highest value Central or State scheme).
+      2. Non-conflicting CSR / Private / Trust scholarships (unless restricted by the specific trust).
+    Returns a dictionary with recommended stack, total annual grant potential, and transparent combination guidance.
+    """
+    if not matched_schemes:
+        return {
+            "total_potential_annual": 0.0,
+            "raw_sum_all_eligible": 0.0,
+            "recommended_stack": [],
+            "stack_breakdown": [],
+            "combination_notes": "No eligible schemes found to calculate stacking."
+        }
+
+    govt_schemes = []
+    csr_schemes = []
+
+    for s in matched_schemes:
+        stype = (getattr(s, "scheme_type", "") or "central").lower()
+        if stype in ["csr", "private", "foundation", "trust"]:
+            csr_schemes.append(s)
+        else:
+            govt_schemes.append(s)
+
+    govt_schemes.sort(key=lambda x: x.amount_value, reverse=True)
+    csr_schemes.sort(key=lambda x: x.amount_value, reverse=True)
+
+    recommended = []
+    total_stackable = 0.0
+    breakdown = []
+
+    # 1. Best primary government scholarship
+    if govt_schemes:
+        top_govt = govt_schemes[0]
+        recommended.append(top_govt.id)
+        total_stackable += top_govt.amount_value
+        breakdown.append({
+            "id": top_govt.id,
+            "name": top_govt.name,
+            "category": "Primary Government Scheme",
+            "amount_value": top_govt.amount_value,
+            "notes": "Primary government grant (central/state combination limit applies: select your highest benefit)."
+        })
+
+    # 2. Add compatible CSR / Private scholarships
+    for c in csr_schemes:
+        recommended.append(c.id)
+        total_stackable += c.amount_value
+        breakdown.append({
+            "id": c.id,
+            "name": c.name,
+            "category": "CSR / Merit Trust Grant",
+            "amount_value": c.amount_value,
+            "notes": "CSR foundation grant. Check specific university/trust rules regarding dual-availing."
+        })
+
+    raw_sum = sum(s.amount_value for s in matched_schemes)
+
+    top_govt_name = govt_schemes[0].name if govt_schemes else "None"
+    top_govt_amt = govt_schemes[0].amount_value if govt_schemes else 0.0
+
+    combination_notes = (
+        f"Smart Stacking Model: Official guidelines prohibit holding multiple government post-matric grants simultaneously. "
+        f"ScholarBot selected your highest-value government grant (₹{top_govt_amt:,.0f} from {top_govt_name}) "
+        f"and stacked permissible CSR / Merit Foundation scholarships. Maximum estimated combined support: ₹{total_stackable:,.0f}/year. "
+        "Always verify institutional combination rules with your college scholarship nodal officer."
+    )
+
+    return {
+        "total_potential_annual": total_stackable,
+        "raw_sum_all_eligible": raw_sum,
+        "recommended_stack": recommended,
+        "stack_breakdown": breakdown,
+        "combination_notes": combination_notes
+    }
