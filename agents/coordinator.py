@@ -131,6 +131,7 @@ SAVED_SHORTLIST: Dict[str, List[str]] = {}
 SAVED_REMINDERS: Dict[str, List[str]] = {}
 PENDING_PAYMENTS: Dict[str, dict] = {}
 PENDING_PAYMENTS_BY_SENDER: Dict[str, dict] = {}
+LAST_DISPATCH_ATTRIBUTION: Dict[str, str] = {}
 
 def get_or_create_profile(user_address: str, ctx: Optional[Context] = None) -> StudentProfile:
     if ctx and hasattr(ctx, "storage"):
@@ -157,6 +158,7 @@ def persist_profile(user_address: str, profile: StudentProfile, ctx: Optional[Co
 # MULTI-AGENT INTER-AGENT ORCHESTRATION WITH RESILIENT FALLBACK
 # ==============================================================================
 async def request_scheme_matching(ctx: Context, profile: StudentProfile, session_id: str) -> tuple[List[ScholarshipItem], List[ScholarshipItem]]:
+    attribution = "⚠️ Specialist unavailable, used local matching engine."
     if SCHEME_AGENT_ADDRESS and hasattr(ctx, "send_and_receive"):
         ctx.logger.info(f"[Coordinator] Dispatching SchemeMatchRequest to SchemeMatchingAgent at {SCHEME_AGENT_ADDRESS}...")
         try:
@@ -168,6 +170,8 @@ async def request_scheme_matching(ctx: Context, profile: StudentProfile, session
             )
             if resp and isinstance(resp, SchemeMatchResponse):
                 ctx.logger.info(f"[Coordinator] Received SchemeMatchResponse from {SCHEME_AGENT_ADDRESS}: {resp.total_found} matches found.")
+                attribution = f"Matched by Scheme Matching Agent ({SCHEME_AGENT_ADDRESS[:16]}...)"
+                LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
                 return resp.matches, resp.close_misses
             else:
                 ctx.logger.warning(f"[Coordinator Fallback] Specialist at {SCHEME_AGENT_ADDRESS} returned status: {status}. Falling back to in-process engine.")
@@ -175,9 +179,12 @@ async def request_scheme_matching(ctx: Context, profile: StudentProfile, session
             ctx.logger.warning(f"[Coordinator Fallback] Error contacting {SCHEME_AGENT_ADDRESS}: {ex}. Falling back to in-process engine.")
 
     ctx.logger.info("[Coordinator In-Process] Executing local matching engine fallback...")
+    LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
     return match_scholarships(profile)
 
 async def request_document_audit(ctx: Context, audit_req: DocumentAuditRequest, income_cap: float) -> DocumentAuditResponse:
+    session_id = audit_req.session_id or str(uuid4())
+    attribution = "⚠️ Specialist unavailable, used local document auditor."
     if DOC_AGENT_ADDRESS and hasattr(ctx, "send_and_receive"):
         ctx.logger.info(f"[Coordinator] Dispatching DocumentAuditRequest to DocComplianceAgent at {DOC_AGENT_ADDRESS}...")
         try:
@@ -189,6 +196,8 @@ async def request_document_audit(ctx: Context, audit_req: DocumentAuditRequest, 
             )
             if resp and isinstance(resp, DocumentAuditResponse):
                 ctx.logger.info(f"[Coordinator] Received DocumentAuditResponse from {DOC_AGENT_ADDRESS}: status={resp.overall_status}")
+                attribution = f"Audited by Document Compliance Agent ({DOC_AGENT_ADDRESS[:16]}...)"
+                LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
                 return resp
             else:
                 ctx.logger.warning(f"[Coordinator Fallback] Subagent at {DOC_AGENT_ADDRESS} returned status: {status}. Falling back to in-process engine.")
@@ -196,20 +205,25 @@ async def request_document_audit(ctx: Context, audit_req: DocumentAuditRequest, 
             ctx.logger.warning(f"[Coordinator Fallback] Error contacting {DOC_AGENT_ADDRESS}: {ex}. Falling back to in-process engine.")
 
     ctx.logger.info("[Coordinator In-Process] Executing local document compliance audit fallback...")
+    LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
     return audit_document_compliance(audit_req, scheme_income_cap=income_cap)
 
-async def request_deadlines(ctx: Context, scheme_ids: List[str]) -> List[DeadlineItem]:
+async def request_deadlines(ctx: Context, scheme_ids: List[str], session_id: Optional[str] = None) -> List[DeadlineItem]:
+    sess_id = session_id or str(uuid4())
+    attribution = "⚠️ Specialist unavailable, used local deadline tracker."
     if TRACKER_AGENT_ADDRESS and hasattr(ctx, "send_and_receive"):
         ctx.logger.info(f"[Coordinator] Dispatching DeadlineRequest to DeadlineTrackerAgent at {TRACKER_AGENT_ADDRESS}...")
         try:
             resp, status = await ctx.send_and_receive(
                 TRACKER_AGENT_ADDRESS,
-                DeadlineRequest(session_id=str(uuid4()), scheme_ids=scheme_ids),
+                DeadlineRequest(session_id=sess_id, scheme_ids=scheme_ids),
                 response_type=DeadlineResponse,
                 timeout=5
             )
             if resp and isinstance(resp, DeadlineResponse):
                 ctx.logger.info(f"[Coordinator] Received DeadlineResponse from {TRACKER_AGENT_ADDRESS}: {len(resp.items)} deadlines.")
+                attribution = f"Tracked by Deadline Tracker Agent ({TRACKER_AGENT_ADDRESS[:16]}...)"
+                LAST_DISPATCH_ATTRIBUTION[sess_id] = attribution
                 return resp.items
             else:
                 ctx.logger.warning(f"[Coordinator Fallback] Subagent at {TRACKER_AGENT_ADDRESS} returned status: {status}. Falling back to in-process engine.")
@@ -230,6 +244,7 @@ async def request_deadlines(ctx: Context, scheme_ids: List[str]) -> List[Deadlin
         )
         for s in schemes if not scheme_ids or s["id"] in scheme_ids
     ]
+    LAST_DISPATCH_ATTRIBUTION[sess_id] = attribution
     return build_deadline_items(selected_items)
 
 # ==============================================================================
@@ -396,7 +411,8 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
 
         # Run matching engine (dispatches SchemeMatchRequest to SchemeMatchingAgent with resilient fallback)
         ctx.logger.info(f"[Coordinator] Orchestrating scheme match for {profile.student_name}...")
-        eligible, close_misses = await request_scheme_matching(ctx, profile, str(uuid4()))
+        match_sess_id = str(uuid4())
+        eligible, close_misses = await request_scheme_matching(ctx, profile, match_sess_id)
         LAST_MATCHES[sender] = eligible
 
         if not eligible:
@@ -411,12 +427,14 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
             return
 
         carousel_card = get_carousel_card(eligible, close_misses)
+        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(match_sess_id, "")
+        attr_line = f"\n\n_{attribution_str}_" if attribution_str else ""
         narration = (
             f"🎉 Badhai ho! Hamne aapke liye **{len(eligible)} matching scholarships** dhundhi hain (published criteria par based; official portal par confirm karein)! "
-            f"Cards ko swipe karke eligibility aur document rules check karein:"
+            f"Cards ko swipe karke eligibility aur document rules check karein:{attr_line}"
             if lang_hindi else
             f"🎉 Found **{len(eligible)} scholarships** matching your profile based on published criteria (confirm on the official portal)! "
-            f"Swipe through the cards below to inspect grant amounts, deadlines, and required documents:"
+            f"Swipe through the cards below to inspect grant amounts, deadlines, and required documents:{attr_line}"
         )
         await ctx.send(sender, create_card_message(narration, "carousel", carousel_card))
         return
@@ -489,14 +507,17 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
         return
 
     if action_type == "view_deadlines":
-        deadline_items = await request_deadlines(ctx, [])
+        deadlines_sess_id = str(uuid4())
+        deadline_items = await request_deadlines(ctx, [], session_id=deadlines_sess_id)
         deadlines_card = get_deadlines_card(deadline_items)
+        attr_deadlines = LAST_DISPATCH_ATTRIBUTION.get(deadlines_sess_id, "")
+        attr_line = f"\n\n_{attr_deadlines}_" if attr_deadlines else ""
         narration = (
             "📅 **Current Academic Session Deadlines & Calendar:**\n"
-            "Ye scholarships closing dates hain. Kisi bhi scheme ka `.ics` calendar event generate kar sakte hain."
+            f"Ye scholarships closing dates hain. Kisi bhi scheme ka `.ics` calendar event generate kar sakte hain.{attr_line}"
             if lang_hindi else
             "📅 **Scholarship Application Deadlines (Academic Year 2026-27):**\n"
-            "Real-time countdowns computed from published cutoffs. Tap below to save reminders:"
+            f"Real-time countdowns computed from published cutoffs. Tap below to save reminders:{attr_line}"
         )
         await ctx.send(sender, create_card_message(narration, "review", deadlines_card))
         return
@@ -725,8 +746,9 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
     doc_keywords = ["certificate", "tehsildar", "annual income", "praman patra", "revenue", "validity", "marksheet", "father", "son of", "bonafide"]
     if any(k in user_text.lower() for k in doc_keywords) and len(user_text) > 30:
         ctx.logger.info(f"[Coordinator] Detected document text payload from {sender}. Running compliance audit...")
+        audit_sess_id = str(uuid4())
         audit_req = DocumentAuditRequest(
-            session_id=str(uuid4()),
+            session_id=audit_sess_id,
             scheme_id="nsp_central_sector",
             doc_type="income_certificate",
             doc_text=user_text,
@@ -734,12 +756,14 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
         )
         audit_res = await request_document_audit(ctx, audit_req, income_cap=profile.family_income or 250000.0)
         card = get_audit_result_card(audit_res)
+        attr_audit = LAST_DISPATCH_ATTRIBUTION.get(audit_sess_id, "")
+        attr_line = f"\n\n_{attr_audit}_" if attr_audit else ""
         narration = (
             f"📄 **Document Pre-Check Audit Complete: Status {audit_res.overall_status} ({audit_res.readiness_score}/100)**\n\n"
-            f"Hamne aapke document ka automated rule check kiya hai:"
+            f"Hamne aapke document ka automated rule check kiya hai:{attr_line}"
             if lang_hindi else
             f"📄 **Document Compliance Audit Complete: {audit_res.overall_status} ({audit_res.readiness_score}/100 Readiness)**\n\n"
-            f"Detailed pre-check findings against published government scholarship criteria:"
+            f"Detailed pre-check findings against published government scholarship criteria:{attr_line}"
         )
         await ctx.send(sender, create_card_message(narration, "review", card))
         return
