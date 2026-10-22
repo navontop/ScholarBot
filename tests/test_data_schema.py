@@ -34,9 +34,10 @@ def test_scholarships_schema():
         assert "states" in elig and len(elig["states"]) > 0
         assert "gender" in elig
 
-        # ISO date check (YYYY-MM-DD)
+        # ISO date check (YYYY-MM-DD or null if unverified for 2026-27 cycle)
         assert "deadline" in item
-        assert re.match(r'^\d{4}-\d{2}-\d{2}$', item["deadline"])
+        if item["deadline"] is not None:
+            assert re.match(r'^\d{4}-\d{2}-\d{2}$', item["deadline"])
         assert "last_verified" in item
         if item.get("verified"):
             assert re.match(r'^\d{4}-\d{2}-\d{2}$', item["last_verified"])

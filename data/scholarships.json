@@ -36,7 +36,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Financial assistance by Ministry of Education for meritorious low-income students in top 20th percentile of their 12th board.",
@@ -58,11 +58,9 @@
       "College Bonafide",
       "Bank Passbook"
     ],
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
-    "notes": "Must be within top 20th percentile of respective 12th board."
+    "application_window": null,
+    "notes": "Must be within top 20th percentile of respective 12th board.",
+    "apply_url_verified": false
   },
   {
     "id": "aicte_pragati_girls",
@@ -98,7 +96,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Empowers female students admitted to 1st year AICTE-approved degree/diploma technical programs with ₹50,000 annual aid.",
@@ -119,11 +117,9 @@
       "Income Certificate (<= 8L)",
       "College Fee Receipt"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Maximum 2 girl children per family eligible."
+    "application_window": null,
+    "notes": "Maximum 2 girl children per family eligible.",
+    "apply_url_verified": false
   },
   {
     "id": "aicte_saksham",
@@ -159,7 +155,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Financial aid for students with >= 40% benchmark disability enrolled in technical courses at AICTE-approved institutes.",
@@ -179,11 +175,9 @@
       "AICTE Allotment Letter",
       "Income Certificate (<= 8L)"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Minimum 40% benchmark disability certificate required."
+    "application_window": null,
+    "notes": "Minimum 40% benchmark disability certificate required.",
+    "apply_url_verified": false
   },
   {
     "id": "post_matric_sc_central",
@@ -219,7 +213,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Full fee reimbursement and monthly allowance for Scheduled Caste students pursuing post-matric and higher studies.",
@@ -239,15 +233,13 @@
       "Income Certificate (<= 2.5L)",
       "College Fee Structure"
     ],
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "60:40 fund sharing between Centre and State disbursed directly to bank account via DBT."
+    "application_window": null,
+    "notes": "60:40 fund sharing between Centre and State disbursed directly to bank account via DBT.",
+    "apply_url_verified": false
   },
   {
     "id": "post_matric_st_central",
-    "name": "National Fellowship and Scholarship for Higher Education of ST Students",
+    "name": "Centrally Sponsored Post-Matric Scholarship for ST Students",
     "provider": "Ministry of Tribal Affairs, Govt of India",
     "portal": "National Scholarship Portal (NSP)",
     "portal_url": "https://scholarships.gov.in",
@@ -277,7 +269,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-25",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Covers actual tuition fees and academic expenses for Scheduled Tribe students in top institutes like IITs, NITs, and central universities.",
@@ -298,11 +290,9 @@
       "College Bonafide",
       "Bank Passbook"
     ],
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Full fee waiver and living stipend for Scheduled Tribe students."
+    "application_window": null,
+    "notes": "Full fee waiver and living stipend for Scheduled Tribe students.",
+    "apply_url_verified": false
   },
   {
     "id": "minority_post_matric",
@@ -343,7 +333,7 @@
       "minority_required": true,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-20",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Financial assistance for meritorious students from notified minority communities to pursue higher education.",
@@ -363,11 +353,9 @@
       "Income Certificate (<= 2.0L)",
       "Previous Marksheet"
     ],
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
-    "notes": "For students belonging to 6 notified religious minority communities."
+    "application_window": null,
+    "notes": "For students belonging to 6 notified religious minority communities.",
+    "apply_url_verified": false
   },
   {
     "id": "raj_postmatric_sje",
@@ -376,30 +364,30 @@
     "portal": "SJMS Portal Rajasthan",
     "portal_url": "https://sjmsnew.rajasthan.gov.in/scholarship/",
     "source_url": "https://sje.rajasthan.gov.in",
-    "amount": "100% Tuition Fee Reimbursement + Monthly Maintenance Allowance",
-    "amount_value": 60000,
+    "amount": "100% Course Fee Reimbursement + Monthly Maintenance Allowance",
+    "amount_value": 65000,
     "eligibility": {
       "categories": [
-        "General",
+        "EBC",
         "EWS",
-        "OBC",
-        "SC",
-        "ST",
+        "General",
         "Minority",
+        "OBC",
         "SBC",
-        "EBC"
+        "SC",
+        "ST"
       ],
       "min_marks": 50.0,
       "max_family_income": 250000,
       "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
         "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
+        "B.Tech / B.E.",
         "Class 11th - 12th",
         "Degree",
-        "Engineering"
+        "Diploma / Polytechnic",
+        "Engineering",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "Rajasthan"
@@ -409,7 +397,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Flagship Rajasthan state scholarship granting 100% course fee waiver for domicile students via Jan Aadhaar DBT.",
@@ -424,16 +412,15 @@
       "Rajasthan"
     ],
     "docs_required": [
-      "Jan Aadhaar Card",
-      "Digital Mool Niwas",
       "Caste Certificate",
-      "Income Certificate (Max 6 months old)"
+      "Digital Mool Niwas",
+      "Digital Mool Niwas (Domicile)",
+      "Income Certificate (Max 6 months old)",
+      "Jan Aadhaar Card"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
-    "notes": "Income certificate must strictly be issued within the last 6 months (Form I/K/M)."
+    "application_window": null,
+    "notes": "Income certificate must strictly be issued within the last 6 months (Form I/K/M).",
+    "apply_url_verified": true
   },
   {
     "id": "up_postmatric_dashmottar",
@@ -446,24 +433,25 @@
     "amount_value": 55000,
     "eligibility": {
       "categories": [
-        "General",
         "EWS",
+        "General",
+        "Minority",
         "OBC",
         "SC",
-        "ST",
-        "Minority"
+        "ST"
       ],
       "min_marks": 50.0,
       "max_family_income": 250000,
       "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
         "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
+        "B.Tech / B.E.",
         "Class 11th - 12th",
         "Degree",
-        "Engineering"
+        "Diploma / Polytechnic",
+        "Engineering",
+        "Law (LLB / LLM)",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "Uttar Pradesh"
@@ -473,7 +461,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Comprehensive scholarship for UP domicile college students covering non-refundable fees and monthly stipend.",
@@ -488,15 +476,15 @@
       "Uttar Pradesh"
     ],
     "docs_required": [
+      "College Fee Receipt",
+      "DigiLocker Marksheet",
       "Income Certificate with Application & Certificate Number",
       "UP Domicile",
-      "DigiLocker Marksheet"
+      "UP Domicile Certificate"
     ],
-    "application_window": {
-      "opens": "2026-07-15",
-      "closes": "2026-12-31"
-    },
-    "notes": "College must verify 75% biometric attendance before endorsing."
+    "application_window": null,
+    "notes": "College must verify 75% biometric attendance before endorsing.",
+    "apply_url_verified": true
   },
   {
     "id": "maha_ebc_rajarshi_shahu",
@@ -505,24 +493,25 @@
     "portal": "MahaDBT Portal",
     "portal_url": "https://mahadbt.maharashtra.gov.in",
     "source_url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=4950543063675038",
-    "amount": "50% to 100% Tuition & Exam Fee Concession",
-    "amount_value": 40000,
+    "amount": "50% Tuition & Exam Fee Waiver (up to ₹50,000+) across all professional courses",
+    "amount_value": 50000,
     "eligibility": {
       "categories": [
-        "General",
         "EWS",
+        "General",
         "OBC"
       ],
       "min_marks": 50.0,
       "max_family_income": 800000,
       "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
         "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
+        "B.Tech / B.E.",
         "Degree",
-        "Engineering"
+        "Diploma / Polytechnic",
+        "Engineering",
+        "Law (LLB / LLM)",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "Maharashtra"
@@ -532,7 +521,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Fee concession scheme for students from Economically Backward Classes enrolled in professional higher education in Maharashtra.",
@@ -547,15 +536,16 @@
       "Maharashtra"
     ],
     "docs_required": [
+      "CAP Allotment Letter",
       "Maharashtra Domicile",
-      "Tahsildar Income Certificate (<= 8L)",
-      "CAP Allotment Letter"
+      "Maharashtra Domicile Certificate",
+      "Ration Card",
+      "Tahsildar Income Certificate (<= 8 Lakhs)",
+      "Tahsildar Income Certificate (<= 8L)"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Valid for CAP admissions; management quota admissions are disqualified."
+    "application_window": null,
+    "notes": "Valid for CAP admissions; management quota admissions are disqualified.",
+    "apply_url_verified": true
   },
   {
     "id": "bihar_post_matric",
@@ -564,26 +554,27 @@
     "portal": "PMS Bihar Online Portal",
     "portal_url": "https://pmsonline.bih.nic.in",
     "source_url": "https://pmsonline.bih.nic.in",
-    "amount": "Full Course Fee Reimbursement + Book Allowance",
-    "amount_value": 35000,
+    "amount": "Up to ₹15,000 for General Courses / up to ₹75,000 for Engineering & Medical",
+    "amount_value": 75000,
     "eligibility": {
       "categories": [
+        "BC",
+        "EBC",
+        "EWS",
         "OBC",
         "SC",
-        "ST",
-        "EWS",
-        "BC",
-        "EBC"
+        "ST"
       ],
       "min_marks": 50.0,
       "max_family_income": 300000,
       "courses": [
-        "B.Tech / B.E.",
-        "Diploma / Polytechnic",
         "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
+        "B.Tech / B.E.",
         "Degree",
-        "Engineering"
+        "Diploma / Polytechnic",
+        "Engineering",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "Bihar"
@@ -593,7 +584,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-10",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Financial support for post-matric studies for domicile students of Bihar belonging to BC, EBC, SC, ST communities.",
@@ -609,14 +600,14 @@
     ],
     "docs_required": [
       "Bihar Residential Certificate",
-      "Digital Caste Certificate",
-      "CO/SDO Income Certificate (<= 3L)"
+      "CO/SDO Income Certificate (<= 3L)",
+      "CO/SDO Signed Income Certificate",
+      "College Fee Structure",
+      "Digital Caste Certificate"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Direct bank transfer through state treasury for college fees."
+    "application_window": null,
+    "notes": "Direct bank transfer through state treasury for college fees.",
+    "apply_url_verified": false
   },
   {
     "id": "mp_postmatric_scholarship",
@@ -651,7 +642,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-20",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Fee and hostel allowance for reserved category students in higher education institutes across Madhya Pradesh.",
@@ -671,11 +662,9 @@
       "Digital Caste Certificate",
       "Income Certificate (<= 3L)"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
-    "notes": "Requires Samagra ID mapping and college portal registration."
+    "application_window": null,
+    "notes": "Requires Samagra ID mapping and college portal registration.",
+    "apply_url_verified": true
   },
   {
     "id": "delhi_merit_scholarship",
@@ -684,27 +673,28 @@
     "portal": "Delhi e-District Portal",
     "portal_url": "https://edistrict.delhigovt.nic.in",
     "source_url": "https://edistrict.delhigovt.nic.in",
-    "amount": "₹21,600 to ₹35,000 per year cash assistance",
-    "amount_value": 35000,
+    "amount": "100% fee waiver (Income <= ₹2.5L) or 50% waiver (Income ₹2.5L - ₹6.0L)",
+    "amount_value": 100000,
     "eligibility": {
       "categories": [
-        "General",
         "EWS",
+        "General",
+        "Minority",
         "OBC",
         "SC",
-        "ST",
-        "Minority"
+        "ST"
       ],
       "min_marks": 60.0,
       "max_family_income": 300000,
       "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
         "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
+        "B.Tech / B.E.",
         "Degree",
-        "Engineering"
+        "Diploma / Polytechnic",
+        "Engineering",
+        "Law (LLB / LLM)",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "Delhi"
@@ -714,7 +704,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Merit scholarship by Delhi Govt for students securing >= 60% marks enrolled in recognized colleges/universities in NCT of Delhi.",
@@ -730,14 +720,14 @@
     ],
     "docs_required": [
       "Delhi Address Proof",
-      "Revenue Dept Income Certificate",
-      "Delhi State University Fee Slip"
+      "Delhi State University Fee Receipt",
+      "Delhi State University Fee Slip",
+      "Marksheet",
+      "Revenue Dept Income Certificate"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Covers students studying in state universities of Delhi (IPU, DTU, NSUT, AUD, DSEU)."
+    "application_window": null,
+    "notes": "Covers students studying in state universities of Delhi (IPU, DTU, NSUT, AUD, DSEU).",
+    "apply_url_verified": false
   },
   {
     "id": "wb_oasis_scholarship",
@@ -746,23 +736,24 @@
     "portal": "OASIS Portal West Bengal",
     "portal_url": "https://oasis.gov.in",
     "source_url": "https://oasis.gov.in",
-    "amount": "Tuition Fee Waiver + ₹1,200/month Hosteller Allowance",
-    "amount_value": 30000,
+    "amount": "Full Tuition Fees + up to ₹1,200/month hostel maintenance allowance",
+    "amount_value": 45000,
     "eligibility": {
       "categories": [
+        "OBC",
         "SC",
-        "ST",
-        "OBC"
+        "ST"
       ],
       "min_marks": 50.0,
       "max_family_income": 250000,
       "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
         "B.Sc / BCA / B.Com / BA",
-        "Diploma / Polytechnic",
+        "B.Tech / B.E.",
         "Degree",
-        "Engineering"
+        "Diploma / Polytechnic",
+        "Engineering",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "West Bengal"
@@ -772,7 +763,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-10",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Online application scholarship system for Scheduled Castes, Scheduled Tribes and OBC students of West Bengal.",
@@ -787,15 +778,15 @@
       "West Bengal"
     ],
     "docs_required": [
-      "Digital SC/ST Caste Certificate",
       "BDO/SDO Income Certificate",
-      "College Bonafide"
+      "BDO/SDO Signed Income Certificate",
+      "Bank Passbook",
+      "College Bonafide",
+      "Digital SC/ST Caste Certificate"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Online submission must be followed by physical verification at block level."
+    "application_window": null,
+    "notes": "Online submission must be followed by physical verification at block level.",
+    "apply_url_verified": false
   },
   {
     "id": "karnataka_ssp_postmatric",
@@ -834,7 +825,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Unified single-window scholarship platform in Karnataka providing tuition reimbursement and Vidyasiri hostel support.",
@@ -853,11 +844,9 @@
       "RD Number (Income & Caste Certificate)",
       "University Seat Number (USN)"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "e-Attestation software automatically checks certificates using government RD numbers."
+    "application_window": null,
+    "notes": "e-Attestation software automatically checks certificates using government RD numbers.",
+    "apply_url_verified": false
   },
   {
     "id": "reliance_ug_scholarship",
@@ -870,21 +859,22 @@
     "amount_value": 200000,
     "eligibility": {
       "categories": [
-        "General",
         "EWS",
+        "General",
+        "Minority",
         "OBC",
         "SC",
-        "ST",
-        "Minority"
+        "ST"
       ],
       "min_marks": 60.0,
       "max_family_income": 1500000,
       "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
         "B.Sc / BCA / B.Com / BA",
+        "B.Tech / B.E.",
         "Degree",
-        "Engineering"
+        "Engineering",
+        "Law (LLB / LLM)",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "All",
@@ -895,7 +885,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-10-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Merit-cum-means scholarship supporting 5,000 top first-year undergraduate students with grants and alumni network.",
@@ -913,13 +903,13 @@
     "docs_required": [
       "Class 12 Marksheet (>= 60%)",
       "College Admission Bonafide",
-      "Income Certificate (<= 15L)"
+      "College Bonafide / ID",
+      "Income Certificate (<= 15L)",
+      "Income Proof (ITR / Salary Slip / Ration Card)"
     ],
-    "application_window": {
-      "opens": "2026-08-15",
-      "closes": "2026-10-31"
-    },
-    "notes": "5,000 undergraduate scholars selected annually based on merit-cum-means."
+    "application_window": null,
+    "notes": "5,000 undergraduate scholars selected annually based on merit-cum-means.",
+    "apply_url_verified": true
   },
   {
     "id": "hdfc_parivartan_ecss",
@@ -940,7 +930,7 @@
         "Minority"
       ],
       "min_marks": 55.0,
-      "max_family_income": 250000,
+      "max_family_income": 600000,
       "courses": [
         "Class 10th",
         "Class 11th - 12th",
@@ -961,7 +951,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-20",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Supports students facing severe financial hardship or family crisis to prevent school and college dropouts.",
@@ -981,11 +971,10 @@
       "Previous Marksheet (>= 55%)",
       "Income Proof (<= 6L)"
     ],
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-15"
-    },
-    "notes": "Emergency assistance preventing school and college dropouts."
+    "application_window": null,
+    "notes": "Emergency assistance preventing school and college dropouts.",
+    "family_income_max": 600000,
+    "apply_url_verified": true
   },
   {
     "id": "tata_trusts_merit",
@@ -1024,7 +1013,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-25",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Direct financial aid from Tata Trusts covering significant portion of tuition fees for hardworking college students.",
@@ -1044,11 +1033,9 @@
       "Income Tax Return / Tahsildar Certificate",
       "Marksheets"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-25"
-    },
-    "notes": "Direct fee grant paid to college for meritorious students from low-income homes."
+    "application_window": null,
+    "notes": "Direct fee grant paid to college for meritorious students from low-income homes.",
+    "apply_url_verified": true
   },
   {
     "id": "ongc_scholarship",
@@ -1061,8 +1048,8 @@
     "amount_value": 48000,
     "eligibility": {
       "categories": [
-        "General",
         "EWS",
+        "General",
         "OBC",
         "SC",
         "ST"
@@ -1071,10 +1058,10 @@
       "max_family_income": 200000,
       "courses": [
         "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "MBA / M.Tech / M.Sc",
         "Degree",
-        "Engineering"
+        "Engineering",
+        "MBA / M.Tech / M.Sc",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "All",
@@ -1085,7 +1072,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-10",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "ONGC flagship CSR scholarship disbursed annually to students enrolled in regular engineering, MBBS and MBA courses.",
@@ -1102,14 +1089,18 @@
     ],
     "docs_required": [
       "Caste / Income Certificate (<= 2L)",
+      "Category Certificate (SC/ST/OBC/EWS)",
       "Class 12 Marksheet (>= 60%)",
-      "College Verification Slip"
+      "College Verification Annexure",
+      "College Verification Form",
+      "College Verification Slip",
+      "Income Certificate (<= 2.0 Lakhs)",
+      "Income Proof (<= 2.0 Lakhs)",
+      "OBC NCL / EWS Certificate"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-10"
-    },
-    "notes": "₹4,000/month disbursed directly for engineering, MBBS, and MBA students."
+    "application_window": null,
+    "notes": "₹4,000/month disbursed directly for engineering, MBBS, and MBA students.",
+    "apply_url_verified": true
   },
   {
     "id": "sitaram_jindal_scholarship",
@@ -1148,7 +1139,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Monthly stipend support from Sitaram Jindal Foundation for underprivileged youth pursuing graduation and polytechnic diplomas.",
@@ -1168,11 +1159,9 @@
       "Last Exam Marksheet (>= 60%)",
       "Principal Sign"
     ],
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-31"
-    },
-    "notes": "Monthly educational stipend supporting undergraduate and polytechnic studies."
+    "application_window": null,
+    "notes": "Monthly educational stipend supporting undergraduate and polytechnic studies.",
+    "apply_url_verified": true
   },
   {
     "id": "kotak_kanya_scholarship",
@@ -1185,21 +1174,21 @@
     "amount_value": 150000,
     "eligibility": {
       "categories": [
-        "General",
         "EWS",
+        "General",
+        "Minority",
         "OBC",
         "SC",
-        "ST",
-        "Minority"
+        "ST"
       ],
       "min_marks": 85.0,
       "max_family_income": 600000,
       "courses": [
         "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "Law (LLB / LLM)",
         "Degree",
-        "Engineering"
+        "Engineering",
+        "Law (LLB / LLM)",
+        "MBBS / BDS / Medical"
       ],
       "states": [
         "All",
@@ -1210,7 +1199,7 @@
       "minority_required": false,
       "min_year_of_study": 1
     },
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "description": "Substantial financial grant to support meritorious girl students from low-income families pursuing professional 4-5 year degrees.",
@@ -1226,15 +1215,16 @@
       "Pan-India"
     ],
     "docs_required": [
+      "Aadhaar Card",
+      "Admission Letter for Professional Course",
       "Class 12 Marksheet (>= 85%)",
+      "Income Certificate (<= 6 Lakhs)",
       "Income Certificate (<= 6L)",
       "Professional Admission Allotment"
     ],
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-15"
-    },
-    "notes": "₹1.5 Lakhs/year grant exclusively for girls in professional graduation courses."
+    "application_window": null,
+    "notes": "₹1.5 Lakhs/year grant exclusively for girls in professional graduation courses.",
+    "apply_url_verified": true
   },
   {
     "id": "aicte_pragati_diploma",
@@ -1276,27 +1266,25 @@
       "All",
       "Pan-India"
     ],
-    "level": "school",
+    "level": "UG",
     "scheme_type": "central",
     "gender": "Female",
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Aadhaar Card",
       "Class 10 Marksheet",
       "Polytechnic Bonafide",
       "Income Certificate"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Applicable for 1st year polytechnic diploma or 2nd year lateral entry.",
-    "description": "Financial assistance for girls enrolled in AICTE-approved polytechnic diploma institutions."
+    "description": "Financial assistance for girls enrolled in AICTE-approved polytechnic diploma institutions.",
+    "apply_url_verified": false
   },
   {
     "id": "aicte_saksham_diploma",
@@ -1338,27 +1326,25 @@
       "All",
       "Pan-India"
     ],
-    "level": "school",
+    "level": "UG",
     "scheme_type": "central",
     "gender": "All",
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "UDID Card (>= 40%)",
       "Diploma Admission Receipt",
       "Income Certificate",
       "Aadhaar Card"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires minimum 40% benchmark disability.",
-    "description": "Supports differently-abled students pursuing AICTE polytechnic diploma courses."
+    "description": "Supports differently-abled students pursuing AICTE polytechnic diploma courses.",
+    "apply_url_verified": false
   },
   {
     "id": "aicte_swanath",
@@ -1408,20 +1394,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Orphan Certificate / Armed Forces Martyr Proof / UDID",
       "College Bonafide",
       "Income Certificate"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For orphans, either or both parents deceased due to COVID-19, or wards of Armed Forces.",
-    "description": "Financial safety net for orphans and wards of fallen soldiers studying in technical institutions."
+    "description": "Financial safety net for orphans and wards of fallen soldiers studying in technical institutions.",
+    "apply_url_verified": false
   },
   {
     "id": "post_matric_obc_central",
@@ -1469,21 +1453,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "OBC Non-Creamy Layer / EBC Certificate",
       "Current Income Certificate",
       "Marksheet",
       "Aadhaar Card"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For OBC and Economically Backward Class candidates.",
-    "description": "Flagship central scholarship under PM-YASASVI scheme for backward class students."
+    "description": "Flagship central scholarship under PM-YASASVI scheme for backward class students.",
+    "apply_url_verified": false
   },
   {
     "id": "top_class_sc_central",
@@ -1530,21 +1512,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "SC Certificate",
       "Institute Fee Breakdown Receipt",
       "Income Certificate (<= 8L)",
       "Admission Allotment"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers premier institutes like IITs, NITs, IIMs, NLUs, AIIMS.",
-    "description": "Full funding package covering total tuition, books, laptop and hostel for SC students in elite institutes."
+    "description": "Full funding package covering total tuition, books, laptop and hostel for SC students in elite institutes.",
+    "apply_url_verified": false
   },
   {
     "id": "top_class_st_central",
@@ -1592,20 +1572,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "ST Caste Certificate",
       "Notified Institute Admission Letter",
       "Family Income Certificate"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers 250+ top educational institutions in India.",
-    "description": "Prestigious MoTA scholarship covering all educational expenses for ST scholars in premier institutes."
+    "description": "Prestigious MoTA scholarship covering all educational expenses for ST scholars in premier institutes.",
+    "apply_url_verified": false
   },
   {
     "id": "depwd_post_matric_disability",
@@ -1660,21 +1638,19 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "UDID Card (>= 40% Disability)",
       "Family Income Certificate",
       "College Bonafide",
       "Bank Passbook"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Includes book grant and special escort/reader allowances for visually/physically impaired.",
-    "description": "Central scholarship ensuring higher education accessibility for students with benchmark disabilities."
+    "description": "Central scholarship ensuring higher education accessibility for students with benchmark disabilities.",
+    "apply_url_verified": false
   },
   {
     "id": "depwd_pre_matric_disability",
@@ -1722,21 +1698,19 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "UDID Card (>= 40%)",
       "School Bonafide",
       "Income Certificate",
       "Aadhaar Card"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Aimed at reducing drop-out rates of specially-abled children in secondary schooling.",
-    "description": "Pre-matric financial assistance for disabled school students in Class 9 and 10."
+    "description": "Pre-matric financial assistance for disabled school students in Class 9 and 10.",
+    "apply_url_verified": false
   },
   {
     "id": "depwd_top_class_disability",
@@ -1788,20 +1762,18 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "UDID Card (>= 40%)",
       "Notified Institute Admission Letter",
       "Income Certificate"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers 240+ notified institutions of excellence across India.",
-    "description": "Premier central scholarship for differently-abled scholars studying in prestigious institutions."
+    "description": "Premier central scholarship for differently-abled scholars studying in prestigious institutions.",
+    "apply_url_verified": false
   },
   {
     "id": "moma_post_matric_minority",
@@ -1849,21 +1821,19 @@
     "disability_required": false,
     "minority_required": true,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Self-Declaration / Minority Community Certificate",
       "Income Certificate (<= 2L)",
       "Marksheet (>= 50%)",
       "Bonafide"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Notified minority communities: Muslims, Christians, Sikhs, Buddhists, Jains and Parsis.",
-    "description": "National aid for students from notified religious minorities pursuing post-matric courses."
+    "description": "National aid for students from notified religious minorities pursuing post-matric courses.",
+    "apply_url_verified": false
   },
   {
     "id": "moma_mcm_professional",
@@ -1910,21 +1880,19 @@
     "disability_required": false,
     "minority_required": true,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Minority Self-Declaration",
       "Income Proof (<= 2.5L)",
       "Course Fee Receipt",
       "Marksheet"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "30% of total scholarships earmarked for girl students of minority communities.",
-    "description": "Financial support for minority students pursuing undergraduate professional and technical degrees."
+    "description": "Financial support for minority students pursuing undergraduate professional and technical degrees.",
+    "apply_url_verified": false
   },
   {
     "id": "begum_hazrat_mahal",
@@ -1967,21 +1935,19 @@
     "disability_required": false,
     "minority_required": true,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Minority Certificate",
       "Income Certificate (<= 2.0 Lakhs)",
       "Class 10 Marksheet (>= 50%)",
       "School Bonafide"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Exclusively for girl students belonging to national religious minorities.",
-    "description": "Special educational grant for minority girl students studying in Classes 11 and 12."
+    "description": "Special educational grant for minority girl students studying in Classes 11 and 12.",
+    "apply_url_verified": false
   },
   {
     "id": "ishan_uday_ner",
@@ -2045,20 +2011,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Permanent Resident Certificate (PRC) of NER state",
       "Income Certificate (<= 4.5L)",
       "College Bonafide"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "10,000 fresh scholarships awarded every year for students of North Eastern states.",
-    "description": "High-value monthly stipend scheme by UGC promoting higher education access for North East youth."
+    "description": "High-value monthly stipend scheme by UGC promoting higher education access for North East youth.",
+    "apply_url_verified": false
   },
   {
     "id": "nmms_scholarship",
@@ -2107,21 +2071,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-15"
-    },
+    "application_window": null,
     "docs_required": [
       "NMMS State Exam Rank Card",
       "Income Certificate (<= 3.5L)",
       "School Bonafide",
       "Bank Account"
     ],
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires clearing the state-level NMMS selection test in Class 8.",
-    "description": "Prestigious central merit scholarship preventing school dropouts between Class 8 and 12."
+    "description": "Prestigious central merit scholarship preventing school dropouts between Class 8 and 12.",
+    "apply_url_verified": false
   },
   {
     "id": "pmss_capf_ar",
@@ -2174,21 +2136,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Service Certificate / PPO",
       "Class 12 Marksheet (>= 60%)",
       "College Bonafide",
       "Fee Receipt"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For wards and surviving spouses of deceased/retired CAPF and Assam Rifles personnel.",
-    "description": "Home Ministry scholarship honouring CAPF personnel by funding higher professional degrees for children."
+    "description": "Home Ministry scholarship honouring CAPF personnel by funding higher professional degrees for children.",
+    "apply_url_verified": false
   },
   {
     "id": "pmss_railway_rpf",
@@ -2239,20 +2199,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "RPF Service Certificate",
       "Class 12 Marksheet",
       "Admission Fee Receipt"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For wards of Railway Protection Force and Railway Protection Special Force personnel.",
-    "description": "Railways grant for dependent children of RPF personnel pursuing technical degrees."
+    "description": "Railways grant for dependent children of RPF personnel pursuing technical degrees.",
+    "apply_url_verified": false
   },
   {
     "id": "dst_inspire_scholarship",
@@ -2301,20 +2259,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-09-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Marksheet (Top 1% Cutoff)",
       "Advisory Note / Eligibility Certificate",
       "B.Sc Enrollment Certificate"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling. Requires enrollment in natural/basic sciences (B.Sc / BS / Int. M.Sc) within top 1% of 12th board.",
-    "description": "Elite science scholarship by DST awarding ₹80,000/year to top 1% students pursuing pure science degrees."
+    "description": "Elite science scholarship by DST awarding ₹80,000/year to top 1% students pursuing pure science degrees.",
+    "apply_url_verified": true
   },
   {
     "id": "ugc_single_girl_child",
@@ -2362,20 +2318,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Single Girl Child Affidavit (Magistrate Signed)",
       "PhD Admission Registration Proof",
       "Master Degree Marksheet"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For only girl child in family pursuing doctoral research in Indian universities.",
-    "description": "Prestigious UGC research fellowship dedicated to single girl child doctoral scholars."
+    "description": "Prestigious UGC research fellowship dedicated to single girl child doctoral scholars.",
+    "apply_url_verified": false
   },
   {
     "id": "rajasthan_cm_higher_ed",
@@ -2426,150 +2380,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Jan Aadhaar Card",
       "Class 12 RBSE Marksheet",
       "Income Certificate Form I/K/M (Issued within 6 months)",
       "College Fee Receipt"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Must have passed RBSE 12th board within top 1 lakh merit list. Income certificate older than 6 months is strictly rejected.",
-    "description": "Financial assistance by Rajasthan Higher Education department for low-income meritorious students."
-  },
-  {
-    "id": "rajasthan_uttarmatric_sod",
-    "name": "Rajasthan Post-Matric Scholarship Scheme (SJMS Uttarmatric)",
-    "provider": "Social Justice & Empowerment Department (SJMS), Govt of Rajasthan",
-    "portal": "Rajasthan SJMS Portal",
-    "portal_name": "Rajasthan SJMS Portal",
-    "portal_url": "https://sjmsnew.rajasthan.gov.in",
-    "portal_home_url": "https://sjmsnew.rajasthan.gov.in",
-    "source_url": "https://sjmsnew.rajasthan.gov.in/scholarship",
-    "apply_url": "https://sso.rajasthan.gov.in/signin",
-    "apply_steps_hint": "Log in via Rajasthan SSO -> SJMS Scholarship Portal using Jan Aadhaar ID",
-    "amount": "100% Course Fee Reimbursement + Monthly Maintenance Allowance",
-    "amount_value": 65000,
-    "eligibility": {
-      "categories": [
-        "SC",
-        "ST",
-        "OBC",
-        "EWS"
-      ],
-      "min_marks": 45.0,
-      "max_family_income": 250000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
-        "Degree"
-      ],
-      "states": [
-        "Rajasthan"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "Rajasthan"
-    ],
-    "level": "UG",
-    "scheme_type": "state",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
-    "docs_required": [
-      "Jan Aadhaar Card",
-      "Digital Mool Niwas (Domicile)",
-      "Caste Certificate",
-      "Income Certificate (Max 6 months old)"
-    ],
-    "deadline": "2026-12-15",
-    "last_verified": null,
-    "verified": false,
-    "notes": "Jan Aadhaar bank account must have NPCI DBT mapping active.",
-    "description": "Full post-matric tuition waiver scheme for SC, ST, and BPL/OBC students of Rajasthan."
-  },
-  {
-    "id": "up_scholarship_postmatric",
-    "name": "UP Dashmottar Scholarship and Fee Reimbursement Online System",
-    "provider": "Social Welfare & Backward Classes Welfare Dept, Govt of Uttar Pradesh",
-    "portal": "UP Scholarship Portal (SAMS)",
-    "portal_name": "UP Scholarship Portal",
-    "portal_url": "https://scholarship.up.gov.in",
-    "portal_home_url": "https://scholarship.up.gov.in",
-    "source_url": "https://scholarship.up.gov.in",
-    "apply_url": "https://scholarship.up.gov.in/RegistrationNew.aspx",
-    "apply_steps_hint": "Open scholarship.up.gov.in -> Student -> Registration -> Postmatric Other Than Inter -> Fill DigiLocker eKYC",
-    "amount": "Complete Fee Reimbursement (up to ₹50,000+) + maintenance allowance",
-    "amount_value": 55000,
-    "eligibility": {
-      "categories": [
-        "General",
-        "EWS",
-        "OBC",
-        "SC",
-        "ST",
-        "Minority"
-      ],
-      "min_marks": 50.0,
-      "max_family_income": 250000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
-        "Law (LLB / LLM)",
-        "Degree"
-      ],
-      "states": [
-        "Uttar Pradesh"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "Uttar Pradesh"
-    ],
-    "level": "UG",
-    "scheme_type": "state",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-07-15",
-      "closes": "2026-12-31"
-    },
-    "docs_required": [
-      "Income Certificate with Application & Certificate Number",
-      "UP Domicile Certificate",
-      "College Fee Receipt",
-      "DigiLocker Marksheet"
-    ],
-    "deadline": "2026-12-31",
-    "last_verified": null,
-    "verified": false,
-    "notes": "Strict attendance requirement: colleges verify minimum 75% biometric attendance before endorsing.",
-    "description": "Uttar Pradesh's primary tuition waiver program for undergraduate, diploma, and postgraduate courses."
+    "description": "Financial assistance by Rajasthan Higher Education department for low-income meritorious students.",
+    "apply_url_verified": true
   },
   {
     "id": "mp_mmvy_scholarship",
@@ -2618,21 +2441,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "MP Domicile Certificate",
       "Samagra Member ID",
       "Class 12 MP Board (>= 70%) or CBSE (>= 85%)",
       "JEE/NEET Allotment Letter"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers engineering, medical, and national law institute course fees for MP domicile students.",
-    "description": "High-impact scheme paying full tuition fees for MP students securing admissions in premier professional courses."
+    "description": "High-impact scheme paying full tuition fees for MP students securing admissions in premier professional courses.",
+    "apply_url_verified": true
   },
   {
     "id": "mp_gaon_ki_beti",
@@ -2680,20 +2501,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Gaon Ki Beti Certificate from Gram Panchayat",
       "Class 12 Marksheet (First Division >= 60%)",
       "College Admission Proof"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For rural girl students who scored 1st division in Class 12.",
-    "description": "State incentive program promoting higher education enrollment among rural girls in MP."
+    "description": "State incentive program promoting higher education enrollment among rural girls in MP.",
+    "apply_url_verified": true
   },
   {
     "id": "haryana_harchhatravratti",
@@ -2740,21 +2559,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Parivar Pehchan Patra (PPP / Family ID)",
       "Digital Caste Certificate",
       "Income Verification via PPP",
       "College Bonafide"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Parivar Pehchan Patra (PPP) is mandatory for data fetch and verification in Haryana.",
-    "description": "Unified financial aid portal of Haryana funding higher studies for backward class students."
+    "description": "Unified financial aid portal of Haryana funding higher studies for backward class students.",
+    "apply_url_verified": true
   },
   {
     "id": "punjab_ashirwad_postmatric",
@@ -2800,86 +2617,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Freeship Card (Issued via portal)",
       "SC Caste Certificate",
       "Punjab Domicile",
       "Income Certificate"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Punjab Freeship Card enables cashless admission without upfront fee payment.",
-    "description": "Flagship scheme in Punjab enabling cashless admissions and fee waivers for Scheduled Caste students."
-  },
-  {
-    "id": "delhi_merit_means",
-    "name": "Delhi Government Merit-cum-Means Financial Assistance Scheme",
-    "provider": "Department of Higher Education, Govt of NCT of Delhi",
-    "portal": "e-District Delhi Portal",
-    "portal_name": "e-District Delhi Portal",
-    "portal_url": "https://edistrict.delhigovt.nic.in",
-    "portal_home_url": "https://edistrict.delhigovt.nic.in",
-    "source_url": "https://edistrict.delhigovt.nic.in",
-    "apply_url": "https://edistrict.delhigovt.nic.in",
-    "apply_steps_hint": "Register on e-District Delhi -> Apply for Services -> Higher Education Department -> Merit-cum-Means",
-    "amount": "100% fee waiver (Income <= ₹2.5L) or 50% waiver (Income ₹2.5L - ₹6.0L)",
-    "amount_value": 100000,
-    "eligibility": {
-      "categories": [
-        "General",
-        "EWS",
-        "OBC",
-        "SC",
-        "ST",
-        "Minority"
-      ],
-      "min_marks": 60.0,
-      "max_family_income": 600000,
-      "courses": [
-        "B.Tech / B.E.",
-        "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "MBBS / BDS / Medical",
-        "Law (LLB / LLM)",
-        "Degree"
-      ],
-      "states": [
-        "Delhi"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "Delhi"
-    ],
-    "level": "UG",
-    "scheme_type": "state",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "docs_required": [
-      "Delhi Address Proof",
-      "Revenue Dept Income Certificate",
-      "Delhi State University Fee Receipt",
-      "Marksheet"
-    ],
-    "deadline": "2026-12-31",
-    "last_verified": null,
-    "verified": false,
-    "notes": "Applicable for students pursuing degrees in state universities of Delhi (IPU, DTU, NSUT, AUD, DSEU).",
-    "description": "Generous fee waiver by Delhi Govt covering up to 100% tuition for Delhi state university students."
+    "description": "Flagship scheme in Punjab enabling cashless admissions and fee waivers for Scheduled Caste students.",
+    "apply_url_verified": true
   },
   {
     "id": "hp_kalpana_chawla",
@@ -2928,20 +2678,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Himachali Bonafide Certificate",
       "Class 12 HP Board Marksheet",
       "College Admission Receipt"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Awarded to top 2,000 meritorious female students of HP Board passing Class 12.",
-    "description": "Honouring astronaut Kalpana Chawla by encouraging meritorious girls of Himachal Pradesh in higher education."
+    "description": "Honouring astronaut Kalpana Chawla by encouraging meritorious girls of Himachal Pradesh in higher education.",
+    "apply_url_verified": false
   },
   {
     "id": "uttarakhand_post_matric",
@@ -2988,21 +2736,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Uttarakhand Domicile Certificate",
       "Caste Certificate",
       "Income Certificate (<= 2.5L)",
       "College Fee Receipt"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires domicile of Uttarakhand and admission in recognized courses.",
-    "description": "Post-matric educational assistance for reserved category students in Uttarakhand."
+    "description": "Post-matric educational assistance for reserved category students in Uttarakhand.",
+    "apply_url_verified": false
   },
   {
     "id": "jk_pmsss_aicte",
@@ -3053,21 +2799,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-05-01",
-      "closes": "2026-09-30"
-    },
+    "application_window": null,
     "docs_required": [
       "J&K / Ladakh Domicile Certificate",
       "Class 12 Marksheet",
       "Income Certificate (<= 8 Lakhs)",
       "Aadhaar Card"
     ],
-    "deadline": "2026-09-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "PAST CUTOFF: Portal closed for 2026-27 cycle on Sept 30. Displayed as reference and past-deadline verification.",
-    "description": "Mega-scholarship funding 5,000 J&K and Ladakh youth annually in colleges outside the UT."
+    "description": "Mega-scholarship funding 5,000 J&K and Ladakh youth annually in colleges outside the UT.",
+    "apply_url_verified": true
   },
   {
     "id": "ladakh_higher_ed_st",
@@ -3112,21 +2856,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Ladakh Resident Certificate",
       "ST Certificate",
       "College Bonafide",
       "Income Certificate"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For tribal scholars hailing from Leh and Kargil districts.",
-    "description": "Higher education funding for tribal students from the Union Territory of Ladakh."
+    "description": "Higher education funding for tribal students from the Union Territory of Ladakh.",
+    "apply_url_verified": false
   },
   {
     "id": "chandigarh_post_matric",
@@ -3172,84 +2914,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Chandigarh Resident Certificate",
       "Caste Certificate",
       "Income Certificate",
       "College Fee Breakdown"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For resident students of UT Chandigarh enrolled in recognized courses.",
-    "description": "Financial assistance for Chandigarh students pursuing post-matric qualifications."
-  },
-  {
-    "id": "maha_dbt_postmatric",
-    "name": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna (EBC)",
-    "provider": "Higher & Technical Education Department, Govt of Maharashtra",
-    "portal": "MahaDBT Portal",
-    "portal_name": "MahaDBT Portal",
-    "portal_url": "https://mahadbt.maharashtra.gov.in",
-    "portal_home_url": "https://mahadbt.maharashtra.gov.in",
-    "source_url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA937C02A00F77DEBBEC00EC2163",
-    "apply_url": "https://mahadbt.maharashtra.gov.in/Registration/StudentRegistration",
-    "apply_steps_hint": "Create MahaDBT profile, complete Aadhaar biometric authentication, select Directorate of Higher Education -> EBC scheme",
-    "amount": "50% Tuition & Exam Fee Waiver (up to ₹50,000+) across all professional courses",
-    "amount_value": 50000,
-    "eligibility": {
-      "categories": [
-        "General",
-        "EWS",
-        "OBC"
-      ],
-      "min_marks": 50.0,
-      "max_family_income": 800000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
-        "Law (LLB / LLM)",
-        "Degree"
-      ],
-      "states": [
-        "Maharashtra"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "Maharashtra"
-    ],
-    "level": "UG",
-    "scheme_type": "state",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "docs_required": [
-      "Maharashtra Domicile Certificate",
-      "Tahsildar Income Certificate (<= 8 Lakhs)",
-      "CAP Allotment Letter",
-      "Ration Card"
-    ],
-    "deadline": "2026-12-31",
-    "last_verified": null,
-    "verified": false,
-    "notes": "CAP (Centralized Admission Process) admission receipt required. Management quota admissions are not eligible.",
-    "description": "Maharashtra's leading fee waiver for Economically Backward Class students pursuing professional studies."
+    "description": "Financial assistance for Chandigarh students pursuing post-matric qualifications.",
+    "apply_url_verified": false
   },
   {
     "id": "maha_dbt_sc_postmatric",
@@ -3295,21 +2972,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Caste Validity Certificate (CCVC)",
       "Digital Caste Certificate",
       "Tahsil Income Certificate",
       "MahaDBT Aadhaar Seeding"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Caste Validity Certificate issued by divisional scrutiny committee is mandatory.",
-    "description": "Complete fee waiver and living stipend for Scheduled Caste scholars in Maharashtra."
+    "description": "Complete fee waiver and living stipend for Scheduled Caste scholars in Maharashtra.",
+    "apply_url_verified": true
   },
   {
     "id": "gujarat_mysy_scholarship",
@@ -3359,21 +3034,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-25"
-    },
+    "application_window": null,
     "docs_required": [
       "Gujarat 12th Board Marksheet (>= 80 Percentile)",
       "Income Certificate (<= 6 Lakhs)",
       "Admission Letter",
       "Hostel Receipt"
     ],
-    "deadline": "2026-12-25",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires >= 80 percentile in 12th Science/General stream in Gujarat Board / CBSE.",
-    "description": "Flagship Gujarat scholarship paying 50% tuition and hostel allowance for higher education."
+    "description": "Flagship Gujarat scholarship paying 50% tuition and hostel allowance for higher education.",
+    "apply_url_verified": true
   },
   {
     "id": "gujarat_digital_postmatric",
@@ -3420,21 +3093,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Gujarat Domicile",
       "SEBC/SC/ST Certificate",
       "Mamlatdar Income Certificate",
       "College Bonafide"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Income ceiling: ₹2.5 Lakhs for SC/ST; ₹2.5 Lakhs for SEBC.",
-    "description": "Comprehensive post-matric financial support for reserved category students of Gujarat."
+    "description": "Comprehensive post-matric financial support for reserved category students of Gujarat.",
+    "apply_url_verified": true
   },
   {
     "id": "goa_dayanand_bandodkar",
@@ -3483,20 +3154,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "15 Years Goa Residence Certificate",
       "Family Income Certificate",
       "College Fee Structure"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires 15 years domicile/residence in Goa.",
-    "description": "Goa state scholarship funding college fees for underprivileged Goan students."
+    "description": "Goa state scholarship funding college fees for underprivileged Goan students.",
+    "apply_url_verified": true
   },
   {
     "id": "chhattisgarh_postmatric",
@@ -3544,20 +3213,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "CG Domicile Certificate",
       "Online Verifiable Caste Certificate",
       "Income Certificate (Tehsildar signed)"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Direct bank disbursement through Public Financial Management System (PFMS).",
-    "description": "Post-matric financial aid for SC/ST/OBC scholars enrolled in Chhattisgarh colleges."
+    "description": "Post-matric financial aid for SC/ST/OBC scholars enrolled in Chhattisgarh colleges.",
+    "apply_url_verified": true
   },
   {
     "id": "dnh_dd_post_matric",
@@ -3603,21 +3270,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "UT Domicile Certificate",
       "Caste Certificate",
       "Income Certificate",
       "College Bonafide"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers students residing in Daman, Diu, and Dadra & Nagar Haveli.",
-    "description": "UT administration educational support for students in western coastal UT."
+    "description": "UT administration educational support for students in western coastal UT.",
+    "apply_url_verified": false
   },
   {
     "id": "wb_svmcm_merit",
@@ -3668,21 +3333,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Madhyamik / HS Marksheet (>= 60%)",
       "West Bengal Domicile",
       "Income Certificate from SDO/BDO/DM",
       "College Admission Receipt"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires minimum 60% marks in qualifying exam. Income certificate must be signed by BDO/SDO.",
-    "description": "Bengal's highest-funded merit-cum-means scholarship for general and reserved students."
+    "description": "Bengal's highest-funded merit-cum-means scholarship for general and reserved students.",
+    "apply_url_verified": true
   },
   {
     "id": "wb_kanyashree_k3",
@@ -3728,84 +3391,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Kanyashree K2 ID",
       "Graduation Marksheet (>= 45%)",
       "PG Admission Bonafide",
       "Unmarried Declaration"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling for Kanyashree K3. Must be unmarried female student enrolled in regular PG course.",
-    "description": "United Nations award-winning scheme supporting female scholars in university postgraduate programs."
-  },
-  {
-    "id": "bihar_postmatric_pms",
-    "name": "Bihar Post-Matric Scholarship Scheme (PMS Bihar) for SC/ST/BC/EBC",
-    "provider": "Education Department, Govt of Bihar",
-    "portal": "PMS Online Bihar Portal",
-    "portal_name": "PMS Bihar Portal",
-    "portal_url": "https://pmsonline.bih.nic.in",
-    "portal_home_url": "https://pmsonline.bih.nic.in",
-    "source_url": "https://pmsonline.bih.nic.in",
-    "apply_url": "https://pmsonline.bih.nic.in",
-    "apply_steps_hint": "Register on pmsonline.bih.nic.in -> Student -> Registration -> Complete Aadhaar eKYC",
-    "amount": "Up to ₹15,000 for General Courses / up to ₹75,000 for Engineering & Medical",
-    "amount_value": 75000,
-    "eligibility": {
-      "categories": [
-        "SC",
-        "ST",
-        "OBC",
-        "EWS"
-      ],
-      "min_marks": 45.0,
-      "max_family_income": 300000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
-        "Degree"
-      ],
-      "states": [
-        "Bihar"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "Bihar"
-    ],
-    "level": "UG",
-    "scheme_type": "state",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "docs_required": [
-      "Bihar Residential Certificate",
-      "Digital Caste Certificate",
-      "CO/SDO Signed Income Certificate",
-      "College Fee Structure"
-    ],
-    "deadline": "2026-12-31",
-    "last_verified": null,
-    "verified": false,
-    "notes": "Requires online certificate verification number from RTPS Bihar.",
-    "description": "Dedicated state portal for Bihar students funding professional degree and college education."
+    "description": "United Nations award-winning scheme supporting female scholars in university postgraduate programs.",
+    "apply_url_verified": true
   },
   {
     "id": "jharkhand_ekalyan_postmatric",
@@ -3853,21 +3451,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-20"
-    },
+    "application_window": null,
     "docs_required": [
       "Jharkhand Resident Certificate",
       "Circle Officer Signed Income Proof",
       "Online Caste Certificate",
       "College Bonafide with Fee Breakdown"
     ],
-    "deadline": "2026-12-20",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "College must be registered and verified on e-Kalyan portal.",
-    "description": "Flagship scheme in Jharkhand funding post-matric education for backward class students."
+    "description": "Flagship scheme in Jharkhand funding post-matric education for backward class students.",
+    "apply_url_verified": true
   },
   {
     "id": "odisha_medhabruti_scholarship",
@@ -3917,21 +3513,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Resident Certificate issued by Revenue Authority",
       "Income Certificate (<= 6.0 Lakhs)",
       "Class 12 CHSE Marksheet",
       "College Bonafide"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "10,000+ scholarships distributed annually across general, technical, and professional streams.",
-    "description": "Odisha's flagship merit-cum-means scholarship for undergraduate and professional students."
+    "description": "Odisha's flagship merit-cum-means scholarship for undergraduate and professional students.",
+    "apply_url_verified": true
   },
   {
     "id": "tamilnadu_postmatric",
@@ -3978,21 +3572,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Permanent Community Card (SC/ST/SCA)",
       "Income Certificate (<= 2.5 Lakhs)",
       "Tamil Nadu Nativity Certificate",
       "College Fee Voucher"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Complete fee waiver in government, government-aided, and self-financing engineering/medical seats.",
-    "description": "Comprehensive post-matric financial assistance for Adi Dravidar and tribal scholars in Tamil Nadu."
+    "description": "Comprehensive post-matric financial assistance for Adi Dravidar and tribal scholars in Tamil Nadu.",
+    "apply_url_verified": true
   },
   {
     "id": "tamilnadu_pudhumai_penn",
@@ -4042,20 +3634,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "EMIS Number from Govt School (Class 6 to 12 in Tamil Nadu Govt School)",
       "Aadhaar Card",
       "College Admission Proof"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling! Girl must have studied in Tamil Nadu Government schools from Class 6 to 12.",
-    "description": "Trailblazing Tamil Nadu scheme awarding ₹1,000/month to every girl from govt schools pursuing higher education."
+    "description": "Trailblazing Tamil Nadu scheme awarding ₹1,000/month to every girl from govt schools pursuing higher education.",
+    "apply_url_verified": true
   },
   {
     "id": "kerala_egrantz_postmatric",
@@ -4103,21 +3693,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Digital Caste Certificate via Akshaya e-District",
       "Income Certificate",
       "Kerala SSLC Marksheet",
       "College Fee Slip"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Income ceiling: No limit for SC/ST; ₹1.0 Lakh to ₹2.5 Lakhs for OBC/OEC.",
-    "description": "Kerala's centralized portal disbursing automated post-matric tuition waivers and hostel subsidies."
+    "description": "Kerala's centralized portal disbursing automated post-matric tuition waivers and hostel subsidies.",
+    "apply_url_verified": true
   },
   {
     "id": "ap_jnanabhumi_jvd",
@@ -4168,21 +3756,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "White Ration Card / Rice Card",
       "Integrated Caste & Nativity Certificate",
       "College Admission Allotment",
       "Mother Bank Account"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Full fee transferred directly to mother's Aadhaar-seeded bank account on quarterly basis.",
-    "description": "Revolutionary welfare initiative paying 100% college tuition fees directly to mothers of students in AP."
+    "description": "Revolutionary welfare initiative paying 100% college tuition fees directly to mothers of students in AP.",
+    "apply_url_verified": false
   },
   {
     "id": "telangana_epass_postmatric",
@@ -4232,21 +3818,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "MeeSeva Caste Certificate",
       "MeeSeva Current Year Income Certificate",
       "CET Rank Card & Allotment Order",
       "Bank Passbook"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "75% attendance mandatory in biometric system; MeeSeva digital certificates required.",
-    "description": "Telangana's landmark welfare scheme funding full engineering, medical, and degree tuition fees."
+    "description": "Telangana's landmark welfare scheme funding full engineering, medical, and degree tuition fees.",
+    "apply_url_verified": true
   },
   {
     "id": "puducherry_perunthalaivar",
@@ -4295,20 +3879,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Puducherry Residence / Nativity Certificate",
       "Income Certificate (<= 5L)",
       "CENTAC Admission Allotment"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For students of Union Territory of Puducherry admitted through CENTAC.",
-    "description": "Tuition assistance scheme for Puducherry resident students admitted into professional colleges."
+    "description": "Tuition assistance scheme for Puducherry resident students admitted into professional colleges.",
+    "apply_url_verified": true
   },
   {
     "id": "andaman_higher_ed_st",
@@ -4355,21 +3937,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Island Resident / Local Certificate",
       "Tribal ST Certificate",
       "Mainland Admission Letter",
       "Bank Passbook"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Supports island students pursuing professional courses both in the islands and on the Indian mainland.",
-    "description": "Financial assistance covering college fees and sea/air travel subsidies for Andaman students."
+    "description": "Financial assistance covering college fees and sea/air travel subsidies for Andaman students.",
+    "apply_url_verified": false
   },
   {
     "id": "lakshadweep_higher_st",
@@ -4414,20 +3994,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Lakshadweep Native ST Certificate",
       "Mainland College Bonafide",
       "Ship Travel Ticket Claim"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "100% of indigenous islanders qualify under Scheduled Tribe category.",
-    "description": "Educational grant supporting students from Lakshadweep coral atolls pursuing mainland studies."
+    "description": "Educational grant supporting students from Lakshadweep coral atolls pursuing mainland studies.",
+    "apply_url_verified": false
   },
   {
     "id": "assam_postmatric_scholarship",
@@ -4475,21 +4053,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Assam Permanent Resident Certificate (PRC)",
       "Caste Certificate",
       "Circle Officer Income Proof",
       "College Fee Breakdown"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires valid Assam PRC and digital caste certificate.",
-    "description": "Core state scholarship supporting higher education for reserved category scholars in Assam."
+    "description": "Core state scholarship supporting higher education for reserved category scholars in Assam.",
+    "apply_url_verified": false
   },
   {
     "id": "arunachal_stipend_scheme",
@@ -4535,20 +4111,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Arunachal Pradesh Scheduled Tribe (APST) Certificate",
       "College Bonafide",
       "Marksheet"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Applicable for all APST candidates pursuing regular post-matric courses.",
-    "description": "Essential state stipend assisting indigenous tribal students of Arunachal Pradesh."
+    "description": "Essential state stipend assisting indigenous tribal students of Arunachal Pradesh.",
+    "apply_url_verified": false
   },
   {
     "id": "manipur_postmatric_scholarship",
@@ -4595,20 +4169,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Manipur Domicile Certificate",
       "Tribe/Caste Certificate",
       "Income Certificate (<= 2.5L)"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers tuition and maintenance for students studying inside and outside Manipur.",
-    "description": "Post-matric educational grant for tribal and reserved community students of Manipur."
+    "description": "Post-matric educational grant for tribal and reserved community students of Manipur.",
+    "apply_url_verified": false
   },
   {
     "id": "meghalaya_postmatric_st",
@@ -4655,20 +4227,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Meghalaya ST Certificate (Khasi, Jaintia, Garo)",
       "Income Certificate",
       "College Bonafide"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Dedicated for indigenous Khasi, Garo, and Jaintia scholars.",
-    "description": "Higher education scholarship for tribal youth of Meghalaya pursuing degree and professional courses."
+    "description": "Higher education scholarship for tribal youth of Meghalaya pursuing degree and professional courses.",
+    "apply_url_verified": false
   },
   {
     "id": "mizoram_postmatric_st",
@@ -4712,20 +4282,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Mizoram Tribal Certificate",
       "Family Income Certificate",
       "College Admission Proof"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Primary funding for Mizo students enrolled across India.",
-    "description": "State welfare scholarship covering college fees for tribal students from Mizoram."
+    "description": "State welfare scholarship covering college fees for tribal students from Mizoram.",
+    "apply_url_verified": false
   },
   {
     "id": "nagaland_postmatric_st",
@@ -4769,20 +4337,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Indigenous Inhabitant of Nagaland Certificate (IIC)",
       "ST Certificate",
       "College Bonafide"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Requires Indigenous Inhabitant Certificate issued by Deputy Commissioner.",
-    "description": "Essential financial aid enabling indigenous Naga youth to complete higher education."
+    "description": "Essential financial aid enabling indigenous Naga youth to complete higher education.",
+    "apply_url_verified": true
   },
   {
     "id": "sikkim_postmatric_scholarship",
@@ -4828,20 +4394,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Sikkim Subject Certificate / Certificate of Identification (COI)",
       "Caste Certificate",
       "Income Certificate"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Certificate of Identification (COI) of Sikkim required.",
-    "description": "State welfare scholarship covering fees for students belonging to Sikkim."
+    "description": "State welfare scholarship covering fees for students belonging to Sikkim.",
+    "apply_url_verified": false
   },
   {
     "id": "tripura_postmatric_scholarship",
@@ -4887,85 +4451,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Tripura Permanent Resident Certificate (PRTC)",
       "Caste Certificate",
       "Income Certificate"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "PRTC (Permanent Resident of Tripura Certificate) mandatory.",
-    "description": "Post-matric educational assistance for reserved category scholars in Tripura."
-  },
-  {
-    "id": "reliance_foundation_ug",
-    "name": "Reliance Foundation Undergraduate Scholarship",
-    "provider": "Reliance Foundation",
-    "portal": "Reliance Foundation Scholarships Portal",
-    "portal_name": "Reliance Foundation Portal",
-    "portal_url": "https://www.reliancefoundation.org",
-    "portal_home_url": "https://www.reliancefoundation.org",
-    "source_url": "https://www.reliancefoundation.org/ug-scholarships",
-    "apply_url": "https://www.reliancefoundation.org/ug-scholarships",
-    "apply_steps_hint": "Register on reliancefoundation.org, complete online aptitude test, upload 12th marks & income proof",
-    "amount": "Up to ₹2,00,000 grant across duration of undergraduate degree",
-    "amount_value": 50000,
-    "eligibility": {
-      "categories": [
-        "General",
-        "EWS",
-        "OBC",
-        "SC",
-        "ST",
-        "Minority"
-      ],
-      "min_marks": 60.0,
-      "max_family_income": 1500000,
-      "courses": [
-        "B.Tech / B.E.",
-        "B.Sc / BCA / B.Com / BA",
-        "MBBS / BDS / Medical",
-        "Law (LLB / LLM)",
-        "Degree"
-      ],
-      "states": [
-        "All",
-        "Pan-India"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "All",
-      "Pan-India"
-    ],
-    "level": "UG",
-    "scheme_type": "csr",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-15",
-      "closes": "2026-10-31"
-    },
-    "docs_required": [
-      "Class 12 Marksheet (>= 60%)",
-      "College Bonafide / ID",
-      "Income Proof (ITR / Salary Slip / Ration Card)"
-    ],
-    "deadline": "2026-10-31",
-    "last_verified": null,
-    "verified": false,
-    "notes": "5,000 meritorious undergraduate scholars selected annually based on merit-cum-means and online aptitude test.",
-    "description": "Premier corporate scholarship funding 5,000 undergraduate scholars in any regular degree program."
+    "description": "Post-matric educational assistance for reserved category scholars in Tripura.",
+    "apply_url_verified": false
   },
   {
     "id": "reliance_foundation_pg",
@@ -5013,85 +4510,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-15",
-      "closes": "2026-10-31"
-    },
+    "application_window": null,
     "docs_required": [
       "GATE / Entrance Score Card",
       "Undergraduate Degree Transcript",
       "Statement of Purpose"
     ],
-    "deadline": "2026-10-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For full-time postgraduate students in Computer Science, AI, Mathematics, Renewable Energy.",
-    "description": "High-value grant supporting future tech leaders and researchers in cutting-edge technology disciplines."
-  },
-  {
-    "id": "kotak_kanya_girls",
-    "name": "Kotak Kanya Scholarship Scheme for Girl Students (Higher Education)",
-    "provider": "Kotak Education Foundation",
-    "portal": "Buddy4Study / Kotak Education Foundation",
-    "portal_name": "Kotak Education Foundation",
-    "portal_url": "https://kotakeducation.org",
-    "portal_home_url": "https://kotakeducation.org",
-    "source_url": "https://kotakeducation.org/kotak-kanya-scholarship",
-    "apply_url": "https://www.buddy4study.com/page/kotak-kanya-scholarship",
-    "apply_steps_hint": "Register on Buddy4Study -> Search Kotak Kanya -> Fill online dossier & upload 12th marks",
-    "amount": "₹1,50,000 per year until completion of professional degree",
-    "amount_value": 150000,
-    "eligibility": {
-      "categories": [
-        "General",
-        "EWS",
-        "OBC",
-        "SC",
-        "ST",
-        "Minority"
-      ],
-      "min_marks": 85.0,
-      "max_family_income": 600000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "Law (LLB / LLM)",
-        "Degree"
-      ],
-      "states": [
-        "All",
-        "Pan-India"
-      ],
-      "gender": "Female",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "All",
-      "Pan-India"
-    ],
-    "level": "UG",
-    "scheme_type": "csr",
-    "gender": "Female",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
-    "docs_required": [
-      "Class 12 Marksheet (>= 85%)",
-      "Income Certificate (<= 6 Lakhs)",
-      "Admission Letter for Professional Course",
-      "Aadhaar Card"
-    ],
-    "deadline": "2026-11-30",
-    "last_verified": null,
-    "verified": false,
-    "notes": "Exclusively for meritorious girl students enrolled in 1st year of professional graduation (Engineering, MBBS, Architecture, Law).",
-    "description": "Comprehensive ₹1.5L/year grant empowering meritorious young women from low-income families in professional degrees."
+    "description": "High-value grant supporting future tech leaders and researchers in cutting-edge technology disciplines.",
+    "apply_url_verified": true
   },
   {
     "id": "tata_trusts_higher_ed",
@@ -5143,20 +4573,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-25"
-    },
+    "application_window": null,
     "docs_required": [
       "College Fee Structure Quotation",
       "Income Tax Return / Tehsildar Income Certificate",
       "Academic Marksheets"
     ],
-    "deadline": "2026-11-25",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Direct disbursement to college accounts towards tuition assistance.",
-    "description": "Philanthropic grant from Tata Trusts supporting underprivileged scholars pursuing medical, engineering, and graduation studies."
+    "description": "Philanthropic grant from Tata Trusts supporting underprivileged scholars pursuing medical, engineering, and graduation studies.",
+    "apply_url_verified": true
   },
   {
     "id": "lic_golden_jubilee",
@@ -5209,21 +4637,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 10th/12th Marksheet (>= 60%)",
       "Family Income Certificate (<= 2.5L)",
       "College Fee Receipt",
       "Bank Passbook"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Includes special quota earmarked for single girl children pursuing higher education.",
-    "description": "LIC Golden Jubilee Foundation grant assisting meritorious children from economically vulnerable homes."
+    "description": "LIC Golden Jubilee Foundation grant assisting meritorious children from economically vulnerable homes.",
+    "apply_url_verified": true
   },
   {
     "id": "santoor_women_scholarship",
@@ -5276,83 +4702,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-10-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 10 & 12 Govt School Study Proof",
       "College Admission Bonafide",
       "Bank Passbook in Student Name"
     ],
-    "deadline": "2026-10-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Reserved exclusively for young women from rural/government schools in AP, Karnataka, Telangana, and Chhattisgarh.",
-    "description": "Wipro & Azim Premji Foundation partnership empowering young women from disadvantaged backgrounds in South/Central India."
-  },
-  {
-    "id": "ongc_foundation_scholarship",
-    "name": "ONGC Foundation Scholarship for SC/ST/OBC/EWS Students",
-    "provider": "ONGC Foundation",
-    "portal": "ONGC Scholar Portal",
-    "portal_name": "ONGC Scholar Portal",
-    "portal_url": "https://www.ongcscholar.org",
-    "portal_home_url": "https://www.ongcscholar.org",
-    "source_url": "https://www.ongcscholar.org",
-    "apply_url": "https://www.ongcscholar.org",
-    "apply_steps_hint": "Register on ongcscholar.org, select category stream, upload college endorsement form",
-    "amount": "₹48,000 per year (₹4,000 per month for entire degree course)",
-    "amount_value": 48000,
-    "eligibility": {
-      "categories": [
-        "SC",
-        "ST",
-        "OBC",
-        "EWS"
-      ],
-      "min_marks": 60.0,
-      "max_family_income": 200000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "MBA / M.Tech / M.Sc",
-        "Engineering"
-      ],
-      "states": [
-        "All",
-        "Pan-India"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "All",
-      "Pan-India"
-    ],
-    "level": "UG",
-    "scheme_type": "csr",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
-    "docs_required": [
-      "Category Certificate (SC/ST/OBC/EWS)",
-      "Income Proof (<= 2.0 Lakhs)",
-      "Class 12 Marksheet (>= 60%)",
-      "College Verification Annexure"
-    ],
-    "deadline": "2026-11-30",
-    "last_verified": null,
-    "verified": false,
-    "notes": "4,000 scholarships distributed annually with 50% reservation for female scholars.",
-    "description": "High-stipend corporate scholarship funding engineering, MBBS, and geology/MBA programs."
+    "description": "Wipro & Azim Premji Foundation partnership empowering young women from disadvantaged backgrounds in South/Central India.",
+    "apply_url_verified": true
   },
   {
     "id": "loreal_women_science",
@@ -5403,20 +4764,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 PCB/PCM Marksheet (>= 85%)",
       "Family Income Certificate (<= 6L)",
       "Science College Admission Proof"
     ],
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For promising young women enrolled in science, engineering, or biotechnology graduation.",
-    "description": "Global flagship initiative advancing scientific careers for talented Indian female scholars."
+    "description": "Global flagship initiative advancing scientific careers for talented Indian female scholars.",
+    "apply_url_verified": true
   },
   {
     "id": "keep_india_smiling_colgate",
@@ -5468,20 +4827,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Marksheet (>= 60%)",
       "Income Certificate (<= 5L)",
       "College Fee Receipt"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Mentorship and career readiness sessions included alongside financial aid.",
-    "description": "Corporate mentorship and scholarship program helping deserving students complete degrees."
+    "description": "Corporate mentorship and scholarship program helping deserving students complete degrees.",
+    "apply_url_verified": true
   },
   {
     "id": "federal_bank_hormis",
@@ -5539,20 +4896,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Merit Admission Allotment Order",
       "Family Income Certificate (<= 3L)",
       "Fee Structure"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Reserved for candidates admitted under government quota in Kerala, TN, Gujarat, Maharashtra, Punjab.",
-    "description": "Banking foundation scholarship covering 100% college tuition fees for meritorious underprivileged students."
+    "description": "Banking foundation scholarship covering 100% college tuition fees for meritorious underprivileged students.",
+    "apply_url_verified": true
   },
   {
     "id": "drdo_scholarship_girls",
@@ -5601,20 +4956,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-15"
-    },
+    "application_window": null,
     "docs_required": [
       "JEE Main Rank Card",
       "AICTE/UGC Engineering College Bonafide",
       "Class 12 Marksheet"
     ],
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling. Must be female student enrolled in 1st year of eligible engineering branches.",
-    "description": "Prestigious Ministry of Defence grant supporting talented female engineers in defence technology."
+    "description": "Prestigious Ministry of Defence grant supporting talented female engineers in defence technology.",
+    "apply_url_verified": true
   },
   {
     "id": "rolls_royce_unnati_girls",
@@ -5663,20 +5016,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Engineering College ID & Fee Receipt",
       "Class 12 Marksheet (>= 60%)",
       "Income Certificate (<= 5L)"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Open to female students in 1st, 2nd, or 3rd year of Aerospace, Marine, Mechanical, or Electronics engineering.",
-    "description": "Global aerospace engineering firm initiative promoting women in STEM through financial support and coaching."
+    "description": "Global aerospace engineering firm initiative promoting women in STEM through financial support and coaching.",
+    "apply_url_verified": true
   },
   {
     "id": "legrand_empowering_girls",
@@ -5726,20 +5077,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Marksheet (>= 70%)",
       "College Admission Bonafide",
       "Family Income Certificate (<= 5 Lakhs)"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Special preference for differently-abled girls, single parents, or orphans.",
-    "description": "Electrical & digital building infrastructure leader empowering female scholars in engineering and finance."
+    "description": "Electrical & digital building infrastructure leader empowering female scholars in engineering and finance.",
+    "apply_url_verified": true
   },
   {
     "id": "virchow_scholarship_girls",
@@ -5789,20 +5138,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 10 or 12 Marksheet",
       "Income Certificate (<= 6L)",
       "Govt College Bonafide"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For meritorious female students of Andhra Pradesh and Telangana pursuing higher education.",
-    "description": "Healthcare corporate CSR program funding underprivileged girls in college degrees."
+    "description": "Healthcare corporate CSR program funding underprivileged girls in college degrees.",
+    "apply_url_verified": true
   },
   {
     "id": "nokia_stem_girls",
@@ -5851,20 +5198,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "College Fee Receipt",
       "Class 12 Marksheet (>= 65%)",
       "Family Income Certificate"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For female students enrolled in recognized technical institutes across India.",
-    "description": "Telecom leader Nokia's initiative advancing gender diversity in engineering disciplines."
+    "description": "Telecom leader Nokia's initiative advancing gender diversity in engineering disciplines.",
+    "apply_url_verified": true
   },
   {
     "id": "glow_lovely_careers_women",
@@ -5915,20 +5260,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Marksheet (>= 60%)",
       "College Admission Fee Receipt",
       "Income Certificate"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Age limit: 15 to 30 years. Exclusively for women pursuing undergraduate or postgraduate programs.",
-    "description": "Well-established corporate scholarship helping thousands of young Indian women afford college tuition."
+    "description": "Well-established corporate scholarship helping thousands of young Indian women afford college tuition.",
+    "apply_url_verified": true
   },
   {
     "id": "bihar_kanya_utthan_ug",
@@ -5977,21 +5320,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Graduation Marksheet / Degree Certificate",
       "Bihar Resident Proof",
       "Aadhaar Card",
       "Bank Account in Student Name"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income limit! Open to all female students who complete recognized graduation in Bihar.",
-    "description": "Massive Bihar state welfare scheme providing ₹50,000 to every girl who successfully earns a college degree."
+    "description": "Massive Bihar state welfare scheme providing ₹50,000 to every girl who successfully earns a college degree.",
+    "apply_url_verified": false
   },
   {
     "id": "rajasthan_kalibai_scooty",
@@ -6039,21 +5380,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Jan Aadhaar Card",
       "Class 12 RBSE (>= 65%) or CBSE (>= 75%) Marksheet",
       "Income Certificate",
       "College Admission Fee Receipt"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Awarded to 10,000+ meritorious girls admitted into 1st year degree courses in Rajasthan.",
-    "description": "Prestigious mobility grant empowering meritorious Rajasthan girls with personal electric vehicles for college commute."
+    "description": "Prestigious mobility grant empowering meritorious Rajasthan girls with personal electric vehicles for college commute.",
+    "apply_url_verified": true
   },
   {
     "id": "nhfdc_trust_fund_pwd",
@@ -6106,20 +5445,18 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Disability Certificate (>= 40%)",
       "College Fee Quotation",
       "Income Certificate (<= 3L)"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers purchase of assistive devices, screen readers, braille books and hearing aids.",
-    "description": "Trust fund providing financial independence and assistive tech for students with disabilities."
+    "description": "Trust fund providing financial independence and assistive tech for students with disabilities.",
+    "apply_url_verified": true
   },
   {
     "id": "nfpwd_ugc_fellowship",
@@ -6167,20 +5504,18 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "UDID Card (>= 40%)",
       "PhD Admission Registration Proof",
       "Postgraduate Degree Marksheet"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "200 fellowships awarded annually for differently-abled scholars pursuing M.Phil/Ph.D. in sciences, humanities, and engineering.",
-    "description": "Premier national research fellowship empowering disabled research scholars in Indian universities."
+    "description": "Premier national research fellowship empowering disabled research scholars in Indian universities.",
+    "apply_url_verified": true
   },
   {
     "id": "tamilnadu_pwd_higher_ed",
@@ -6230,20 +5565,18 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "National Disability Identity Card / UDID",
       "College Bonafide",
       "Income Certificate"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers tuition fees and reader allowances for visually challenged scholars.",
-    "description": "Tamil Nadu state government support program for differently-abled college students."
+    "description": "Tamil Nadu state government support program for differently-abled college students.",
+    "apply_url_verified": true
   },
   {
     "id": "kerala_blind_ph_scholarship",
@@ -6292,20 +5625,18 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Medical Board Disability Certificate (>= 40%)",
       "College Bonafide",
       "Income Certificate"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Includes free hostel accommodation in government student hostels.",
-    "description": "Collegiate education grant for visually and physically challenged students in Kerala."
+    "description": "Collegiate education grant for visually and physically challenged students in Kerala.",
+    "apply_url_verified": true
   },
   {
     "id": "rajasthan_divyang_higher_ed",
@@ -6355,21 +5686,19 @@
     "disability_required": true,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Jan Aadhaar Card",
       "UDID Card (>= 40%)",
       "Income Certificate",
       "College Bonafide"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Jan Aadhaar seeding is required for direct DBT transfer.",
-    "description": "Special assistance program for differently-abled scholars studying in Rajasthan colleges."
+    "description": "Special assistance program for differently-abled scholars studying in Rajasthan colleges.",
+    "apply_url_verified": true
   },
   {
     "id": "ap_ambedkar_overseas",
@@ -6415,21 +5744,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Foreign University Admission Offer / I-20",
       "GRE/GMAT/IELTS Score",
       "Caste Certificate",
       "Income Certificate"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers top 500 QS world-ranked universities across USA, UK, Canada, Australia, Singapore, Germany.",
-    "description": "High-value scholarship helping underprivileged AP students pursue postgraduate degrees in premier global universities."
+    "description": "High-value scholarship helping underprivileged AP students pursue postgraduate degrees in premier global universities.",
+    "apply_url_verified": false
   },
   {
     "id": "telangana_overseas_vidyanidhi",
@@ -6474,21 +5801,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Valid Student Visa & I-20",
       "MeeSeva Caste Certificate",
       "Family Income Certificate (<= 5L)",
       "Degree Marksheet (>= 60%)"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Awarded in two installments of ₹10 Lakhs each upon verification of enrollment and semester progression.",
-    "description": "Telangana's landmark overseas scholarship granting up to ₹20 Lakhs for foreign postgraduate studies."
+    "description": "Telangana's landmark overseas scholarship granting up to ₹20 Lakhs for foreign postgraduate studies.",
+    "apply_url_verified": true
   },
   {
     "id": "karnataka_vidyasiri_food",
@@ -6536,20 +5861,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Rural Distance Certificate (At least 5 km from college)",
       "Kutumba Family ID",
       "College Bonafide"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For non-hosteller students studying in towns outside their home village who could not secure govt hostel seats.",
-    "description": "Crucial living stipend preventing dropouts among rural Karnataka students studying in cities."
+    "description": "Crucial living stipend preventing dropouts among rural Karnataka students studying in cities.",
+    "apply_url_verified": false
   },
   {
     "id": "karnataka_ambedkar_prize",
@@ -6595,21 +5918,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Final Degree Transcript (First Class)",
       "Caste Certificate (SC/ST)",
       "Aadhaar Card",
       "Bank Passbook"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling! Awarded to SC/ST scholars passing professional and general degrees in first attempt.",
-    "description": "Merit prize recognizing and rewarding academic excellence among Scheduled Caste and Tribe graduates in Karnataka."
+    "description": "Merit prize recognizing and rewarding academic excellence among Scheduled Caste and Tribe graduates in Karnataka.",
+    "apply_url_verified": true
   },
   {
     "id": "maha_swadhar_yojana",
@@ -6655,21 +5976,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Caste Certificate",
       "Income Certificate (<= 2.5L)",
       "Local Rent Agreement / Non-Hosteller Proof",
       "College ID"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For SC and Nav-Buddhist students who did not get admission into government hostels.",
-    "description": "Essential hostel and food stipend supporting Scheduled Caste students studying in Maharashtra cities."
+    "description": "Essential hostel and food stipend supporting Scheduled Caste students studying in Maharashtra cities.",
+    "apply_url_verified": true
   },
   {
     "id": "maha_swayam_st_yojana",
@@ -6715,21 +6034,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Tribe Validity Certificate",
       "Income Certificate (<= 2.5L)",
       "Non-Hosteller Declaration",
       "Bank Passbook"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For Scheduled Tribe scholars studying in urban educational hubs without government hostel allotment.",
-    "description": "Comprehensive hostel and meal subsidy program for tribal scholars in Maharashtra."
+    "description": "Comprehensive hostel and meal subsidy program for tribal scholars in Maharashtra.",
+    "apply_url_verified": true
   },
   {
     "id": "gujarat_food_bill_assistance",
@@ -6775,21 +6092,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Hostel Warden Fee Certificate",
       "Caste Certificate",
       "Income Certificate (<= 4.5L)",
       "College Fee Slip"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Applicable for students staying in college or recognized private hostels.",
-    "description": "State food subsidy helping engineering and medical students afford hostel mess costs in Gujarat."
+    "description": "State food subsidy helping engineering and medical students afford hostel mess costs in Gujarat.",
+    "apply_url_verified": true
   },
   {
     "id": "gujarat_shodhpith_phd",
@@ -6835,20 +6150,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Gujarat State University PhD Admission Letter",
       "Master Degree Certificate (>= 55%)",
       "Research Proposal Endorsed by Guide"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling! For full-time doctoral researchers in state universities of Gujarat.",
-    "description": "High-value state research fellowship promoting high-impact doctoral research across disciplines in Gujarat."
+    "description": "High-value state research fellowship promoting high-impact doctoral research across disciplines in Gujarat.",
+    "apply_url_verified": true
   },
   {
     "id": "rajasthan_devnarayan_gurukul",
@@ -6894,20 +6207,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Jan Aadhaar Card",
       "MBC Caste Certificate (Gujjar, Gadri, Raika, etc.)",
       "Income Certificate (Max 6 months old)"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Dedicated for Most Backward Classes (MBC / SBC) communities in Rajasthan.",
-    "description": "Special welfare educational assistance promoting higher education for Most Backward Classes in Rajasthan."
+    "description": "Special welfare educational assistance promoting higher education for Most Backward Classes in Rajasthan.",
+    "apply_url_verified": true
   },
   {
     "id": "up_prematric_sc_st",
@@ -6951,21 +6262,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Income Certificate with Application Number",
       "Caste Certificate",
       "School ID / Bonafide",
       "Aadhaar Card"
     ],
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For students enrolled in Class 9 and 10 across UP schools.",
-    "description": "State support preventing secondary school dropouts in Uttar Pradesh."
+    "description": "State support preventing secondary school dropouts in Uttar Pradesh.",
+    "apply_url_verified": true
   },
   {
     "id": "up_postmatric_inter",
@@ -7011,21 +6320,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 10 High School Marksheet",
       "Income Certificate",
       "Caste Certificate",
       "Fee Receipt"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Covers intermediate (11th and 12th) education across all streams (Science, Commerce, Arts).",
-    "description": "UP state scholarship assisting intermediate students with schooling fees."
+    "description": "UP state scholarship assisting intermediate students with schooling fees.",
+    "apply_url_verified": true
   },
   {
     "id": "bihar_medhavriti_sc_st",
@@ -7068,82 +6375,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "BSEB 12th Intermediate Marksheet",
       "SC/ST Caste Certificate",
       "Aadhaar Card",
       "Bank Account in Student Name"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income limit. For all SC and ST unmarried girls who pass Bihar Board 12th exam.",
-    "description": "Cash incentive scheme encouraging female education among Scheduled Caste and Tribe communities in Bihar."
-  },
-  {
-    "id": "wb_oasis_sc_st",
-    "name": "OASIS Post-Matric Scholarship for SC/ST Students West Bengal",
-    "provider": "Backward Classes Welfare Department, Govt of West Bengal",
-    "portal": "OASIS Portal West Bengal",
-    "portal_name": "OASIS Portal",
-    "portal_url": "https://oasis.gov.in",
-    "portal_home_url": "https://oasis.gov.in",
-    "source_url": "https://oasis.gov.in",
-    "apply_url": "https://oasis.gov.in",
-    "apply_steps_hint": "Register on oasis.gov.in, choose district, fill post-matric application, download physical acknowledgement",
-    "amount": "Full Tuition Fees + up to ₹1,200/month hostel maintenance allowance",
-    "amount_value": 45000,
-    "eligibility": {
-      "categories": [
-        "SC",
-        "ST"
-      ],
-      "min_marks": 40.0,
-      "max_family_income": 250000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "B.Sc / BCA / B.Com / BA",
-        "MBA / M.Tech / M.Sc",
-        "Diploma / Polytechnic",
-        "Degree"
-      ],
-      "states": [
-        "West Bengal"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "West Bengal"
-    ],
-    "level": "UG",
-    "scheme_type": "state",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
-    "docs_required": [
-      "Digital SC/ST Caste Certificate",
-      "BDO/SDO Signed Income Certificate",
-      "College Bonafide",
-      "Bank Passbook"
-    ],
-    "deadline": "2026-12-31",
-    "last_verified": null,
-    "verified": false,
-    "notes": "Physical acknowledgement slip must be submitted to Block Development Office / Municipality for verification.",
-    "description": "West Bengal's foundational welfare portal disbursing post-matric aid to SC and ST scholars."
+    "description": "Cash incentive scheme encouraging female education among Scheduled Caste and Tribe communities in Bihar.",
+    "apply_url_verified": false
   },
   {
     "id": "wb_aikyashree_minority",
@@ -7189,20 +6433,18 @@
     "disability_required": false,
     "minority_required": true,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Minority Community Certificate / Self-Declaration",
       "Income Certificate (<= 2.5L)",
       "Previous Exam Marksheet (>= 50%)"
     ],
-    "deadline": "2026-12-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Funded entirely by West Bengal state budget for students of minority communities.",
-    "description": "Flagship Bengal minority scholarship assisting students from primary school to professional doctorates."
+    "description": "Flagship Bengal minority scholarship assisting students from primary school to professional doctorates.",
+    "apply_url_verified": true
   },
   {
     "id": "odisha_prerana_sc_st",
@@ -7250,21 +6492,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Resident Certificate issued by Tahsildar",
       "Digital Caste Certificate",
       "Income Certificate (<= 2.5L)",
       "College Fee Breakdown"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Direct benefit transfer via Odisha state treasury into student's Aadhaar-linked account.",
-    "description": "Comprehensive post-matric scholarship funding course fees and hostel charges for Odisha scholars."
+    "description": "Comprehensive post-matric scholarship funding course fees and hostel charges for Odisha scholars.",
+    "apply_url_verified": true
   },
   {
     "id": "kerala_state_merit",
@@ -7311,20 +6551,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Kerala Plus Two Marksheet (>= 60%)",
       "Village Office Income Certificate (<= 1.0 Lakh)",
       "College Bonafide"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Strict low-income criterion (<= ₹1.0 Lakh/year) targeting lowest economic quintile students.",
-    "description": "Prestigious merit-cum-means scholarship for meritorious low-income undergraduates in Kerala."
+    "description": "Prestigious merit-cum-means scholarship for meritorious low-income undergraduates in Kerala.",
+    "apply_url_verified": true
   },
   {
     "id": "assam_anundoram_borooah",
@@ -7371,20 +6609,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-07-01",
-      "closes": "2026-11-15"
-    },
+    "application_window": null,
     "docs_required": [
       "SEBA HSLC (Class 10) Marksheet with Distinction (>= 75%)",
       "Aadhaar Card",
       "Bank Account Details"
     ],
-    "deadline": "2026-11-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling. Awarded to every student passing SEBA Class 10 with distinction.",
-    "description": "Prestigious state cash incentive honoring Sanskrit scholar Anundoram Borooah for Assam Class 10 toppers."
+    "description": "Prestigious state cash incentive honoring Sanskrit scholar Anundoram Borooah for Assam Class 10 toppers.",
+    "apply_url_verified": true
   },
   {
     "id": "infosys_stem_stars",
@@ -7433,21 +6669,19 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "NIRF Top-100 Institute Admission Offer",
       "Class 12 Marksheet (>= 75%)",
       "Income Certificate (<= 8L)",
       "College Fee Receipt"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Targeted at female students admitted into NIRF top-100 ranked engineering colleges in India.",
-    "description": "High-value STEM initiative by Infosys Foundation ensuring talented female engineers complete degrees unhindered."
+    "description": "High-value STEM initiative by Infosys Foundation ensuring talented female engineers complete degrees unhindered.",
+    "apply_url_verified": true
   },
   {
     "id": "siemens_scholarship_program",
@@ -7496,20 +6730,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-15",
-      "closes": "2026-11-20"
-    },
+    "application_window": null,
     "docs_required": [
       "Govt Engineering College Admission Proof",
       "Class 10 (>= 60%) and 12 (>= 50% PCM) Marksheets",
       "Income Certificate (<= 2L)"
     ],
-    "deadline": "2026-11-20",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "50% reservation for female engineering students; covers Mechanical, Electrical, ECE, CS, Instrumentation.",
-    "description": "Comprehensive engineering sponsorship program with complete tuition coverage and guaranteed corporate internships."
+    "description": "Comprehensive engineering sponsorship program with complete tuition coverage and guaranteed corporate internships.",
+    "apply_url_verified": true
   },
   {
     "id": "sbif_asha_scholarship",
@@ -7561,20 +6793,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Marksheet (>= 75%)",
       "Family Income Certificate (<= 3L)",
       "College Fee Breakdown Receipt"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Includes special categories for students in NIRF top-100 institutes, IITs, IIMs.",
-    "description": "SBI Foundation's flagship scholarship powering higher education for financially distressed youth across India."
+    "description": "SBI Foundation's flagship scholarship powering higher education for financially distressed youth across India.",
+    "apply_url_verified": true
   },
   {
     "id": "aditya_birla_scholarship",
@@ -7625,20 +6855,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-07-15",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Previous Exam Marksheet (>= 60%)",
       "Income Certificate (<= 6L)",
       "College Fee Slip"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Special focus on supporting scholars from families facing acute economic vulnerability.",
-    "description": "CSR scholarship from Aditya Birla Capital funding college tuition for hardworking students."
+    "description": "CSR scholarship from Aditya Birla Capital funding college tuition for hardworking students.",
+    "apply_url_verified": true
   },
   {
     "id": "schaeffler_hope_engineering",
@@ -7691,20 +6919,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Science Marksheet (>= 60%)",
       "Govt/Aided Engineering College Bonafide",
       "Income Certificate (<= 5L)"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Focused on engineering students in Gujarat, Maharashtra, Tamil Nadu, and Rajasthan.",
-    "description": "Automotive technology leader Schaeffler's scholarship funding aspiring engineering graduates."
+    "description": "Automotive technology leader Schaeffler's scholarship funding aspiring engineering graduates.",
+    "apply_url_verified": true
   },
   {
     "id": "lt_build_india_scholarship",
@@ -7753,20 +6979,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-11-01",
-      "closes": "2027-01-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Final Year B.Tech Civil / Electrical Marksheet (>= 70%)",
       "Aadhaar Card",
       "College Recommendation"
     ],
-    "deadline": "2027-01-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "No income ceiling. Includes guaranteed post-graduation placement as Senior Executive in L&T.",
-    "description": "Elite corporate sponsorship fully funding 2-year M.Tech at premier IITs/NITs with guaranteed executive career."
+    "description": "Elite corporate sponsorship fully funding 2-year M.Tech at premier IITs/NITs with guaranteed executive career.",
+    "apply_url_verified": true
   },
   {
     "id": "jk_lakshmi_vidya",
@@ -7823,20 +7047,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
+    "application_window": null,
     "docs_required": [
       "Class 12 Marksheet (>= 60%)",
       "College Fee Structure Receipt",
       "Family Income Certificate (<= 5L)"
     ],
-    "deadline": "2026-11-30",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "Preference for students residing near plant locations in Rajasthan, Gujarat, Haryana, MP, CG.",
-    "description": "Industrial CSR scholarship aiding students in polytechnic, engineering, and undergraduate courses."
+    "description": "Industrial CSR scholarship aiding students in polytechnic, engineering, and undergraduate courses.",
+    "apply_url_verified": true
   },
   {
     "id": "oaknorth_stem_scholarship",
@@ -7888,20 +7110,18 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-12-15"
-    },
+    "application_window": null,
     "docs_required": [
       "Govt/Recognized College ID Card",
       "Class 12 Marksheet (>= 65%)",
       "Family Income Certificate (<= 6L)"
     ],
-    "deadline": "2026-12-15",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "For female students enrolled in recognized STEM colleges in NCR and northern states.",
-    "description": "Fintech leader OakNorth's CSR initiative promoting female enrollment in computer science and STEM."
+    "description": "Fintech leader OakNorth's CSR initiative promoting female enrollment in computer science and STEM.",
+    "apply_url_verified": true
   },
   {
     "id": "google_generation_apac",
@@ -7951,80 +7171,17 @@
     "disability_required": false,
     "minority_required": false,
     "renewable": false,
-    "application_window": {
-      "opens": "2026-03-01",
-      "closes": "2026-05-31"
-    },
+    "application_window": null,
     "docs_required": [
       "Resume / CV with coding achievements",
       "University Transcripts",
       "Two Written Technical/Diversity Essay Responses"
     ],
-    "deadline": "2026-05-31",
+    "deadline": null,
     "last_verified": null,
     "verified": false,
     "notes": "PAST CUTOFF: Closed for 2026 cycle on May 31. Preserved for reference and past-deadline verification.",
-    "description": "Global technology giant Google's prestigious scholarship supporting exceptional women computer scientists."
-  },
-  {
-    "id": "ongc_obc_ews_scholarship",
-    "name": "ONGC Foundation Scholarship for Meritorious OBC and EWS Students",
-    "provider": "ONGC Foundation",
-    "portal": "ONGC Scholar Portal",
-    "portal_name": "ONGC Scholar Portal",
-    "portal_url": "https://www.ongcscholar.org",
-    "portal_home_url": "https://www.ongcscholar.org",
-    "source_url": "https://www.ongcscholar.org",
-    "apply_url": "https://www.ongcscholar.org",
-    "apply_steps_hint": "Apply online on ongcscholar.org under OBC/EWS scholarship stream",
-    "amount": "₹48,000 per year (₹4,000 per month directly in bank account)",
-    "amount_value": 48000,
-    "eligibility": {
-      "categories": [
-        "OBC",
-        "EWS"
-      ],
-      "min_marks": 60.0,
-      "max_family_income": 200000,
-      "courses": [
-        "B.Tech / B.E.",
-        "MBBS / BDS / Medical",
-        "MBA / M.Tech / M.Sc",
-        "Engineering"
-      ],
-      "states": [
-        "All",
-        "Pan-India"
-      ],
-      "gender": "All",
-      "disability_required": false,
-      "minority_required": false,
-      "min_year_of_study": 1
-    },
-    "applicable_states": [
-      "All",
-      "Pan-India"
-    ],
-    "level": "UG",
-    "scheme_type": "csr",
-    "gender": "All",
-    "disability_required": false,
-    "minority_required": false,
-    "renewable": true,
-    "application_window": {
-      "opens": "2026-08-01",
-      "closes": "2026-11-30"
-    },
-    "docs_required": [
-      "OBC NCL / EWS Certificate",
-      "Income Certificate (<= 2.0 Lakhs)",
-      "Class 12 Marksheet (>= 60%)",
-      "College Verification Form"
-    ],
-    "deadline": "2026-11-30",
-    "last_verified": null,
-    "verified": false,
-    "notes": "2,000 scholarships exclusively earmarked for OBC and Economically Weaker Section students.",
-    "description": "High-value energy PSU scholarship providing ₹48,000 annually to OBC and EWS students in professional courses."
+    "description": "Global technology giant Google's prestigious scholarship supporting exceptional women computer scientists.",
+    "apply_url_verified": true
   }
 ]

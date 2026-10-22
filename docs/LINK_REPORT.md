@@ -1,6 +1,6 @@
 # ScholarBot Link Health Report
-> Generated on: 2026-10-22 07:04:04 UTC
-> Total unique endpoints checked: 150 | Passed: 150 | Flagged/Failed: 0
+> Generated on: 2026-10-22 08:24:53 UTC
+> Total unique endpoints checked: 146 | Passed: 146 | Flagged/Failed: 0
 
 ## Summary by Scheme
 
@@ -10,7 +10,7 @@
 | `aicte_pragati_girls` | AICTE Pragati Scholarship Scheme for Gir | 200 OK | 200 OK | Verified HTTPS |
 | `aicte_saksham` | AICTE Saksham Scholarship Scheme for Spe | 200 OK | 200 OK | Verified HTTPS |
 | `post_matric_sc_central` | Centrally Sponsored Post-Matric Scholars | 200 OK | 200 OK | Verified HTTPS |
-| `post_matric_st_central` | National Fellowship and Scholarship for  | 200 OK | 200 OK | Verified HTTPS |
+| `post_matric_st_central` | Centrally Sponsored Post-Matric Scholars | 200 OK | 200 OK | Verified HTTPS |
 | `minority_post_matric` | Post-Matric Scholarship Scheme for Minor | 200 OK | 200 OK | Verified HTTPS |
 | `raj_postmatric_sje` | Rajasthan Post-Matric Scholarship (Uttar | 200 OK | 200 OK | Verified HTTPS |
 | `up_postmatric_dashmottar` | UP Dashmottar Post-Matric Scholarship Sc | 200 OK | 200 OK | Verified HTTPS |
@@ -45,19 +45,15 @@
 | `dst_inspire_scholarship` | INSPIRE Scholarship for Higher Education | 200 OK | 200 OK | Verified HTTPS |
 | `ugc_single_girl_child` | Savitribai Jyotirao Phule Fellowship for | 200 OK | 200 OK | Verified HTTPS |
 | `rajasthan_cm_higher_ed` | Chief Minister Higher Education Scholars | 200 OK | 200 OK | Verified HTTPS |
-| `rajasthan_uttarmatric_sod` | Rajasthan Post-Matric Scholarship Scheme | 200 OK | 200 OK | Verified HTTPS |
-| `up_scholarship_postmatric` | UP Dashmottar Scholarship and Fee Reimbu | 200 OK | 200 OK | Verified HTTPS |
 | `mp_mmvy_scholarship` | Mukhyamantri Medhavi Vidyarthi Yojana (M | 200 OK | 200 OK | Verified HTTPS |
 | `mp_gaon_ki_beti` | Gaon Ki Beti & Pratibha Kiran Scholarshi | 200 OK | 200 OK | Verified HTTPS |
 | `haryana_harchhatravratti` | Haryana Post-Matric Scholarship Scheme ( | 200 OK | 200 OK | Verified HTTPS |
 | `punjab_ashirwad_postmatric` | Dr. Ambedkar Post-Matric Scholarship Sch | 200 OK | 200 OK | Verified HTTPS |
-| `delhi_merit_means` | Delhi Government Merit-cum-Means Financi | 200 OK | 200 OK | Verified HTTPS |
 | `hp_kalpana_chawla` | Kalpana Chawla Chhatravriti Yojana Himac | 200 OK | 200 OK | Verified HTTPS |
 | `uttarakhand_post_matric` | Uttarakhand Post-Matric Scholarship for  | 200 OK | 200 OK | Verified HTTPS |
 | `jk_pmsss_aicte` | Prime Minister's Special Scholarship Sch | 200 OK | 200 OK | Verified HTTPS |
 | `ladakh_higher_ed_st` | Ladakh Autonomous Hill Development Post- | 200 OK | 200 OK | Verified HTTPS |
 | `chandigarh_post_matric` | Chandigarh Administration Post-Matric Sc | 200 OK | 200 OK | Verified HTTPS |
-| `maha_dbt_postmatric` | Rajarshi Chhatrapati Shahu Maharaj Shiks | 200 OK | 200 OK | Verified HTTPS |
 | `maha_dbt_sc_postmatric` | Government of India Post-Matric Scholars | 200 OK | 200 OK | Verified HTTPS |
 | `gujarat_mysy_scholarship` | Mukhyamantri Yuva Swavalamban Yojana (MY | 200 OK | 200 OK | Verified HTTPS |
 | `gujarat_digital_postmatric` | Digital Gujarat Post-Matric Scholarship  | 200 OK | 200 OK | Verified HTTPS |
@@ -66,7 +62,6 @@
 | `dnh_dd_post_matric` | Dadra & Nagar Haveli and Daman & Diu Pos | 200 OK | 200 OK | Verified HTTPS |
 | `wb_svmcm_merit` | Swami Vivekananda Merit-cum-Means Schola | 200 OK | 200 OK | Verified HTTPS |
 | `wb_kanyashree_k3` | Kanyashree Prakalpa (K3) Post-Graduate S | 200 OK | 200 OK | Verified HTTPS |
-| `bihar_postmatric_pms` | Bihar Post-Matric Scholarship Scheme (PM | 200 OK | 200 OK | Verified HTTPS |
 | `jharkhand_ekalyan_postmatric` | e-Kalyan Jharkhand Post-Matric Scholarsh | 200 OK | 200 OK | Verified HTTPS |
 | `odisha_medhabruti_scholarship` | Odisha e-Medhabruti Merit-cum-Means Scho | 200 OK | 200 OK | Verified HTTPS |
 | `tamilnadu_postmatric` | Tamil Nadu Post-Matric Scholarship Schem | 200 OK | 200 OK | Verified HTTPS |
@@ -85,13 +80,10 @@
 | `nagaland_postmatric_st` | Nagaland State Post-Matric Scholarship f | 200 OK | 200 OK | Verified HTTPS |
 | `sikkim_postmatric_scholarship` | Sikkim State Post-Matric Scholarship for | 200 OK | 200 OK | Verified HTTPS |
 | `tripura_postmatric_scholarship` | Tripura Post-Matric Scholarship Scheme f | 200 OK | 200 OK | Verified HTTPS |
-| `reliance_foundation_ug` | Reliance Foundation Undergraduate Schola | 200 OK | 200 OK | Verified HTTPS |
 | `reliance_foundation_pg` | Reliance Foundation Postgraduate Scholar | 200 OK | 200 OK | Verified HTTPS |
-| `kotak_kanya_girls` | Kotak Kanya Scholarship Scheme for Girl  | 200 OK | 200 OK | Verified HTTPS |
 | `tata_trusts_higher_ed` | Tata Trusts Higher Education Grant & Med | 200 OK | 200 OK | Verified HTTPS |
 | `lic_golden_jubilee` | LIC Golden Jubilee Scholarship Scheme | 200 OK | 200 OK | Verified HTTPS |
 | `santoor_women_scholarship` | Santoor Women's Scholarship Scheme (Girl | 200 OK | 200 OK | Verified HTTPS |
-| `ongc_foundation_scholarship` | ONGC Foundation Scholarship for SC/ST/OB | 200 OK | 200 OK | Verified HTTPS |
 | `loreal_women_science` | L'Oréal India For Young Women in Science | 200 OK | 200 OK | Verified HTTPS |
 | `keep_india_smiling_colgate` | Colgate Keep India Smiling Foundational  | 200 OK | 200 OK | Verified HTTPS |
 | `federal_bank_hormis` | Federal Bank Hormis Memorial Foundation  | 200 OK | 200 OK | Verified HTTPS |
@@ -120,7 +112,6 @@
 | `up_prematric_sc_st` | Uttar Pradesh Pre-Matric Scholarship Sch | 200 OK | 200 OK | Verified HTTPS |
 | `up_postmatric_inter` | UP Post-Matric Intermediate Scholarship  | 200 OK | 200 OK | Verified HTTPS |
 | `bihar_medhavriti_sc_st` | Mukhyamantri Medhavriti Yojana Bihar for | 200 OK | 200 OK | Verified HTTPS |
-| `wb_oasis_sc_st` | OASIS Post-Matric Scholarship for SC/ST  | 200 OK | 200 OK | Verified HTTPS |
 | `wb_aikyashree_minority` | Aikyashree State Scholarship for Minorit | 200 OK | 200 OK | Verified HTTPS |
 | `odisha_prerana_sc_st` | PRERANA Post-Matric Scholarship for ST/S | 200 OK | 200 OK | Verified HTTPS |
 | `kerala_state_merit` | Kerala State Merit Scholarship (SMS) for | 200 OK | 200 OK | Verified HTTPS |
@@ -134,7 +125,6 @@
 | `jk_lakshmi_vidya` | JK Lakshmi Vidya Scholarship for Undergr | 200 OK | 200 OK | Verified HTTPS |
 | `oaknorth_stem_scholarship` | OakNorth STEM Scholarship for Female Eng | 200 OK | 200 OK | Verified HTTPS |
 | `google_generation_apac` | Google Generation Scholarship for Women  | 200 OK | 200 OK | Verified HTTPS |
-| `ongc_obc_ews_scholarship` | ONGC Foundation Scholarship for Meritori | 200 OK | 200 OK | Verified HTTPS |
 
 ## Failed or Flagged Endpoints
 

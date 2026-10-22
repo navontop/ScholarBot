@@ -24,3 +24,8 @@ def test_ics_generation():
     assert "TRIGGER:-P7D" in ics_text
     assert "TRIGGER:-P3D" in ics_text
     assert "TRIGGER:-P1D" in ics_text
+
+def test_deadline_none_returns_check_official_portal():
+    days, tier, badge = calculate_deadline_metrics(None)
+    assert badge == "Check official portal"
+    assert tier == "OPEN"

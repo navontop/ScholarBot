@@ -36,7 +36,7 @@ class ScholarshipItem(Model):
     gender: str = "All"
     disability_required: bool = False
     minority_required: bool = False
-    deadline: str = "2026-12-31"
+    deadline: Optional[str] = None
     description: str = ""
     match_score: int = 80
     match_status: str = "eligible"  # eligible, maybe, close_miss, ineligible

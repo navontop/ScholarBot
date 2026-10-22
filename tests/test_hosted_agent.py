@@ -152,3 +152,63 @@ async def test_hosted_agent_chat_and_payment_message_handling(standalone_hosted_
     malformed_msg = hosted.ChatMessage(content=[hosted.TextContent(type="text", text="{bad_json_malformed::")])
     await hosted.handle_chat_message(ctx, "agent1tester_user", malformed_msg)
     # Executed without raising!
+
+@pytest.mark.asyncio
+async def test_hosted_coordinator_inter_agent_dispatch_and_fallbacks():
+    """
+    Tests that hosted_coordinator.py has real send_and_receive dispatch calls
+    to SCHEME_AGENT_ADDRESS / DOC_AGENT_ADDRESS / TRACKER_AGENT_ADDRESS
+    with attribution lines and in-process fallback.
+    """
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    coord_file = os.path.join(project_root, "hosted_coordinator.py")
+    assert os.path.exists(coord_file)
+
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        dest_file = os.path.join(tmp_dir, "hosted_coord_isolated.py")
+        shutil.copy2(coord_file, dest_file)
+
+        old_path = list(sys.path)
+        sys.path = [p for p in sys.path if os.path.abspath(p) != project_root]
+
+        try:
+            spec = importlib.util.spec_from_file_location("hosted_coord_isolated", dest_file)
+            coord_mod = importlib.util.module_from_spec(spec)
+            sys.modules["hosted_coord_isolated"] = coord_mod
+            spec.loader.exec_module(coord_mod)
+
+            assert hasattr(coord_mod, "request_scheme_matching")
+            assert hasattr(coord_mod, "request_document_audit")
+            assert hasattr(coord_mod, "request_deadlines")
+            assert hasattr(coord_mod, "SCHEME_AGENT_ADDRESS")
+
+            from unittest.mock import AsyncMock
+            import logging
+            ctx = AsyncMock()
+            ctx.logger = logging.getLogger("test_coord")
+
+            # 1. Fallback case: specialist address empty or unreachable
+            profile = coord_mod.StudentProfile(state="Rajasthan", category="OBC", family_income=200000.0, marks_percentage=80.0)
+            matches, misses = await coord_mod.request_scheme_matching(ctx, profile, "sess_1")
+            assert len(matches) > 0
+            attr = coord_mod.LAST_DISPATCH_ATTRIBUTION.get("sess_1", "")
+            assert "Specialist unavailable, used local engine" in attr
+
+            # 2. Remote call case: specialist address set and send_and_receive returns response
+            coord_mod.SCHEME_AGENT_ADDRESS = "agent1qtest_specialist_scheme_address"
+            fake_response = coord_mod.SchemeMatchResponse(
+                session_id="sess_2",
+                total_found=3,
+                matches=[coord_mod.ScholarshipItem(id="s1", name="Scheme 1", provider="P", portal="NSP", portal_url="https://s.gov", amount="50000")],
+                close_misses=[]
+            )
+            ctx.send_and_receive = AsyncMock(return_value=(fake_response, "DELIVERED"))
+            matches2, misses2 = await coord_mod.request_scheme_matching(ctx, profile, "sess_2")
+            assert len(matches2) == 1
+            assert matches2[0].id == "s1"
+            attr2 = coord_mod.LAST_DISPATCH_ATTRIBUTION.get("sess_2", "")
+            assert "Matched by Scheme Matching Agent (agent1qtest_specialist_scheme_address)" in attr2
+
+        finally:
+            sys.path = old_path
+            sys.modules.pop("hosted_coord_isolated", None)

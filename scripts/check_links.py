@@ -39,9 +39,13 @@ def check_url(url: str, timeout: float = 6.0) -> Tuple[bool, int, str]:
             content_type = resp.headers.get("Content-Type", "")
             return True, status, content_type
     except urllib.error.HTTPError as e:
-        # Many Indian government sites (e.g., NIC, state portals) block bot user-agents with 403 or 406
-        # but are live HTTPS websites.
-        return (e.code in (200, 301, 302, 307, 308, 403, 406)), e.code, f"HTTP Error {e.code}"
+        # Treat 403 / 406 as unverified (bot protection / WAF block), not OK
+        if e.code in (200, 301, 302, 307, 308):
+            return True, e.code, f"HTTP {e.code} (Redirect/Reachable)"
+        elif e.code in (403, 406):
+            return False, e.code, f"HTTP {e.code} (Unverified - WAF/Bot Protection)"
+        else:
+            return False, e.code, f"HTTP Error {e.code}"
     except urllib.error.URLError as e:
         return False, 0, f"URL Error: {e.reason}"
     except Exception as e:

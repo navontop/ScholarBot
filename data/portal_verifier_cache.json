@@ -9,7 +9,7 @@
   },
   "non_existent_fake": {
     "status": "Could not verify",
-    "checked_at": 1792654714.2716317,
+    "checked_at": 1792662707.9259605,
     "checked_ago_str": "Checked just now",
     "http_code": null,
     "message": "Official portal gateway unreachable (<urlopen error [Errno 11001] getaddrinfo failed>). Falling back safely to static records.",
@@ -17,7 +17,7 @@
   },
   "nsp_mock": {
     "status": "Verified today",
-    "checked_at": 1792654714.546997,
+    "checked_at": 1792662708.195058,
     "checked_ago_str": "Checked just now",
     "http_code": 200,
     "message": "Official portal active (HTTP 200). Gateway verified.",

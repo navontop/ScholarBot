@@ -129,6 +129,11 @@ EMBEDDED_DOC_RULES = json.loads({repr(json.dumps(doc_rules_raw))})
     marker = "hosted_agent = Agent("
     idx = hosted_content.find(marker)
     agent_logic = hosted_content[idx:] if idx != -1 else ""
+    end_main = agent_logic.find('if __name__ == "__main__":')
+    if end_main != -1:
+        agent_logic = agent_logic[:end_main]
+    agent_logic_clean = re.sub(r'# Export agent reference for Agentverse[\s\S]*', '', agent_logic)
+    agent_logic_clean = re.sub(r'agent\s*=\s*hosted_agent[\s\S]*', '', agent_logic_clean).strip()
 
     agent_setup = """
 try:
@@ -153,7 +158,7 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
         max_family_income=float(elig.get("max_family_income", 10000000.0)),
         applicable_states=elig.get("states", []),
         gender=elig.get("gender", "All"),
-        deadline=s.get("deadline", "2026-12-31"),
+        deadline=s.get("deadline"),
         description=s.get("description", ""),
         match_score=85,
         match_status="eligible",
@@ -162,13 +167,188 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
     )
 """
 
-    agent_logic_clean = re.sub(r'# Export agent reference for Agentverse\s+agent = hosted_agent', '', agent_logic).strip()
+    # Orchestration methods for hosted_coordinator.py
+    coordinator_orchestration = '''
+# Specialist Agent Addresses (set in Agentverse Secrets/Environment)
+SCHEME_AGENT_ADDRESS = os.getenv("SCHEME_AGENT_ADDRESS", "")
+DOC_AGENT_ADDRESS = os.getenv("DOC_AGENT_ADDRESS", "")
+TRACKER_AGENT_ADDRESS = os.getenv("TRACKER_AGENT_ADDRESS", "")
+
+LAST_DISPATCH_ATTRIBUTION: Dict[str, str] = {}
+
+async def request_scheme_matching(ctx: Context, profile: StudentProfile, session_id: str) -> Tuple[List[ScholarshipItem], List[ScholarshipItem]]:
+    attribution = "⚠️ Specialist unavailable, used local engine."
+    if SCHEME_AGENT_ADDRESS and hasattr(ctx, "send_and_receive"):
+        ctx.logger.info(f"[Coordinator] Dispatching SchemeMatchRequest to SchemeMatchingAgent at {SCHEME_AGENT_ADDRESS}...")
+        try:
+            resp, status = await ctx.send_and_receive(
+                SCHEME_AGENT_ADDRESS,
+                SchemeMatchRequest(session_id=session_id, profile=profile),
+                response_type=SchemeMatchResponse,
+                timeout=5
+            )
+            if resp and isinstance(resp, SchemeMatchResponse):
+                ctx.logger.info(f"[Coordinator] Received SchemeMatchResponse from {SCHEME_AGENT_ADDRESS}: {resp.total_found} matches found.")
+                attribution = f"Matched by Scheme Matching Agent ({SCHEME_AGENT_ADDRESS})"
+                LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
+                return resp.matches, resp.close_misses
+            else:
+                ctx.logger.warning(f"[Coordinator Fallback] Specialist at {SCHEME_AGENT_ADDRESS} returned status: {status}. Falling back to local engine.")
+        except Exception as ex:
+            ctx.logger.warning(f"[Coordinator Fallback] Error contacting {SCHEME_AGENT_ADDRESS}: {ex}. Falling back to local engine.")
+
+    ctx.logger.info("[Coordinator Fallback] Executing local engine fallback for matching...")
+    LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
+    return match_scholarships(profile)
+
+async def request_document_audit(ctx: Context, audit_req: DocumentAuditRequest, income_cap: float) -> DocumentAuditResponse:
+    session_id = audit_req.session_id or str(uuid4())
+    attribution = "⚠️ Specialist unavailable, used local engine."
+    if DOC_AGENT_ADDRESS and hasattr(ctx, "send_and_receive"):
+        ctx.logger.info(f"[Coordinator] Dispatching DocumentAuditRequest to DocComplianceAgent at {DOC_AGENT_ADDRESS}...")
+        try:
+            resp, status = await ctx.send_and_receive(
+                DOC_AGENT_ADDRESS,
+                audit_req,
+                response_type=DocumentAuditResponse,
+                timeout=5
+            )
+            if resp and isinstance(resp, DocumentAuditResponse):
+                ctx.logger.info(f"[Coordinator] Received DocumentAuditResponse from {DOC_AGENT_ADDRESS}: status={resp.overall_status}")
+                attribution = f"Audited by Document Compliance Agent ({DOC_AGENT_ADDRESS})"
+                LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
+                return resp
+            else:
+                ctx.logger.warning(f"[Coordinator Fallback] Subagent at {DOC_AGENT_ADDRESS} returned status: {status}. Falling back to local engine.")
+        except Exception as ex:
+            ctx.logger.warning(f"[Coordinator Fallback] Error contacting {DOC_AGENT_ADDRESS}: {ex}. Falling back to local engine.")
+
+    ctx.logger.info("[Coordinator Fallback] Executing local engine fallback for document audit...")
+    LAST_DISPATCH_ATTRIBUTION[session_id] = attribution
+    return audit_document_compliance(audit_req, scheme_income_cap=income_cap)
+
+async def request_deadlines(ctx: Context, scheme_ids: List[str], session_id: Optional[str] = None) -> List[DeadlineItem]:
+    sess_id = session_id or str(uuid4())
+    attribution = "⚠️ Specialist unavailable, used local engine."
+    if TRACKER_AGENT_ADDRESS and hasattr(ctx, "send_and_receive"):
+        ctx.logger.info(f"[Coordinator] Dispatching DeadlineRequest to DeadlineTrackerAgent at {TRACKER_AGENT_ADDRESS}...")
+        try:
+            resp, status = await ctx.send_and_receive(
+                TRACKER_AGENT_ADDRESS,
+                DeadlineRequest(session_id=sess_id, scheme_ids=scheme_ids),
+                response_type=DeadlineResponse,
+                timeout=5
+            )
+            if resp and isinstance(resp, DeadlineResponse):
+                ctx.logger.info(f"[Coordinator] Received DeadlineResponse from {TRACKER_AGENT_ADDRESS}: {len(resp.items)} deadlines.")
+                attribution = f"Tracked by Deadline Tracker Agent ({TRACKER_AGENT_ADDRESS})"
+                LAST_DISPATCH_ATTRIBUTION[sess_id] = attribution
+                return resp.items
+            else:
+                ctx.logger.warning(f"[Coordinator Fallback] Subagent at {TRACKER_AGENT_ADDRESS} returned status: {status}. Falling back to local engine.")
+        except Exception as ex:
+            ctx.logger.warning(f"[Coordinator Fallback] Error contacting {TRACKER_AGENT_ADDRESS}: {ex}. Falling back to local engine.")
+
+    ctx.logger.info("[Coordinator Fallback] Executing local engine fallback for deadlines...")
+    schemes = load_scholarships()
+    selected_items = [s for s in schemes if not scheme_ids or s["id"] in scheme_ids]
+    LAST_DISPATCH_ATTRIBUTION[sess_id] = attribution
+    return build_deadline_items(selected_items)
+'''
+
+    # Construct coordinator_agent_logic by applying specialist dispatches to agent_logic_clean
+    coordinator_agent_logic = agent_logic_clean.replace(
+        "USER_PROFILES: Dict[str, StudentProfile] = {}",
+        "USER_PROFILES: Dict[str, StudentProfile] = {}\n" + coordinator_orchestration
+    )
+
+    old_match_block = '''        eligible, close_misses = match_scholarships(profile)
+        if not eligible:
+            await ctx.send(sender, create_text_chat(
+                f"No scholarships matched your profile based on published criteria, but {len(close_misses)} are near matches. "
+                f"Type 'menu' to open the Action Hub."))
+            return True
+        await ctx.send(sender, create_card_message(
+            f"🎉 Found {len(eligible)} scholarships that match your profile (based on published criteria - confirm on the official portal).\\n"
+            f"📌 Your details: {profile_summary_line(profile)}\\n\\nSwipe the cards to see grants, deadlines and required documents:",
+            "carousel", get_carousel_card(eligible, close_misses)))
+        return True'''
+
+    new_match_block = '''        match_sess_id = str(uuid4())
+        eligible, close_misses = await request_scheme_matching(ctx, profile, match_sess_id)
+        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(match_sess_id, "")
+        attr_line = f"\\n\\n_{attribution_str}_" if attribution_str else ""
+        if not eligible:
+            await ctx.send(sender, create_text_chat(
+                f"No scholarships matched your profile based on published criteria, but {len(close_misses)} are near matches. "
+                f"Type 'menu' to open the Action Hub.{attr_line}"))
+            return True
+        await ctx.send(sender, create_card_message(
+            f"🎉 Found {len(eligible)} scholarships that match your profile (based on published criteria - confirm on the official portal).\\n"
+            f"📌 Your details: {profile_summary_line(profile)}{attr_line}\\n\\nSwipe the cards to see grants, deadlines and required documents:",
+            "carousel", get_carousel_card(eligible, close_misses)))
+        return True'''
+
+    coordinator_agent_logic = coordinator_agent_logic.replace(old_match_block, new_match_block)
+
+    old_deadline_block = '''    if action == "view_deadlines":
+        items = build_deadline_items(load_scholarships())
+        await ctx.send(sender, create_card_message(
+            "📅 **Scholarship deadlines (days counted from today).**\\nDates come from our unverified dataset, so confirm every date on the official portal:",
+            "review", get_deadlines_card(items)))
+        return True'''
+
+    new_deadline_block = '''    if action == "view_deadlines":
+        deadlines_sess_id = str(uuid4())
+        items = await request_deadlines(ctx, [], deadlines_sess_id)
+        attribution_str = LAST_DISPATCH_ATTRIBUTION.get(deadlines_sess_id, "")
+        attr_line = f"\\n\\n_{attribution_str}_" if attribution_str else ""
+        await ctx.send(sender, create_card_message(
+            f"📅 **Scholarship deadlines (days counted from today).\\nDates come from our unverified dataset, so confirm every date on the official portal:{attr_line}**",
+            "review", get_deadlines_card(items)))
+        return True'''
+
+    coordinator_agent_logic = coordinator_agent_logic.replace(old_deadline_block, new_deadline_block)
+
+    old_audit_block = '''        if len(user_text) > 30 and any(k in user_text.lower() for k in doc_keywords):
+            target = storage_get(ctx, f"active_audit_scheme:{sender}") or "nsp_central_sector"
+            req = DocumentAuditRequest(session_id=str(uuid4()), scheme_id=target, doc_type="income_certificate",
+                                       doc_text=user_text, profile=profile)
+            res = audit_document_compliance(req, scheme_income_cap=get_scheme_income_cap(target) or 250000.0)
+            await ctx.send(sender, create_card_message(
+                f"📄 **Document pre-check complete: {res.overall_status} ({res.readiness_score}/100)**",
+                "review", get_audit_result_card(res)))
+            return'''
+
+    new_audit_block = '''        if len(user_text) > 30 and any(k in user_text.lower() for k in doc_keywords):
+            target = storage_get(ctx, f"active_audit_scheme:{sender}") or "nsp_central_sector"
+            audit_sess_id = str(uuid4())
+            req = DocumentAuditRequest(
+                session_id=audit_sess_id,
+                scheme_id=target,
+                doc_type="income_certificate",
+                doc_text=user_text,
+                profile=profile
+            )
+            res = await request_document_audit(ctx, req, income_cap=get_scheme_income_cap(target) or 250000.0)
+            attribution_str = LAST_DISPATCH_ATTRIBUTION.get(audit_sess_id, "")
+            attr_line = f"\\n\\n_{attribution_str}_" if attribution_str else ""
+            await ctx.send(sender, create_card_message(
+                f"📄 **Document pre-check complete: {res.overall_status} ({res.readiness_score}/100)**{attr_line}",
+                "review", get_audit_result_card(res)))
+            return'''
+
+    coordinator_agent_logic = coordinator_agent_logic.replace(old_audit_block, new_audit_block)
 
     # 1. BUILD scholarship_agentverse_hosted.py (Standalone Safe-Mode Bundle)
+    standalone_header = '''"""
+ScholarBot - Standalone Agentverse Hosted Agent Bundle
+100% self-contained single-file agent with zero local imports.
+Ready for direct paste into the Agentverse hosted web editor.
+"""
+'''
     standalone_content = (
-        '"""\nScholarBot - Standalone Agentverse Hosted Agent Bundle\n'
-        '100% self-contained single-file agent with zero local imports.\n'
-        'Ready for direct paste into the Agentverse hosted web editor.\n"""\n'
+        standalone_header
         + common_imports
         + embedded_datasets
         + "\n# ==================== CORE MODELS ====================\n"
@@ -193,7 +373,7 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
         + agent_setup
         + "\n"
         + agent_logic_clean
-        + "\n\n# Export agent reference for Agentverse\nagent = hosted_agent\n"
+        + "\n\n# Export agent reference for Agentverse\nagent = hosted_agent\n\nif __name__ == '__main__':\n    hosted_agent.run()\n"
     )
 
     with open(os.path.join(root_dir, "scholarship_agentverse_hosted.py"), "w", encoding="utf-8") as f:
@@ -201,11 +381,15 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
     print("Successfully built standalone scholarship_agentverse_hosted.py")
 
     # 2. BUILD hosted_coordinator.py (Coordinator with specialist routing)
+    coordinator_header = '''"""
+ScholarBot - Hosted Coordinator Agent
+100% self-contained single-file agent with zero local imports.
+Dispatches to specialist agents on Agentverse via ACP with local fallback.
+Ready for direct paste into Agentverse hosted editor.
+"""
+'''
     coordinator_content = (
-        '"""\nScholarBot - Hosted Coordinator Agent\n'
-        '100% self-contained single-file agent with zero local imports.\n'
-        'Dispatches to specialist agents on Agentverse via ACP with local fallback.\n'
-        'Ready for direct paste into Agentverse hosted editor.\n"""\n'
+        coordinator_header
         + common_imports
         + embedded_datasets
         + "\n# Specialist Agent Addresses (set in Agentverse Secrets/Environment)\n"
@@ -233,8 +417,8 @@ def scheme_to_item(s: dict) -> ScholarshipItem:
         + "\n# ==================== HOSTED AGENT & PROTOCOLS ====================\n"
         + agent_setup
         + "\n"
-        + agent_logic_clean
-        + "\n\n# Export agent reference for Agentverse\nagent = hosted_agent\n"
+        + coordinator_agent_logic
+        + "\n\n# Export agent reference for Agentverse\nagent = hosted_agent\n\nif __name__ == '__main__':\n    hosted_agent.run()\n"
     )
 
     with open(os.path.join(root_dir, "hosted_coordinator.py"), "w", encoding="utf-8") as f:
@@ -322,23 +506,28 @@ agent = Agent(
     }}
 )
 
-auditor_proto = Protocol(name="DocumentAuditProtocol", version="1.0.0")
+auditor_proto = Protocol(name="DocumentComplianceProtocol", version="1.0.0")
 
 @auditor_proto.on_message(model=DocumentAuditRequest, replies=DocumentAuditResponse)
 async def handle_audit_request(ctx: Context, sender: str, msg: DocumentAuditRequest):
     ctx.logger.info(f"[Auditor] Received document audit request from {{sender}} for scheme: {{msg.scheme_id}}")
-    res = audit_document_compliance(msg)
+    rule = DOC_RULES_DB.get(msg.scheme_id, DOC_RULES_DB.get("default", {{}}))
+    income_cap = float(rule.get("income_cap", 250000.0))
+    res = audit_document_compliance(msg, scheme_income_cap=income_cap)
     await ctx.send(sender, res)
 
 @auditor_proto.on_message(model=DocumentGuidanceRequest, replies=DocumentGuidanceResponse)
 async def handle_guidance_request(ctx: Context, sender: str, msg: DocumentGuidanceRequest):
-    guidance = get_document_guidance(msg.scheme_id)
+    rule = DOC_RULES_DB.get(msg.scheme_id, DOC_RULES_DB.get("default", {{}}))
     await ctx.send(sender, DocumentGuidanceResponse(
         session_id=msg.session_id,
         scheme_id=msg.scheme_id,
-        mandatory=guidance.get("mandatory", []),
-        optional=guidance.get("optional", []),
-        issuing_authority=guidance.get("issuing_authority", "Authorized Competent Authority")
+        scheme_name=msg.scheme_name,
+        mandatory_docs=rule.get("mandatory", []),
+        critical_warning=rule.get("warning", ""),
+        rejection_prevention_tips=rule.get("tips", []),
+        portal_url=rule.get("portal", "https://scholarships.gov.in"),
+        step_by_step_process=rule.get("steps", [])
     ))
 
 agent.include(auditor_proto)
