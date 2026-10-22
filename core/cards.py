@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 from uuid import uuid4
@@ -13,6 +14,39 @@ from core.models import (
     ScholarshipItem,
     StudentProfile,
 )
+
+ASSET_BASE_URL = os.getenv("ASSET_BASE_URL", "https://raw.githubusercontent.com/fetchai/scholarbot/master/assets").rstrip("/")
+
+def get_asset_url(icon_name: str) -> str:
+    """Returns high-resolution (512x512) verified asset URL for cards."""
+    return f"{ASSET_BASE_URL}/{icon_name}.png"
+
+def get_scheme_image_url(scheme: ScholarshipItem) -> str:
+    """
+    Returns high-resolution asset URL tailored to scheme type and category.
+    Differentiates: central, state, csr, girls, pwd, minority, merit, school.
+    """
+    stype = (getattr(scheme, "scheme_type", "") or "").lower()
+    sid = (getattr(scheme, "id", "") or "").lower()
+    sname = (getattr(scheme, "name", "") or "").lower()
+    sgender = (getattr(scheme, "gender", "") or "").lower()
+
+    if sgender == "female" or "girl" in sid or "pragati" in sid or "kanya" in sid:
+        return get_asset_url("girls")
+    if getattr(scheme, "disability_required", False) or "saksham" in sid or "pwd" in sid:
+        return get_asset_url("pwd")
+    if getattr(scheme, "minority_required", False) or "minority" in sid or "hazrat" in sid:
+        return get_asset_url("minority")
+    if stype in ["csr", "private", "foundation", "trust"] or any(t in sid for t in ["reliance", "tata", "hdfc", "kotak", "jindal", "santoor", "lic"]):
+        return get_asset_url("csr")
+    if "school" in (getattr(scheme, "level", "") or "").lower() or "pre_matric" in sid or "pre-matric" in sid:
+        return get_asset_url("school")
+    if getattr(scheme, "min_marks", 0.0) >= 80.0 or "merit" in sid or "merit" in sname:
+        return get_asset_url("merit")
+    if stype == "state" or (scheme.applicable_states and "all" not in [s.lower() for s in scheme.applicable_states]):
+        return get_asset_url("state")
+
+    return get_asset_url("central")
 
 def create_text_chat(text: str) -> ChatMessage:
     """Creates a basic plain-text chat message."""
@@ -44,13 +78,13 @@ def create_card_message(narration: str, card_kind: str, payload: dict, is_termin
     )
 
 def get_action_hub_card() -> dict:
-    """Fast Action Hub card providing 1-click entry to all features with compact images."""
+    """Fast Action Hub card providing 1-click entry to all features with high-res PNG images."""
     items = [
         {
             "id": "action_find",
-            "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=260&h=130&fit=crop&auto=format&q=80",
+            "image": get_asset_url("hub_find"),
             "title": "🔍 Find Matching Scholarships",
-            "subtitle": "Discover 20+ central, state, and CSR scholarships tailored to you",
+            "subtitle": "Discover 129+ central, state, and CSR scholarships tailored to you",
             "secondary_text": "Complete eligibility intake form",
             "badges": [{"label": "Smart Matching", "variant": "success"}],
             "primary_cta": {
@@ -60,7 +94,7 @@ def get_action_hub_card() -> dict:
         },
         {
             "id": "action_audit",
-            "image": "https://images.unsplash.com/photo-1450133064473-71024230f91b?w=260&h=130&fit=crop&auto=format&q=80",
+            "image": get_asset_url("hub_audit"),
             "title": "📄 Anti-Rejection Document Audit",
             "subtitle": "Pre-check income certificate, caste certificate, marksheet, and NPCI DBT",
             "secondary_text": "Deterministic compliance pre-check",
@@ -72,7 +106,7 @@ def get_action_hub_card() -> dict:
         },
         {
             "id": "action_deadlines",
-            "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=260&h=130&fit=crop&auto=format&q=80",
+            "image": get_asset_url("hub_deadlines"),
             "title": "📅 Deadlines & Calendar Tracker",
             "subtitle": "Real-time urgency tracker with downloadable .ics calendar alarms (7, 3, 1 day)",
             "secondary_text": "Never miss a portal cutoff",
@@ -84,7 +118,7 @@ def get_action_hub_card() -> dict:
         },
         {
             "id": "action_whatif",
-            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=260&h=130&fit=crop&auto=format&q=80",
+            "image": get_asset_url("hub_whatif"),
             "title": "🔮 'What-If' Eligibility Simulator",
             "subtitle": "Simulate what happens if your family income or marks change",
             "secondary_text": "Instant re-matching",
@@ -96,9 +130,9 @@ def get_action_hub_card() -> dict:
         },
         {
             "id": "action_concierge",
-            "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=260&h=130&fit=crop&auto=format&q=80",
+            "image": get_asset_url("hub_concierge"),
             "title": "⚡ Application Concierge Pack",
-            "subtitle": "Get a complete application pack: document checklist, portal guide, and SOP essay",
+            "subtitle": "Get a complete application pack: verified apply link, document checklist, portal guide & SOP essay",
             "secondary_text": "Fetch.ai Payment Protocol enabled",
             "badges": [{"label": "0.01 USDC / 0.05 FET", "variant": "success"}],
             "primary_cta": {
@@ -108,7 +142,7 @@ def get_action_hub_card() -> dict:
         },
         {
             "id": "action_profile",
-            "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=260&h=130&fit=crop&auto=format&q=80",
+            "image": get_asset_url("hub_profile"),
             "title": "👤 My Profile & Shortlist",
             "subtitle": "View or update your saved profile, saved scholarships, and active reminders",
             "secondary_text": "Zero-typing persistence",
@@ -316,19 +350,23 @@ SCHEME_THUMBNAILS = {
 def get_carousel_card(matched_schemes: List[ScholarshipItem], close_misses: List[ScholarshipItem] = None) -> dict:
     """Builds a horizontal carousel card for matched scholarships with distinct badges and CTAs."""
     items = []
-    default_img = "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=260&h=130&fit=crop&auto=format&q=80"
-    for s in matched_schemes:
+    # Show Top 3 first
+    for idx, s in enumerate(matched_schemes):
         badges = [
-            {"label": f"{s.match_score}% Match", "variant": "success"},
-            {"label": s.deadline, "variant": "info"}
+            {"label": f"Top Pick #{idx+1}" if idx < 3 else f"{s.match_score}% Match", "variant": "success"},
+            {"label": getattr(s, "scheme_type", "central").upper(), "variant": "info"}
         ]
-        scheme_img = SCHEME_THUMBNAILS.get(s.id, default_img)
+        if getattr(s, "gender", "All").lower() == "female":
+            badges.append({"label": "Girls Scheme", "variant": "warning"})
+        if getattr(s, "disability_required", False):
+            badges.append({"label": "PwD Scheme", "variant": "warning"})
+
         items.append({
             "id": s.id,
-            "image": scheme_img,
+            "image": get_scheme_image_url(s),
             "title": s.name[:45] + ("..." if len(s.name) > 45 else ""),
-            "subtitle": f"{s.provider[:35]} · {s.portal[:25]}",
-            "secondary_text": s.amount,
+            "subtitle": f"{s.provider[:35]} · {getattr(s, 'portal_name', '') or s.portal[:25]}",
+            "secondary_text": f"{s.amount} · Deadline: {s.deadline or 'Check Portal'}",
             "badges": badges,
             "primary_cta": {
                 "label": "View Guide & Checklist",
@@ -345,8 +383,8 @@ def get_carousel_card(matched_schemes: List[ScholarshipItem], close_misses: List
         for cm in close_misses[:2]:
             items.append({
                 "id": cm.id,
-                "image": "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=260&h=130&fit=crop&auto=format&q=80",
-                "title": f"[Close Miss] {cm.name[:35]}...",
+                "image": get_scheme_image_url(cm),
+                "title": f"[Near Miss] {cm.name[:35]}...",
                 "subtitle": f"{cm.portal}",
                 "secondary_text": cm.match_reason[:45] + "...",
                 "badges": [{"label": "Near Match", "variant": "warning"}],
@@ -363,7 +401,7 @@ def get_carousel_card(matched_schemes: List[ScholarshipItem], close_misses: List
     # Add return to menu card
     items.append({
         "id": "hub_return",
-        "image": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=260&h=130&fit=crop&auto=format&q=80",
+        "image": get_asset_url("hub_home"),
         "title": "Return to Action Hub",
         "subtitle": "Explore other advisory tools, deadlines, or document audits",
         "secondary_text": "ScholarBot Main Menu",
@@ -381,22 +419,44 @@ def get_carousel_card(matched_schemes: List[ScholarshipItem], close_misses: List
     }
 
 def get_scheme_detail_card(scheme: ScholarshipItem, doc_guidance: dict) -> dict:
-    """Generates detailed view card with documentation, direct portal link, and actions."""
+    """Generates detailed view card with documentation, direct apply link, and actions."""
+    from core.portal_verifier import verify_portal_url
+
+    # Real-time portal check
+    target_url = scheme.apply_url or scheme.portal_url or scheme.source_url
+    portal_check = verify_portal_url(scheme.id, target_url)
+    verify_status_label = portal_check.get("status", "Could not verify")
+    checked_ago = portal_check.get("checked_ago_str", "Checked recently")
+
+    verif_display = "Unverified, confirm on official portal"
+    if scheme.verified:
+        verif_display = f"Verified (Last checked: {scheme.last_verified})"
+
+    gateway_display = f"{verify_status_label} ({checked_ago})"
+    apply_link = scheme.apply_url or scheme.portal_url
+    source_link = scheme.source_url or scheme.portal_url
+
     summary_rows = [
         {"label": "Scholarship Grant", "value": scheme.amount},
         {"label": "Funding Body", "value": scheme.provider},
-        {"label": "Official Portal", "value": scheme.portal},
-        {"label": "Application Deadline", "value": scheme.deadline},
-        {"label": "Direct Portal URL", "value": scheme.portal_url},
-        {"label": "Verification Status", "value": f"Verified (Last checked: {scheme.last_verified})" if scheme.verified else "Unverified, confirm on official portal"}
+        {"label": "Official Portal", "value": getattr(scheme, "portal_name", "") or scheme.portal},
+        {"label": "Application Deadline", "value": scheme.deadline if scheme.deadline else "Check official portal"},
+        {"label": "Direct Apply URL", "value": apply_link},
+        {"label": "Source Guidelines", "value": source_link},
+        {"label": "Verification Status", "value": verif_display},
+        {"label": "Real-time Gateway", "value": gateway_display},
     ]
+
+    if getattr(scheme, "apply_steps_hint", ""):
+        summary_rows.append({"label": "Application Steps", "value": scheme.apply_steps_hint})
 
     checklist_preview = " • " + " • ".join(doc_guidance.get("mandatory", [])[:4])
     summary_rows.append({"label": "Mandatory Docs", "value": checklist_preview})
+    summary_rows.append({"label": "Security Note", "value": "OTP, Aadhaar biometric authentication, and CAPTCHA steps must be completed directly by the student on the official portal."})
 
     return {
         "title": f"Guide: {scheme.name[:50]}",
-        "hero_image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=450&h=200&fit=crop&auto=format&q=80",
+        "hero_image": get_scheme_image_url(scheme),
         "summary_rows": summary_rows,
         "ctas": [
             {

@@ -104,11 +104,16 @@ def generate_concierge_pack(scheme: ScholarshipItem, doc_rules: dict, profile: S
     steps_md = "\n".join([f"{step}" for step in doc_rules.get("steps", [])])
     tips_md = "\n".join([f"- {tip}" for tip in doc_rules.get("tips", [])])
 
+    apply_link = getattr(scheme, "apply_url", "") or scheme.portal_url
+    steps_hint = getattr(scheme, "apply_steps_hint", "") or "Register and apply on portal"
+
     md_content = f"""# 🎓 ScholarBot Application Concierge Pack
 **Scheme:** {scheme.name}  
 **Funding Body:** {scheme.provider}  
-**Official Portal:** [{scheme.portal}]({scheme.portal_url})  
-**Application Deadline:** {scheme.deadline}  
+**Official Portal:** [{getattr(scheme, 'portal_name', '') or scheme.portal}]({scheme.portal_url})  
+**Direct Apply URL:** {apply_link}  
+**Portal Application Steps:** {steps_hint}  
+**Application Deadline:** {scheme.deadline if scheme.deadline else 'Check official portal'}  
 **Status:** Complete Application Dossier  
 
 ---

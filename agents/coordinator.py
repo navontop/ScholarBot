@@ -453,6 +453,12 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
                 portal=selected["portal"],
                 portal_url=selected["portal_url"],
                 source_url=selected.get("source_url", ""),
+                apply_url=selected.get("apply_url") or selected.get("portal_url", ""),
+                apply_steps_hint=selected.get("apply_steps_hint", ""),
+                portal_name=selected.get("portal_name") or selected.get("portal", ""),
+                scheme_type=selected.get("scheme_type", "central"),
+                level=selected.get("level", "UG"),
+                renewable=bool(selected.get("renewable", True)),
                 amount=selected["amount"],
                 category_list=elig.get("categories", []),
                 min_marks=float(elig.get("min_marks", 0.0)),
@@ -464,19 +470,24 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
                 match_score=score,
                 match_status=status,
                 match_reason=reason,
-                last_verified=selected.get("last_verified", "2026-10-15"),
-                verified=selected.get("verified", True)
+                last_verified=selected.get("last_verified"),
+                verified=bool(selected.get("verified", False))
             )
 
             doc_rule = DOC_RULES_DB.get(scheme_id, DOC_RULES_DB.get("default", {}))
             detail_card = get_scheme_detail_card(sc_item, doc_rule)
             explanation = await generate_grounded_explanation(sc_item, profile, lang_hindi)
 
+            apply_hint_str = f"💡 **Steps**: {sc_item.apply_steps_hint}\n\n" if sc_item.apply_steps_hint else ""
             narration = (
                 f"📋 **{sc_item.name}** ki details:\n\n{explanation}\n\n"
+                f"🔗 **Direct Apply URL**: {sc_item.apply_url}\n"
+                f"{apply_hint_str}"
                 f"Aap official portal par apply karne se pehle documents pre-check audit run kar sakte hain."
                 if lang_hindi else
                 f"📋 Details for **{sc_item.name}**:\n\n{explanation}\n\n"
+                f"🔗 **Official Apply Link**: {sc_item.apply_url}\n"
+                f"{apply_hint_str}"
                 f"Ensure you complete the document pre-check before submitting on the official portal."
             )
             await ctx.send(sender, create_card_message(narration, "detail", detail_card))
@@ -836,6 +847,11 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
             provider=selected["provider"],
             portal=selected["portal"],
             portal_url=selected["portal_url"],
+            source_url=selected.get("source_url", ""),
+            apply_url=selected.get("apply_url") or selected.get("portal_url", ""),
+            apply_steps_hint=selected.get("apply_steps_hint", ""),
+            portal_name=selected.get("portal_name") or selected.get("portal", ""),
+            scheme_type=selected.get("scheme_type", "central"),
             amount=selected["amount"],
             deadline=selected.get("deadline", "2026-12-31"),
             category_list=selected["eligibility"].get("categories", []),
@@ -847,12 +863,17 @@ async def _process_chat_message_safely(ctx: Context, sender: str, msg: ChatMessa
             match_score=score,
             match_status=status,
             match_reason=reason,
-            verified=selected.get("verified", False)
+            verified=bool(selected.get("verified", False)),
+            last_verified=selected.get("last_verified")
         )
         doc_rule = DOC_RULES_DB.get(selected["id"], DOC_RULES_DB.get("default", {}))
         detail_card = get_scheme_detail_card(sc_item, doc_rule)
         explanation = await generate_grounded_explanation(sc_item, profile, lang_hindi)
-        narration = f"📖 **Scheme Dossier: {sc_item.name}**\n\n{explanation}\n\nApply at official portal: {sc_item.portal_url}"
+        narration = (
+            f"📖 **Scheme Dossier: {sc_item.name}**\n\n{explanation}\n\n"
+            f"🔗 **Official Apply Link**: {sc_item.apply_url}\n"
+            f"💡 **Steps**: {sc_item.apply_steps_hint or 'Register and apply on portal'}"
+        )
         await ctx.send(sender, create_card_message(narration, "detail", detail_card))
         return
 

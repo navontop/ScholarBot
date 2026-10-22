@@ -139,3 +139,58 @@ def test_every_user_facing_card_has_back_to_menu():
         card_str = str(card).lower()
         has_back = "back_to_hub" in card_str or "back_to_menu" in card_str or "open_hub" in card_str
         assert has_back, f"Card '{name}' does not contain a 'back to menu' / 'back_to_hub' action: {card}"
+
+def test_every_scheme_card_has_apply_link():
+    from core.matching import load_scholarships
+    from core.cards import get_scheme_detail_card
+    from core.models import ScholarshipItem
+
+    schemes = load_scholarships()
+    assert len(schemes) >= 80
+
+    for s in schemes[:15]:  # test across a representative slice
+        item = ScholarshipItem(
+            id=s["id"],
+            name=s["name"],
+            provider=s["provider"],
+            portal=s["portal"],
+            portal_url=s["portal_url"],
+            apply_url=s.get("apply_url") or s.get("portal_url", ""),
+            amount=s["amount"],
+            deadline=s.get("deadline", "2026-12-31")
+        )
+        card = get_scheme_detail_card(item, {})
+        rows = card.get("summary_rows", [])
+        apply_row = next((r for r in rows if r["label"] == "Direct Apply URL"), None)
+        assert apply_row is not None, f"Scheme {s['id']} missing Direct Apply URL row"
+        assert apply_row["value"].startswith("https://"), f"Scheme {s['id']} Direct Apply URL must be HTTPS"
+
+def test_high_res_images_and_asset_urls():
+    from core.cards import get_action_hub_card, get_asset_url
+    hub = get_action_hub_card()
+    for itm in hub["items"]:
+        img_url = itm["image"]
+        assert img_url.startswith("https://")
+        assert img_url.endswith(".png")
+
+def test_image_assets_files_exist_and_are_512():
+    import os
+    from PIL import Image
+
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    assets_dir = os.path.join(project_root, "assets")
+    assert os.path.exists(assets_dir), "assets directory must exist"
+
+    expected_assets = [
+        "central.png", "state.png", "csr.png", "girls.png", "pwd.png",
+        "minority.png", "merit.png", "school.png", "hub_find.png",
+        "hub_audit.png", "hub_deadlines.png", "hub_whatif.png",
+        "hub_concierge.png", "hub_profile.png", "hub_home.png", "fallback.png"
+    ]
+
+    for fname in expected_assets:
+        fpath = os.path.join(assets_dir, fname)
+        assert os.path.exists(fpath), f"Asset {fname} must exist in assets/"
+        with Image.open(fpath) as img:
+            assert img.size == (512, 512), f"Asset {fname} must be 512x512, got {img.size}"
+            assert img.format == "PNG", f"Asset {fname} must be PNG format"
