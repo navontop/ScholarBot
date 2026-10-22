@@ -84,20 +84,26 @@ def check_asi1_api_health() -> Tuple[bool, str]:
 
 
 async def extract_profile_with_llm(raw_text: str) -> Optional[StudentProfile]:
-    """Uses ASI1 to parse unstructured text into StudentProfile asynchronously."""
+    """Uses ASI1 to parse unstructured English or Hinglish text into StudentProfile asynchronously."""
     system_prompt = (
-        "You are an expert Indian education advisor. Your ONLY task is to extract student details from user input into JSON.\n"
+        "You are an expert Indian education advisor. Your task is to extract student details from user input (English or Hinglish) into JSON.\n"
         "Never invent information. If a field is not mentioned, mark it in 'missing_fields'.\n"
         "Convert lakh/LPA/k into numeric INR: e.g. '2.5 lakh' -> 250000, '3 LPA' -> 300000.\n"
+        "Handle Hindi/Hinglish (e.g., 'main Rajasthan se hu, OBC, income 3 lakh, B.Tech').\n"
+        "If a range is stated (e.g. '3-5 lakh', '75-80%'), extract min and max values.\n"
         "OUTPUT STRICT JSON ONLY with keys:\n"
         "{\n"
         '  "student_name": string,\n'
-        '  "state": string (state or "All"),\n'
+        '  "state": string (state name or "All"),\n'
         '  "category": "General" | "EWS" | "OBC" | "SC" | "ST" | "Minority",\n'
         '  "family_income": number,\n'
+        '  "family_income_min": number or null,\n'
+        '  "family_income_max": number or null,\n'
         '  "course": string,\n'
         '  "marks_percentage": number,\n'
-        '  "gender": "All" | "Male" | "Female",\n'
+        '  "marks_min": number or null,\n'
+        '  "marks_max": number or null,\n'
+        '  "gender": "All" | "Male" | "Female" | "Transgender",\n'
         '  "disability": boolean,\n'
         '  "minority": boolean,\n'
         '  "year_of_study": number,\n'
@@ -211,20 +217,22 @@ def extract_profile_with_regex(raw_text: str) -> StudentProfile:
     return profile
 
 async def parse_student_profile(raw_text: str) -> StudentProfile:
-    """Unified profile parser: fast regex extraction first, falls back to ASI1 LLM if incomplete."""
-    regex_profile = extract_profile_with_regex(raw_text)
-    # If key fields are parsed without missing fields, bypass LLM completely (0 network latency)
-    if not regex_profile.missing_fields:
-        return regex_profile
-
+    """
+    Primary path: ASI1 LLM extracts structured profile from natural/Hinglish language.
+    Deterministic regex fallback ensures robust 0-failure resilience when offline or unconfigured.
+    """
     try:
         import asyncio
         llm_profile = await asyncio.wait_for(extract_profile_with_llm(raw_text), timeout=4.0)
-        if llm_profile:
+        if llm_profile and (llm_profile.state != "All" or llm_profile.family_income != 250000.0 or llm_profile.course):
+            regex_fallback = extract_profile_with_regex(raw_text)
+            if not llm_profile.student_name and regex_fallback.student_name:
+                llm_profile.student_name = regex_fallback.student_name
             return llm_profile
     except Exception:
         pass
-    return regex_profile
+
+    return extract_profile_with_regex(raw_text)
 
 async def classify_intent_with_llm(user_text: str) -> Optional[str]:
     """Uses ASI1 to classify user intent asynchronously."""
@@ -283,11 +291,10 @@ def classify_intent_with_regex(user_text: str) -> str:
     return "find_scholarships"
 
 async def classify_intent(user_text: str) -> str:
-    """Fast regex first; falls back to LLM only for ambiguous text."""
-    regex_intent = classify_intent_with_regex(user_text)
-    if regex_intent != "find_scholarships":
-        return regex_intent
-
+    """
+    Primary path: ASI1 LLM classifies user intent dynamically.
+    Fallback: Deterministic regex intent classifier for zero-downtime offline execution.
+    """
     try:
         import asyncio
         intent = await asyncio.wait_for(classify_intent_with_llm(user_text), timeout=3.0)
@@ -295,7 +302,8 @@ async def classify_intent(user_text: str) -> str:
             return intent
     except Exception:
         pass
-    return regex_intent
+
+    return classify_intent_with_regex(user_text)
 
 async def generate_grounded_explanation(scheme: ScholarshipItem, profile: StudentProfile, lang_hindi: bool = False) -> str:
     """
